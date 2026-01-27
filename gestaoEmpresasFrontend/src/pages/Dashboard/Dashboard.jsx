@@ -1,6 +1,6 @@
 import styles from './Dashboard.module.css';
-import Header from './Header/Header';
-import SwipeableTemporaryDrawer from './SideBar/SwipeableDrawer';
+import Header from '../../components/Header/Header';
+import SwipeableTemporaryDrawer from '../../components/SideBar/SwipeableDrawer';
 
 export default function Dashboard() {
   return (

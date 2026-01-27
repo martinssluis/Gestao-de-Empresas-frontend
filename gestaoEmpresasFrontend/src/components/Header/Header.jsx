@@ -1,6 +1,6 @@
 import logo from '/logo.png';
 import styles from './Header.module.css';
-import Botao from './Botao.jsx';
+import Botao from '../Buttons/Botao.jsx';
 
 export default function Header() {
   return (
