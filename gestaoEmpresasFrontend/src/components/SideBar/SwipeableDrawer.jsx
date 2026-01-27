@@ -14,10 +14,10 @@ import styles from './Sidebar.module.css';
 
 export default function SwipeableTemporaryDrawer() {
   const menuItems = [
-    { text: 'Dashboard',icon: <InboxIcon />},
-    { text: 'Financeiro',icon: <MailIcon /> }, // Sugestão: deixar de stand-by
-    { text: 'Estoque', icon: <InboxIcon /> },
-    { text: 'Colaboradores', icon: <MailIcon /> },// Sugestão: deixar de stand-by
+    { text: 'Dashboard',path: "/app/dashboard",icon: <InboxIcon />},
+    { text: 'Financeiro',path: "/app/financial",icon: <MailIcon /> }, // Sugestão: deixar de stand-by
+    { text: 'Estoque',path: "/app/stock", icon: <InboxIcon /> },
+    { text: 'Colaboradores',path: "/app/colaborators", icon: <MailIcon /> },// Sugestão: deixar de stand-by
   ];
 
   const [state, setState] = React.useState({
