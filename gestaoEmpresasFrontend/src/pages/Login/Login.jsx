@@ -9,7 +9,7 @@ export default function Login() {
       <section>
         <main className={styles.loginContainer}>
           <h1>Login</h1>
-          <form>
+          <form className={styles.form}>
             <input
               className={styles.inputs}
               type="text"

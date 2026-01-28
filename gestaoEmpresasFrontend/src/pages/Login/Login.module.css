@@ -17,7 +17,7 @@
 }
 
 /* Estilos básicos do form */
-form {
+.form {
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -32,13 +32,13 @@ form {
 }
 
 input:focus {
-  border-color: #6366f1;
+  border-color: #234368;
   outline: none;
   box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
 }
 
 .buttons {
-  background: #6366f1;
+  background: #3b70ab;
   color: white;
   font-weight: 600;
   padding: 0.75rem;
@@ -49,5 +49,5 @@ input:focus {
 }
 
 button:hover {
-  background: #4f46e5;
+  background: #234368;
 }
