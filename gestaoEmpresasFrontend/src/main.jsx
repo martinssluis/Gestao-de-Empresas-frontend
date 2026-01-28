@@ -38,30 +38,7 @@ const router = createBrowserRouter([
     path: "financial",
     element: <Financial /> 
   }]
-  }
-  /*
-  {
-    path: '/app',
-    element: <App />,
-  },
-  {
-    path: '/dashboard',
-    element: <Dashboard />,
-  },
-  {
-    path: '/stock',
-    element: <Stock />,
-  },
-  {
-    path: '/colaborators',
-    element:<Colaborators/>
-  },
-  {
-    path:'financial',
-    element:<Financial/>
-  }*/
-  
-
+  } 
 ]);
 
 createRoot(document.getElementById('root')).render(

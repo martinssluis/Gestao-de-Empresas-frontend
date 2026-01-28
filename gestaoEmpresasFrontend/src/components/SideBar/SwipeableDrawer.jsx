@@ -11,6 +11,7 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import styles from './Sidebar.module.css';
+import { Link } from 'react-router-dom';
 
 export default function SwipeableTemporaryDrawer() {
   const menuItems = [
@@ -49,7 +50,9 @@ export default function SwipeableTemporaryDrawer() {
       <List>
         {menuItems.map((item) => (
           <ListItem key={item.text} disablePadding>
-            <ListItemButton>
+            <ListItemButton
+            component={Link} to={item.path}
+            >
               <ListItemIcon>{item.icon}</ListItemIcon>
               <ListItemText primary={item.text} />
             </ListItemButton>

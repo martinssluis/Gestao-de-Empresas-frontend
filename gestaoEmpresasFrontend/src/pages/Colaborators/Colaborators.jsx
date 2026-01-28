@@ -1,10 +1,10 @@
 import styles from './Colaborators.module.css';
-import Header from '../../components/Header/Header';
-import Sidebar from '../../components/SideBar/SideBar';
+import App from '../../App';
 
 export default function Colaborators(){
     return <>
-    <h1>Hello world</h1>
+    <App/>
+    <h1>Page collaborators</h1>
     </>
 
 }

@@ -1,12 +1,12 @@
 import styles from './Dashboard.module.css';
-import Header from '../../components/Header/Header';
-import SwipeableTemporaryDrawer from '../../components/SideBar/SwipeableDrawer';
+import Sidebar from '../../components/SideBar/SideBar';
+import Header from '../../components/Header/Header'
 
 export default function Dashboard() {
   return (
     <>
-      <Header />
-      <SwipeableTemporaryDrawer />
+    <Header/>
+      <Sidebar/>
       <div className={styles.containerDashboard}>
         <h1>Dashboard</h1>
       </div>

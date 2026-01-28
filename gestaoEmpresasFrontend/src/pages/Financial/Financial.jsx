@@ -1,11 +1,11 @@
 import styles from './Financial.module.css';
-import Header from '../../components/Header/Header';
 import Sidebar from '../../components/SideBar/SideBar';
 
 export default function Financial(){
     return
     <>
-    <h1>Hello world</h1>
+    <Sidebar/>
+    <h1>Page financial</h1>
     </>
 
-}
+};

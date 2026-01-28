@@ -5,8 +5,8 @@ import Sidebar from './components/SideBar/SideBar';
 function App() {
   return (
     <>
-    <Sidebar/>
-    <Outlet/>  
+    
+    <Outlet/>
     </>
   );
 }
