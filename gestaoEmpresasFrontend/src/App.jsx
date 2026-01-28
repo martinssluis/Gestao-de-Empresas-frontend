@@ -1,9 +1,14 @@
+import { Outlet } from 'react-router-dom';
 import './App.css';
+import Header from './components/Header/Header';
+import MainContent from './components/MainContent/MainContent';
 
 function App() {
   return (
     <>
-      <h1>Olá, mundo!</h1>
+      <Header />
+      <MainContent />
+      <Outlet />
     </>
   );
 }

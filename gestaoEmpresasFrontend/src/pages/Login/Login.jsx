@@ -23,7 +23,7 @@ export default function Login() {
             <button
               className={styles.buttons}
               type="button"
-              onClick={() => navigate('/dashboard')}
+              onClick={() => navigate('/app/dashboard')}
             >
               Entrar
             </button>
