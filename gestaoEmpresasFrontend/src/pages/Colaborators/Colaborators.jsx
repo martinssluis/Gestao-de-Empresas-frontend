@@ -1,10 +1,11 @@
 import styles from './Colaborators.module.css';
-import App from '../../App';
 
-export default function Colaborators(){
-    return <>
-    <App/>
-    <h1>Page collaborators</h1>
+export default function Colaborators() {
+  return (
+    <>
+      <div className={styles.containerColaborators}>
+        <h1>Page collaborators</h1>
+      </div>
     </>
-
+  );
 }

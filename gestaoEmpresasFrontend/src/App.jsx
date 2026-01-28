@@ -1,12 +1,14 @@
 import { Outlet } from 'react-router-dom';
 import './App.css';
-import Sidebar from './components/SideBar/SideBar';
+import Header from './components/Header/Header';
+import MainContent from './components/MainContent/MainContent';
 
 function App() {
   return (
     <>
-    
-    <Outlet/>
+      <Header />
+      <MainContent />
+      <Outlet />
     </>
   );
 }

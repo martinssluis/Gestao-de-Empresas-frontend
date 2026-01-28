@@ -1,6 +1,5 @@
 import logo from '/logo.png';
 import styles from './Header.module.css';
-import Botao from '../Buttons/Botao.jsx';
 
 export default function Header() {
   return (
@@ -12,16 +11,6 @@ export default function Header() {
           alt="Logo do sistema de gestão"
         />
       </div>
-
-      {/*
-      NAV RETIRADO PARA TESTE
-      <nav aria-label="links_uteis">
-        <ul className={styles.list}>
-          <Botao idBotao={'botao1'} nome={'Dashboard'} />
-          <Botao idBotao={'botao2'} nome={'Estoque'} />
-        </ul>
-      </nav>
-      */}
     </header>
   );
 }
