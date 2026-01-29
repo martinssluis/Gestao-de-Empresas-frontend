@@ -94,4 +94,5 @@ export default function Collaborators() {
       </section>
     </div>
   );
+  // Abas relacionais: consultas, dashboard
 }

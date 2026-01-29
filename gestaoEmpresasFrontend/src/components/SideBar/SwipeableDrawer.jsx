@@ -12,6 +12,7 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import styles from './Sidebar.module.css';
 import { Link } from 'react-router-dom';
+import MenuIcon from '@mui/icons-material/Menu';
 
 export default function SwipeableTemporaryDrawer() {
   const menuItems = [
@@ -66,7 +67,7 @@ export default function SwipeableTemporaryDrawer() {
     <div className={styles.sidebar}>
       {['left'].map((anchor) => (
         <React.Fragment key={anchor}>
-          <Button onClick={toggleDrawer(anchor, true)}>SIDEBAR</Button>
+          <Button onClick={toggleDrawer(anchor, true)}><MenuIcon/></Button>
           <SwipeableDrawer
             anchor={anchor}
             open={state[anchor]}
