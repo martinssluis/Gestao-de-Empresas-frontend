@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import styles from './Colaborators.module.css';
+import styles from './Collaborators.module.css';
 
-export default function Colaborators() {
+export default function Collaborators() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -26,9 +26,9 @@ export default function Colaborators() {
   }
 
   return (
-    <div className={styles.estiloColaborator}>
+    <div className={styles.estiloCollaborator}>
       <section>
-        <main className={styles.colaboratorContainer}>
+        <main className={styles.collaboratorContainer}>
           <h1 className={styles.h1}>Cadastro de Colaborador</h1>
 
           <form className={styles.form} onSubmit={handleSubmit}>

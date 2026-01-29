@@ -5,8 +5,8 @@ import App from './App.jsx';
 import Dashboard from './pages/Dashboard/Dashboard.jsx';
 import Login from './pages/Login/Login.jsx';
 import Stock from './pages/Stock/Stock.jsx';
-import Colaborators from './pages/Colaborators/Colaborators.jsx';
 import Financial from './pages/Financial/Financial.jsx';
+import Collaborators from './pages/Collaborators/Collaborators.jsx';
 
 
 const router = createBrowserRouter([
@@ -31,8 +31,8 @@ const router = createBrowserRouter([
     element: <Stock /> 
   },
   { 
-    path: "colaborators",
-    element: <Colaborators />
+    path: "collaborators",
+    element: <Collaborators />
   },
   { 
     path: "financial",

@@ -18,7 +18,7 @@ export default function SwipeableTemporaryDrawer() {
     { text: 'Dashboard',path: "/app/dashboard",icon: <InboxIcon />},
     { text: 'Financeiro',path: "/app/financial",icon: <MailIcon /> }, // Sugestão: deixar de stand-by
     { text: 'Estoque',path: "/app/stock", icon: <InboxIcon /> },
-    { text: 'Colaboradores',path: "/app/colaborators", icon: <MailIcon /> },// Sugestão: deixar de stand-by
+    { text: 'Colaboradores',path: "/app/collaborators", icon: <MailIcon /> },// Sugestão: deixar de stand-by
   ];
 
   const [state, setState] = React.useState({

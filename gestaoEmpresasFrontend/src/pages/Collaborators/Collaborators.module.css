@@ -1,4 +1,4 @@
-.estiloColaborator {
+.estiloCollaborator {
   /*min-height: 100vh;*/ /*REMOVENDO PARA TESTES*/
   display: flex;
   justify-content: center;
@@ -7,7 +7,7 @@
   background: #f3f4f6;
 }
 
-.colaboratorContainer {
+.collaboratorContainer {
   background: #ffffff;
   width: 90vw;
   max-width: 1100px;
@@ -26,6 +26,7 @@
 .h1 {
   margin-bottom: 2rem;
   font-size: 1.8rem;
+  
 }
 
 .form {
@@ -80,7 +81,7 @@ textarea:focus {
 /* 📱 Responsividade (mobile) */
 /* ============================= */
 @media (max-width: 768px) {
-  .colaboratorContainer {
+  .collaboratorContainer {
     width: 100%;
     padding: 2rem 1.5rem;
   }
@@ -96,5 +97,6 @@ textarea:focus {
 
   .h1 {
     font-size: 1.5rem;
+    
   }
 }
