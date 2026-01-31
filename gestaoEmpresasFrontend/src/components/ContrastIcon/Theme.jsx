@@ -25,24 +25,11 @@ import ContrastIcon from '@mui/icons-material/Contrast';
 
     return (
         <Button onClick={
-            toogleTheme}>
+            toogleTheme}> 
             <ContrastIcon/>
         </Button>
     );}
 
     export default ChangeTheme
-    /*
-    const [dark, setDark] = useState(false);
-
-    const theme = {
-        backgroundColor: dark ? "#1A1A1A" : "white",
-        color: dark ? "white" : "#1A1A1A"
-    }
+    // ESTUDAR TOGGLE THEME E COMPONENTES USADOS NESSA PAGE
     // MOVER TEMA PARA FUTURA PÁGINA DE CONFIGURAÇÃO
-    return(
-    <div style={theme}>
-    <Button onClick={() => setDark(prev => !prev)}>
-        <ContrastIcon/>
-    </Button>
-    </div>
-    )*/

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import styles from './Collaborators.module.css';
+import { Box, TextField, Button, Paper } from '@mui/material';
 
 export default function Collaborators() {
   const [formData, setFormData] = useState({
@@ -26,10 +27,9 @@ export default function Collaborators() {
   }
 
   return (
-    <div>
-      <div className={styles.estiloCollaborator}>
-        <section>
-          <main className={styles.collaboratorContainer}>
+      <Box component={'div'} className={styles.estiloCollaborator}>
+        <Box component={"section"} sx={{bgcolor: 'background.defaut', color:'text.primary', minHeight:'100vh'}}>
+          <Paper className={styles.collaboratorContainer}>
             <h1 className={styles.h1}>Cadastro de Colaborador</h1>
 
             <form className={styles.form} onSubmit={handleSubmit}>
@@ -91,10 +91,9 @@ export default function Collaborators() {
                 Cadastrar
               </button>
             </form>
-          </main>
-        </section>
-      </div>
-    </div>
+          </Paper>
+        </Box>
+      </Box>
   );
   // Abas relacionais: consultas, dashboard
 }

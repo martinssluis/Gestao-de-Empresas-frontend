@@ -24,5 +24,5 @@ function App() {
    </>
   );
 }
-
+// ESTUDAR COMPONENTES USADOS NESSA PAGE
 export default App;

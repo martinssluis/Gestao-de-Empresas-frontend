@@ -4,15 +4,14 @@
   justify-content: center;
   align-items: center;
   padding: 1rem;
-  /*background: #f3f4f6;*/
 }
 
 .collaboratorContainer {
-  background: #ffffff;
   width: 90vw;
   max-width: 1100px;
   height: auto;
   min-height: 60vh;
+  background-color: var(--bg-paper);
 
   padding: 2.5rem 3rem;
   border-radius: 1rem;
@@ -26,7 +25,7 @@
 .h1 {
   margin-bottom: 2rem;
   font-size: 1.8rem;
-  color: #234368;
+  /*color: #234368;*/
 }
 
 .form {
