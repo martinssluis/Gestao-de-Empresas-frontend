@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
 import styles from './Collaborators.module.css';
 
 export default function Collaborators() {
@@ -26,12 +28,48 @@ export default function Collaborators() {
   }
 
   return (
-    <div className={styles.estiloCollaborator}>
+    <Box
+      className={styles.estiloCollaborator}
+      sx={{ bgcolor: 'background.default', color: 'text.primary' }}
+    >
       <section>
-        <main className={styles.collaboratorContainer}>
+        <Box
+          component="main"
+          className={styles.collaboratorContainer}
+          sx={{
+            bgcolor: 'background.paper',
+            color: 'text.primary',
+            border: '1px solid',
+            borderColor: 'divider',
+            borderRadius: 2,
+            boxShadow: 1,
+          }}
+        >
           <h1 className={styles.h1}>Cadastro de Colaborador</h1>
 
-          <form className={styles.form} onSubmit={handleSubmit}>
+          <Box
+            component="form"
+            className={styles.form}
+            onSubmit={handleSubmit}
+            sx={{
+              '& input, & textarea': {
+                bgcolor: 'background.paper',
+                color: 'text.primary',
+                border: '1px solid',
+                borderColor: 'divider',
+              },
+              '& input::placeholder, & textarea::placeholder': {
+                color: 'text.secondary',
+                opacity: 1,
+              },
+              '& input:focus, & textarea:focus': {
+                borderColor: 'primary.main',
+                outline: 'none',
+                boxShadow: (theme) =>
+                  `0 0 0 2px ${theme.palette.primary.main}33`,
+              },
+            }}
+          >
             <input
               className={styles.inputs}
               type="text"
@@ -86,12 +124,17 @@ export default function Collaborators() {
               onChange={handleChange}
             />
 
-            <button className={styles.buttons} type="submit">
+            <Button
+              className={styles.buttons}
+              type="submit"
+              variant="contained"
+              sx={{ textTransform: 'none' }}
+            >
               Cadastrar
-            </button>
-          </form>
-        </main>
+            </Button>
+          </Box>
+        </Box>
       </section>
-    </div>
+    </Box>
   );
 }
