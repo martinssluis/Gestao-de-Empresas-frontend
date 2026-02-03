@@ -18,7 +18,7 @@ export default function Stock() {
       // mantém estado anterior
       ...prev,
       // atualiza dinamicamente o campo correspondente ao input
-      [stockName]: value,
+      [name]: value,
     }));
   }
 
