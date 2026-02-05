@@ -65,6 +65,30 @@ button:hover {
   align-items: center;
 }
 
+@media (max-width: 1100px) {
+  .divImagem {
+    width: 50%;
+    padding: 15px;
+  }
+}
+
+@media (max-width: 960px) {
+  .divImagem {
+    width: 40%;
+  }
+}
+
+@media (max-width: 760px) {
+  .loginPage {
+    flex-direction: column;
+  }
+
+  .estiloLogin {
+    height: 65vh;
+    width: 80%;
+  }
+}
+
 /* ================== ANIMAÇÃO IMAGEM DA ESQUERDA ============== */
 .divImagem img {
   width: 100%;
