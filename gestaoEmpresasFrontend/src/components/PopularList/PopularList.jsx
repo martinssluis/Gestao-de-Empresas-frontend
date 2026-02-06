@@ -9,7 +9,14 @@ export default function PopularList({title, items}){
                 </Typography>
 
                 {items.map((item, index)=>(
-                    <Box key={index}>
+                    <Box 
+                        key={index}
+                        onClick={()=> onSelect(item)}
+                        sx={{
+                            cursor: 'pointer',
+                            py: 1
+                        }}
+                    >
                         <Box
                             sx={{
                                 display: 'flex',

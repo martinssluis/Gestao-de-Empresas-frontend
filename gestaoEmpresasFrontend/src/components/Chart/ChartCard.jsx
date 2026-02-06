@@ -11,7 +11,7 @@ export default function Chart({title, data}){
 
                 <ResponsiveContainer width="100%" height="300">
                     <LineChart data={data}>
-                        <XAxis dataKey="name"/>
+                        <XAxis dataKey="month"/>
                         <YAxis/>
                         <Tooltip/>
                         <Line
