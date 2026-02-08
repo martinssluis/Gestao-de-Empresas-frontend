@@ -2,8 +2,19 @@ import { Card, CardContent, Typography, Box, Divider } from "@mui/material";
 
 export default function PopularList({title, items}){
     return(
-        <Card sx={{height:'100%'}}>
-            <CardContent>
+        <Card 
+            sx={{height:'100%',
+                maxHeight: 300,
+                overflow: "hidden"
+            }}
+
+       >
+            <CardContent
+            sx={{
+              overflowY: 'auto',
+              maxHeight: 300
+            }}
+            >
                 <Typography variant="h6" gutterBottom>
                     {title}
                 </Typography>

@@ -3,6 +3,7 @@ import styles from './Dashboard.module.css';
 import StatCard from '../../components/StatCard/StatCard';
 import Chart from '../../components/Chart/ChartCard';
 import PopularList from '../../components/PopularList/PopularList';
+import ChartColumn from '../../components/ChartColumn/ChartColumn';
 import { useState, useEffect } from 'react';
 
 export default function Dashboard() {
@@ -22,6 +23,12 @@ export default function Dashboard() {
     { month: 'Abr', value: 2780 },
     { month: 'Mai', value: 1890 },
     { month: 'Jun', value: 2390 },
+    { month: 'Jul', value: 4000 },
+    { month: 'Ago', value: 3000 },
+    { month: 'Set', value: 5000 },
+    { month: 'Out', value: 2780 },
+    { month: 'Nov', value: 1890 },
+    { month: 'Dez', value: 2390 },
   ]
   // POPULAR ITEMS ALIMENTAM O CARD DE ITENS POPULARES
   const popularItems = [
@@ -54,6 +61,36 @@ export default function Dashboard() {
       {month: 'Fev', value: 70},
       {month: 'Mar', value: 90}
     ]
+  },
+   {
+    id: 4,
+    name: 'Produto D',
+    subtitle: 'Categoria 1',
+    history: [
+      {month: 'Jan', value: 44},
+      {month: 'Fev', value: 33},
+      {month: 'Mar', value: 55}
+    ]
+  },
+  {
+    id: 5,
+    name: 'Produto E',
+    subtitle: 'Categoria 2',
+    history: [
+      {month: 'Jan', value: 80},
+      {month: 'Fev', value: 80},
+      {month: 'Mar', value: 90}
+    ]
+  },
+  {
+    id: 6,
+    name: 'Produto F',
+    subtitle: 'Categoria 3',
+    history: [
+      {month: 'Jan', value: 20},
+      {month: 'Fev', value: 90},
+      {month: 'Mar', value: 10}
+    ]
   }
 ];
   const [searchTerm, setSearchTerm] = useState('');
@@ -85,16 +122,8 @@ export default function Dashboard() {
           />
         </Grid>
         ))}
-
-      </Grid>
-      <Grid container spacing={1} sx={{ mt: 3}}>
-        <Grid item xs={8}>
-          <Chart
-          title="Vendas nos últimos meses"
-          data={salesData}
-          />
-        </Grid>
-        <Grid item xs={12} md={4}>
+        <Grid container spacing={1} sx={{ mt: 3}}>
+         <Grid item xs={12} md={4}>
             {selectedProduct ? (
                 <Chart
                   title={`Histórico de saída - ${selectedProduct.name}`}
@@ -119,8 +148,15 @@ export default function Dashboard() {
             items={filteredProducts}
             />
          </Grid>
+        <Grid item xs={8}>
+          <ChartColumn
+          title="Vendas nos últimos meses"
+          data={salesData}
+          />
+        </Grid>
       </Grid>
-      
+
+      </Grid>
       </Box>
     </>
   );
