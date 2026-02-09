@@ -1,0 +1,60 @@
+import { Card, CardContent, Typography, Box, Divider } from "@mui/material";
+
+export default function PopularList({title, items}){
+    return(
+        <Card 
+            sx={{height:'100%',
+                maxHeight: 300,
+                overflow: "hidden"
+            }}
+
+       >
+            <CardContent
+            sx={{
+              overflowY: 'auto',
+              maxHeight: 300
+            }}
+            >
+                <Typography variant="h6" gutterBottom>
+                    {title}
+                </Typography>
+
+                {items.map((item, index)=>(
+                    <Box 
+                        key={index}
+                        onClick={()=> onSelect(item)}
+                        sx={{
+                            cursor: 'pointer',
+                            py: 1
+                        }}
+                    >
+                        <Box
+                            sx={{
+                                display: 'flex',
+                                justifyContent: 'space-between',
+                                alignItems: 'center',
+                                py: 1
+                            }}
+                        >
+                            <Box>
+                                <Typography variant="subtitle2">
+                                    {item.name}
+                                </Typography>
+                                <Typography
+                                    variant="caption"
+                                    color="text.secondary"
+                                >
+                                    {item.subtitle}
+                                </Typography>
+                            </Box>
+                            <Typography variant="subtitle2">
+                                {item.value}
+                            </Typography>
+                        </Box>
+                        {index < items.length - 1 && <Divider/>}
+                    </Box>
+                ))}
+            </CardContent>
+        </Card>
+    );
+}
