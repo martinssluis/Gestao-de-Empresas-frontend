@@ -10,13 +10,15 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
+import LogoutIcon from '@mui/icons-material/Logout';
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
 import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined';
 import styles from './Sidebar.module.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useColorMode } from '../../context/ColorModeContext.jsx';
 
 export default function SwipeableTemporaryDrawer() {
+  const navigate = useNavigate();
   const { mode, toggleColorMode } = useColorMode();
   const menuItems = [
     { text: 'Dashboard',path: "/app/dashboard",icon: <InboxIcon />},
@@ -44,12 +46,35 @@ export default function SwipeableTemporaryDrawer() {
     setState({ ...state, [anchor]: open });
   };
 
+  const handleLogout = () => {
+    const keysToRemove = [
+      'token',
+      'auth',
+      'user',
+      'session',
+      'jwt',
+      'accessToken',
+      'refreshToken',
+    ];
+
+    keysToRemove.forEach((key) => {
+      localStorage.removeItem(key);
+      sessionStorage.removeItem(key);
+    });
+
+    sessionStorage.clear();
+    navigate('/');
+  };
+
   const list = (anchor) => (
     <Box
       sx={{
         width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250,
+        height: '100%',
         bgcolor: 'background.paper',
         color: 'text.primary',
+        display: 'flex',
+        flexDirection: 'column',
       }}
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
@@ -86,6 +111,18 @@ export default function SwipeableTemporaryDrawer() {
           </ListItem>
         ))}
       </List>
+      <Box sx={{ mt: 'auto' }}>
+        <List>
+          <ListItem disablePadding>
+            <ListItemButton onClick={handleLogout}>
+              <ListItemIcon>
+                <LogoutIcon />
+              </ListItemIcon>
+              <ListItemText primary="Sair" />
+            </ListItemButton>
+          </ListItem>
+        </List>
+      </Box>
     </Box>
   );
 
