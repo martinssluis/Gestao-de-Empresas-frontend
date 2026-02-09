@@ -67,9 +67,9 @@ export default function Dashboard() {
     name: 'Produto D',
     subtitle: 'Categoria 1',
     history: [
-      {month: 'Jan', value: 44},
-      {month: 'Fev', value: 33},
-      {month: 'Mar', value: 55}
+      {month: 'Jan', value: 70},
+      {month: 'Fev', value: 30},
+      {month: 'Mar', value: 20}
     ]
   },
   {
@@ -113,7 +113,7 @@ export default function Dashboard() {
       <Box component={'div'}  className={styles.containerDashboard}>
         <Typography variant='h4' className='h4' gutterBottom sx={{mb: 7}}>Dashboard</Typography>
 
-      <Grid container spacing={3} className='mainGrid'>
+      <Grid container spacing={2} className='mainGrid'>
         {stats.map((item, index) => (
         <Grid item xs={12} md={2} key={index}>
           <StatCard
@@ -122,8 +122,8 @@ export default function Dashboard() {
           />
         </Grid>
         ))}
-        <Grid container spacing={1} sx={{ mt: 3}}>
-         <Grid item xs={12} md={4}>
+        <Grid container spacing={1} sx={{ mt: 2}}>
+         <Grid item xs={8} md={4} spacing={2}>
             {selectedProduct ? (
                 <Chart
                   title={`Histórico de saída - ${selectedProduct.name}`}
