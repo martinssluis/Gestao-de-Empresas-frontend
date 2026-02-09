@@ -7,13 +7,12 @@
 }
 
 .loginContainer {
-  background: #fff;
   padding: 2rem;
   border-radius: 0.75rem;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
   width: 100%;
   max-width: 380px;
   text-align: center;
+  position: relative;
 }
 
 /* Estilos básicos do form */
@@ -26,28 +25,19 @@
 
 .inputs {
   padding: 0.75rem 1rem;
-  border: 1px solid #d1d5db;
   border-radius: 0.5rem;
   font-size: 1rem;
 }
 
-input:focus {
-  border-color: #234368;
-  outline: none;
-  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
-}
-
 .buttons {
-  background: #3b70ab;
-  color: white;
   font-weight: 600;
   padding: 0.75rem;
   border-radius: 0.5rem;
-  border: none;
-  cursor: pointer;
-  transition: background 0.2s ease;
 }
 
-button:hover {
-  background: #234368;
+.themeToggle {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  cursor: pointer;
 }
