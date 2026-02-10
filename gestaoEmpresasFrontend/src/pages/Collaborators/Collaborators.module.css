@@ -15,8 +15,6 @@
 
   padding: 2.5rem 3rem;
   border-radius: 1rem;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -36,7 +34,6 @@
 
 .inputs {
   padding: 0.85rem 1rem;
-  border: 1px solid #d1d5db;
   border-radius: 0.6rem;
   font-size: 1rem;
 }
@@ -44,7 +41,6 @@
 .textarea {
   grid-column: span 2;
   padding: 0.85rem 1rem;
-  border: 1px solid #d1d5db;
   border-radius: 0.6rem;
   font-size: 1rem;
   resize: none;
@@ -61,20 +57,8 @@ textarea:focus {
 .buttons {
   grid-column: span 2;
   margin-top: 1rem;
-
-  background: #3b70ab;
-  color: #ffffff;
-  font-weight: 600;
   padding: 0.9rem;
   border-radius: 0.6rem;
-  border: none;
-  cursor: pointer;
-  font-size: 1rem;
-  transition: background 0.2s ease;
-}
-
-.buttons:hover {
-  background: #234368;
 }
 
 /* ============================= */
