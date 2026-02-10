@@ -4,20 +4,17 @@
   justify-content: center;
   align-items: center;
   padding: 1rem;
-  background: #f3f4f6;
 }
 
 .collaboratorContainer {
-  background: #ffffff;
   width: 90vw;
   max-width: 1100px;
   height: auto;
   min-height: 60vh;
+  background-color: var(--bg-paper);
 
   padding: 2.5rem 3rem;
   border-radius: 1rem;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -26,7 +23,7 @@
 .h1 {
   margin-bottom: 2rem;
   font-size: 1.8rem;
-  
+  /*color: #234368;*/
 }
 
 .form {
@@ -37,7 +34,6 @@
 
 .inputs {
   padding: 0.85rem 1rem;
-  border: 1px solid #d1d5db;
   border-radius: 0.6rem;
   font-size: 1rem;
 }
@@ -45,7 +41,6 @@
 .textarea {
   grid-column: span 2;
   padding: 0.85rem 1rem;
-  border: 1px solid #d1d5db;
   border-radius: 0.6rem;
   font-size: 1rem;
   resize: none;
@@ -56,25 +51,14 @@ textarea:focus {
   border-color: #3b70ab;
   outline: none;
   box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+  border-width: 3px;
 }
 
 .buttons {
   grid-column: span 2;
   margin-top: 1rem;
-
-  background: #3b70ab;
-  color: #ffffff;
-  font-weight: 600;
   padding: 0.9rem;
   border-radius: 0.6rem;
-  border: none;
-  cursor: pointer;
-  font-size: 1rem;
-  transition: background 0.2s ease;
-}
-
-.buttons:hover {
-  background: #234368;
 }
 
 /* ============================= */

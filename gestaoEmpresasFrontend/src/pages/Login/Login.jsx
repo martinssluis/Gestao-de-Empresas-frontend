@@ -6,7 +6,6 @@ import imgLogin from "/imgLogin.png";
 
 export default function Login() {
   const navigate = useNavigate();
-
   return (
     <>
       <HeaderLogin />

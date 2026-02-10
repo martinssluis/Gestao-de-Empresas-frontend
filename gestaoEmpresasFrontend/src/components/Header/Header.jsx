@@ -10,6 +10,7 @@ export default function Header() {
           src={logo}
           alt="Logo do sistema de gestão"
         />
+        {/* Criar funcionalidade do header icon account */}
       </div>
     </header>
   );
