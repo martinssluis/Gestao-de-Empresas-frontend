@@ -1,5 +1,5 @@
-import logo from '/logo.png';
-import styles from './Header.module.css';
+import nomeSistema from "/nomeSistema.png";
+import styles from "./Header.module.css";
 
 export default function Header() {
   return (
@@ -7,7 +7,7 @@ export default function Header() {
       <div className="LeftHeader">
         <img
           id={styles.logoSistema}
-          src={logo}
+          src={nomeSistema}
           alt="Logo do sistema de gestão"
         />
         {/* Criar funcionalidade do header icon account */}
