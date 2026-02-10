@@ -1,6 +1,6 @@
 #logoSistema {
   max-width: 110px;
-  padding: 10px;
+  padding: 2px 0px 2px 30px;
 }
 
 .header {
@@ -12,7 +12,7 @@
   align-items: center;
   flex-wrap: wrap;
   border-bottom: 1px solid white;
-  justify-content: space-around;
+  /*justify-content: space-around; */ /* RETIRADO PARA TESTE*/
   color: whitesmoke;
 }
 
@@ -39,7 +39,9 @@
   font-weight: 500;
   cursor: pointer;
 
-  transition: transform 0.15s ease, box-shadow 0.15s ease,
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
     background-color 0.15s ease;
 }
 

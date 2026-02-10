@@ -1,6 +1,5 @@
 import logo from '/logo.png';
 import styles from './Header.module.css';
-import Botao from './Botao.jsx';
 
 export default function Header() {
   return (
@@ -11,14 +10,8 @@ export default function Header() {
           src={logo}
           alt="Logo do sistema de gestão"
         />
+        {/* Criar funcionalidade do header icon account */}
       </div>
-
-      <nav aria-label="links_uteis">
-        <ul className={styles.list}>
-          <Botao idBotao={'botao1'} nome={'Dashboard'} />
-          <Botao idBotao={'botao2'} nome={'Estoque'} />
-        </ul>
-      </nav>
     </header>
   );
 }

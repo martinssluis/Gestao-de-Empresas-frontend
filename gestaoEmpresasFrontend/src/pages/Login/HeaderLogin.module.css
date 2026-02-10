@@ -1,0 +1,32 @@
+.headerLogin {
+  position: sticky;
+  display: flex;
+  top: 0;
+  z-index: 1000;
+  align-items: center;
+  flex-wrap: wrap;
+  border-bottom: 1px solid #234368;
+  justify-content: space-around;
+}
+
+.nomeSistemaImg {
+  width: 40%;
+}
+
+.navBar {
+  display: flex;
+  justify-content: center;
+}
+
+.navBar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+}
+
+.navBar ul li {
+  padding: 10px 20px;
+  margin-left: 10px;
+}
