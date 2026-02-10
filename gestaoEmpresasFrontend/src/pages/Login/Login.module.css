@@ -7,12 +7,13 @@
 }
 
 .loginContainer {
+  background: #fff;
   padding: 2rem;
   border-radius: 0.75rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
   width: 100%;
   max-width: 380px;
   text-align: center;
-  position: relative;
 }
 
 /* Estilos básicos do form */
@@ -21,11 +22,12 @@
   flex-direction: column;
   gap: 1rem;
   margin-top: 1.5rem;
+  padding-top: 20px;
 }
 
 .inputs {
   padding: 0.75rem 1rem;
-  border-radius: 0.5rem;
+  border-bottom: 1px solid #234368;
   font-size: 1rem;
 }
 
@@ -35,9 +37,89 @@
   border-radius: 0.5rem;
 }
 
-.themeToggle {
-  position: absolute;
-  top: 0.75rem;
-  right: 0.75rem;
-  cursor: pointer;
+.imgNomeSG {
+  max-width: 90%;
+  display: flex;
+  justify-self: center;
+  padding-bottom: 60px;
+}
+
+.loginPage {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+@media (max-width: 1100px) {
+  .divImagem {
+    width: 50%;
+    padding: 15px;
+  }
+}
+
+@media (max-width: 960px) {
+  .divImagem {
+    width: 40%;
+  }
+}
+
+@media (max-width: 760px) {
+  .loginPage {
+    flex-direction: column;
+  }
+
+  .estiloLogin {
+    height: 65vh;
+    width: 80%;
+  }
+}
+
+/* ================== ANIMAÇÃO IMAGEM DA ESQUERDA ============== */
+.divImagem img {
+  width: 100%;
+  animation: floatRandom 12s ease-in-out infinite;
+}
+
+@keyframes floatRandom {
+  0% {
+    transform: translate(0px, 0px) rotate(0deg);
+  }
+
+  25% {
+    transform: translate(6px, -8px) rotate(1deg);
+  }
+
+  50% {
+    transform: translate(-6px, 6px) rotate(-1deg);
+  }
+
+  75% {
+    transform: translate(4px, -4px) rotate(0.5deg);
+  }
+
+  100% {
+    transform: translate(0px, 0px) rotate(0deg);
+  }
+}
+
+/* ========================== ANIMAÇÃO DO FORMS ====================== */
+
+.estiloLogin {
+  animation: slideInLeft 0.9s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+@keyframes slideInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+
+  60% {
+    opacity: 1;
+    transform: translateX(4px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
 }
