@@ -15,6 +15,9 @@ import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
 import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined';
 import styles from './Sidebar.module.css';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { useColorMode } from '../../context/ColorModeContext';
+//import { MenuIcon } from '@mui/material/MenuIcon';
 
 export default function SwipeableTemporaryDrawer() {
   const navigate = useNavigate();
@@ -129,7 +132,7 @@ export default function SwipeableTemporaryDrawer() {
     <div className={styles.sidebar}>
       {['left'].map((anchor) => (
         <React.Fragment key={anchor}>
-          <Button onClick={toggleDrawer(anchor, true)}><MenuIcon/></Button>
+          <Button onClick={toggleDrawer(anchor, true)}>Sidebar</Button>
           <SwipeableDrawer
             anchor={anchor}
             open={state[anchor]}

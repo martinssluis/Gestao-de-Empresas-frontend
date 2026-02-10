@@ -1,7 +1,6 @@
 import { useState } from 'react';
-import Box from '@mui/material/Box';
 import styles from './Collaborators.module.css';
-import { Box, Button, Paper } from '@mui/material';
+import { Box, Paper } from '@mui/material';
 
 export default function Collaborators() {
   const [formData, setFormData] = useState({
