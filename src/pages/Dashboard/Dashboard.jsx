@@ -113,78 +113,83 @@ export default function Dashboard() {
       <Box
         component={'div'}
         className={styles.containerDashboard}>
-      <Typography
-        variant='h4'
-        className='h4'
-        gutterBottom 
-        sx={{mb: 3}}>Dashboard
-      </Typography>
+        <Typography
+          variant='h4'
+          className='h4'
+          gutterBottom 
+          sx={{mb: 3}}>Dashboard
+        </Typography>
 
-      <Grid
-        container
-        spacing={4}
-        className='mainGrid'
-      >
-        {stats.map((item, index) => (
-        <Grid 
-         item
-         md={2}
-         key={index}
-        >
-          <StatCard
-            title={item.title}
-            value={item.value}
-          />
-        </Grid>
-        ))}
-        <Grid 
+        <Grid
           container
-          spacing={1}
-          sx={{ mt: 2 }}>
-         <Grid 
-            item 
-            xs={8} 
-            md={4} 
-            spacing={2}
-         >
-            {selectedProduct ? (
-                <Chart
-                  title={`Histórico de saída - ${selectedProduct.name}`}
-                  data={selectedProduct.history}
-                  height={200}
-                />
-              ) : (
-                <Typography
-                 color="text.secondary">
-                  Nenhum produto encontrado
-                </Typography>
-              )}
-
-            <TextField
-              fullWidth
-              label="Pesquisar produto"
-              variant='outlined'
-              value={searchTerm}
-              onChange={(e)=> setSearchTerm(e.target.value)}
-            />
-            <PopularList
-              title="Itens populares"
-              items={filteredProducts}
-            />
-         </Grid>
-        <Grid 
-          item
-          xs={8} 
+          spacing={4}
+          className='mainGrid'
         >
-          <ChartColumn
-            title="Vendas nos últimos meses"
-            data={salesData}
-            height={560}
-          />
-        </Grid>
-      </Grid>
+          {stats.map((item, index) => (
+          <Grid 
+          item
+          md={2}
+          key={index}
+          >
+            <StatCard
+              title={item.title}
+              value={item.value}
+            />
+          </Grid>
+          ))}
+          <Grid 
+            container
+            spacing={2}
+            sx={{ mt: 2 }}>
+          <Grid 
+              item 
+              xs={12} // breakpoint p/ celular 
+              md={5}  // breakpoint p/ notebook
+              lg={5} // breakpoint p/ desktop
+              xl={5} // monitor grande
+              spacing={2}
+          >
+              {selectedProduct ? (
+                  <Chart
+                    title={`Histórico de saída - ${selectedProduct.name}`}
+                    data={selectedProduct.history}
+                    height={200}
+                  />
+                ) : (
+                  <Typography
+                  color="text.secondary">
+                    Nenhum produto encontrado
+                  </Typography>
+                )}
 
-      </Grid>
+              <TextField
+                fullWidth
+                label="Pesquisar produto"
+                variant='outlined'
+                value={searchTerm}
+                onChange={(e)=> setSearchTerm(e.target.value)}
+                sx={{mt:2, mb:2 }}
+              />
+              <PopularList
+                title="Itens populares"
+                items={filteredProducts}
+              />
+          </Grid>
+          <Grid 
+            item
+            xs={8} 
+            md={7}
+            width={700}
+          >
+            <ChartColumn
+              title="Vendas nos últimos meses"
+              data={salesData}
+              height={590}
+            />
+          </Grid>
+        </Grid>
+
+        </Grid>
       </Box>
     </>
   );
