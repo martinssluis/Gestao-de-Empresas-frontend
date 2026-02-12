@@ -23,8 +23,6 @@ html {
 body {
   min-height: 100vh;
   text-rendering: optimizeLegibility;
-  color: #111;
-  background: #f3f4f6; /* cor de fundo suave */
 }
 
 /* Remove estilo padrão de listas */

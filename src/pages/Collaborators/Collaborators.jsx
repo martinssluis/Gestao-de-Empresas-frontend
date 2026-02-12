@@ -1,8 +1,31 @@
 import { useState } from 'react';
-import styles from './Collaborators.module.css';
-import { Box, Paper } from '@mui/material';
+import stockStyles from '../Stock/Stock.module.css';
+import { Box, Button, Paper, TextField } from '@mui/material';
+import { useI18n } from '../../i18n/useI18n';
+
+const fieldSx = {
+  '& .MuiOutlinedInput-root': {
+    backgroundColor: 'background.paper',
+    borderRadius: '0.6rem',
+    '& fieldset': { borderColor: 'divider' },
+    '&:hover fieldset': { borderColor: 'text.secondary' },
+    '&.Mui-focused fieldset': { borderColor: 'primary.main', borderWidth: 2 },
+  },
+  '& .MuiInputLabel-root': { color: 'text.secondary' },
+  '& .MuiInputBase-input': {
+    color: 'text.primary',
+    fontSize: '1rem',
+    py: '0.85rem',
+    px: '1rem',
+  },
+  '& .MuiInputBase-inputMultiline': {
+    px: '1rem',
+    py: '0.85rem',
+  },
+};
 
 export default function Collaborators() {
+  const { t } = useI18n();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -27,73 +50,96 @@ export default function Collaborators() {
   }
 
   return (
-      <Box component={'div'} className={styles.estiloCollaborator}>
-        <Box component={"section"} sx={{bgcolor: 'background.defaut', color:'text.primary', minHeight:'100vh'}}>
-          <Paper className={styles.collaboratorContainer}>
-            <h1 className={styles.h1}>Cadastro de Colaborador</h1>
+    <div className={stockStyles.styleStock}>
+      <section>
+        <Paper className={stockStyles.containerStock} elevation={0} sx={{ bgcolor: 'background.paper', color: 'text.primary' }}>
+          <h1 className={stockStyles.h1}>{t('pages.collaborators.title')}</h1>
 
-            <form className={styles.form} onSubmit={handleSubmit}>
-              <input
-                className={styles.inputs}
-                type="text"
-                placeholder="Nome"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-              />
+          <Box component="form" className={stockStyles.form} onSubmit={handleSubmit}>
+            <TextField
+              label={t('pages.collaborators.name')}
+              variant="outlined"
+              fullWidth
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              InputLabelProps={{ shrink: true }}
+              sx={fieldSx}
+            />
 
-              <input
-                className={styles.inputs}
-                type="email"
-                placeholder="E-mail"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-              />
+            <TextField
+              label={t('pages.collaborators.email')}
+              variant="outlined"
+              fullWidth
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              InputLabelProps={{ shrink: true }}
+              sx={fieldSx}
+            />
 
-              <input
-                className={styles.inputs}
-                type="password"
-                placeholder="Senha"
-                name="password"
-                value={formData.password}
-                onChange={handleChange}
-              />
+            <TextField
+              label={t('pages.collaborators.password')}
+              variant="outlined"
+              fullWidth
+              type="password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+              InputLabelProps={{ shrink: true }}
+              sx={fieldSx}
+            />
 
-              <input
-                className={styles.inputs}
-                type="text"
-                placeholder="Telefone"
-                name="phoneNumber"
-                value={formData.phoneNumber}
-                onChange={handleChange}
-              />
+            <TextField
+              label={t('pages.collaborators.phone')}
+              variant="outlined"
+              fullWidth
+              name="phoneNumber"
+              value={formData.phoneNumber}
+              onChange={handleChange}
+              InputLabelProps={{ shrink: true }}
+              sx={fieldSx}
+            />
 
-              <input
-                className={styles.inputs}
-                type="text"
-                placeholder="Identificador"
-                name="identifier"
-                value={formData.identifier}
-                onChange={handleChange}
-              />
+            <TextField
+              label={t('pages.collaborators.identifier')}
+              variant="outlined"
+              fullWidth
+              name="identifier"
+              value={formData.identifier}
+              onChange={handleChange}
+              InputLabelProps={{ shrink: true }}
+              sx={fieldSx}
+            />
 
-              <textarea
-                className={styles.textarea}
-                placeholder="Descrição"
-                name="description"
-                rows="3"
-                value={formData.description}
-                onChange={handleChange}
-              />
+            <TextField
+              label={t('pages.collaborators.description')}
+              variant="outlined"
+              fullWidth
+              multiline
+              rows={4}
+              name="description"
+              value={formData.description}
+              onChange={handleChange}
+              InputLabelProps={{ shrink: true }}
+              sx={{ ...fieldSx, gridColumn: '1 / -1' }}
+            />
 
-              <button className={styles.buttons} type="submit">
-                Cadastrar
-              </button>
-            </form>
-          </Paper>
-        </Box>
-      </Box>
+            <Button
+              type="submit"
+              variant="contained"
+              color="primary"
+              className={stockStyles.buttons}
+              fullWidth
+              sx={{ textTransform: 'none', boxShadow: 'none' }}
+            >
+              {t('pages.collaborators.submit')}
+            </Button>
+          </Box>
+        </Paper>
+      </section>
+    </div>
   );
   // Abas relacionais: consultas, dashboard
 }
