@@ -1,7 +1,7 @@
 import { Card,CardContent,Typography } from "@mui/material";
 import { Line, LineChart, XAxis,YAxis,Tooltip,ResponsiveContainer} from 'recharts'
 
-export default function Chart({title, data}){
+export default function Chart({title, data, height = 300}){
     return(
         <Card>
             <CardContent>
@@ -9,7 +9,7 @@ export default function Chart({title, data}){
                     {title}
                 </Typography>
 
-                <ResponsiveContainer width="100%" height="300">
+                <ResponsiveContainer width="100%" height={height}>
                     <LineChart data={data}>
                         <XAxis dataKey="month"/>
                         <YAxis/>
