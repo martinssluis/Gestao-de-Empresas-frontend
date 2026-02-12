@@ -2,7 +2,6 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import Button from '@mui/material/Button';
-import IconButton from '@mui/material/IconButton';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
@@ -11,22 +10,22 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import LogoutIcon from '@mui/icons-material/Logout';
-import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
-import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined';
+import SettingsIcon from '@mui/icons-material/Settings';
 import styles from './Sidebar.module.css';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import { useColorMode } from '../../context/ColorModeContext';
+import { useI18n } from '../../i18n/useI18n';
 //import { MenuIcon } from '@mui/material/MenuIcon';
 
 export default function SwipeableTemporaryDrawer() {
   const navigate = useNavigate();
-  const { mode, toggleColorMode } = useColorMode();
+  const { t } = useI18n();
   const menuItems = [
-    { text: 'Dashboard',path: "/app/dashboard",icon: <InboxIcon />},
-    { text: 'Financeiro',path: "/app/financial",icon: <MailIcon /> }, // Sugestão: deixar de stand-by
-    { text: 'Estoque',path: "/app/stock", icon: <InboxIcon /> },
-    { text: 'Colaboradores',path: "/app/collaborators", icon: <MailIcon /> },// Sugestão: deixar de stand-by
+    { text: t('menu.dashboard'),path: "/app/dashboard",icon: <InboxIcon />},
+    { text: t('menu.financial'),path: "/app/financial",icon: <MailIcon /> }, // Sugestão: deixar de stand-by
+    { text: t('menu.stock'),path: "/app/stock", icon: <InboxIcon /> },
+    { text: t('menu.collaborators'),path: "/app/collaborators", icon: <MailIcon /> },// Sugestão: deixar de stand-by
+    { text: t('menu.settings'), path: '/app/settings', icon: <SettingsIcon /> },
   ];
 
   const [state, setState] = React.useState({
@@ -82,25 +81,7 @@ export default function SwipeableTemporaryDrawer() {
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
-      <Box sx={{ display: 'flex', justifyContent: 'flex-end', p: 1 }}>
-        <IconButton
-          color="inherit"
-          aria-label={mode === 'dark' ? 'Ativar modo claro' : 'Ativar modo escuro'}
-          onClick={(event) => {
-            event.stopPropagation();
-            toggleColorMode();
-          }}
-          onKeyDown={(event) => {
-            event.stopPropagation();
-          }}
-        >
-          {mode === 'dark' ? (
-            <LightModeOutlinedIcon />
-          ) : (
-            <DarkModeOutlinedIcon />
-          )}
-        </IconButton>
-      </Box>
+
       <List>
         {menuItems.map((item) => (
           <ListItem key={item.text} disablePadding>
@@ -120,7 +101,7 @@ export default function SwipeableTemporaryDrawer() {
               <ListItemIcon>
                 <LogoutIcon />
               </ListItemIcon>
-              <ListItemText primary="Sair" />
+              <ListItemText primary={t('menu.logout')} />
             </ListItemButton>
           </ListItem>
         </List>
@@ -132,7 +113,7 @@ export default function SwipeableTemporaryDrawer() {
     <div className={styles.sidebar}>
       {['left'].map((anchor) => (
         <React.Fragment key={anchor}>
-          <Button onClick={toggleDrawer(anchor, true)}>Sidebar</Button>
+          <Button onClick={toggleDrawer(anchor, true)}>{t('menu.sidebar')}</Button>
           <SwipeableDrawer
             anchor={anchor}
             open={state[anchor]}

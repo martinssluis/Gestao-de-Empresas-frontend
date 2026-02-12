@@ -17,7 +17,7 @@
 }
 
 .h1 {
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   font-size: 1.8rem;
 }
 
@@ -83,15 +83,6 @@ textarea:focus {
   .collaboratorContainer {
     width: 100%;
     padding: 2rem 1.5rem;
-  }
-
-  .form {
-    grid-template-columns: 1fr;
-  }
-
-  .textarea,
-  .buttons {
-    grid-column: span 1;
   }
 
   .h1 {
