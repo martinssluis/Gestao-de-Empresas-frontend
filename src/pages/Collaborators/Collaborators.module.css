@@ -1,5 +1,4 @@
 .estiloCollaborator {
-  /*min-height: 100vh;*/ /*REMOVENDO PARA TESTES*/
   display: flex;
   justify-content: center;
   align-items: center;
@@ -21,66 +20,17 @@
 }
 
 .h1 {
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   font-size: 1.8rem;
-  /*color: #234368;*/
 }
 
-.form {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.25rem;
-}
-
-.inputs {
-  padding: 0.85rem 1rem;
-  border-radius: 0.6rem;
-  font-size: 1rem;
-}
-
-.textarea {
-  grid-column: span 2;
-  padding: 0.85rem 1rem;
-  border-radius: 0.6rem;
-  font-size: 1rem;
-  resize: none;
-}
-
-input:focus,
-textarea:focus {
-  border-color: #3b70ab;
-  outline: none;
-  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
-  border-width: 3px;
-}
-
-.buttons {
-  grid-column: span 2;
-  margin-top: 1rem;
-  padding: 0.9rem;
-  border-radius: 0.6rem;
-}
-
-/* ============================= */
-/* 📱 Responsividade (mobile) */
-/* ============================= */
 @media (max-width: 768px) {
   .collaboratorContainer {
     width: 100%;
     padding: 2rem 1.5rem;
   }
 
-  .form {
-    grid-template-columns: 1fr;
-  }
-
-  .textarea,
-  .buttons {
-    grid-column: span 1;
-  }
-
   .h1 {
     font-size: 1.5rem;
-    
   }
 }
