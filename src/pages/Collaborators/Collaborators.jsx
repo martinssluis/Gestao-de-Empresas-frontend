@@ -1,38 +1,38 @@
-import { useState } from 'react';
-import stockStyles from '../Stock/Stock.module.css';
-import { Box, Button, Paper, TextField } from '@mui/material';
-import { useI18n } from '../../i18n/useI18n';
+import { useState } from "react";
+import stockStyles from "../Stock/Stock.module.css";
+import { Box, Button, Paper, TextField } from "@mui/material";
+import { useI18n } from "../../i18n/useI18n";
 
 const fieldSx = {
-  '& .MuiOutlinedInput-root': {
-    backgroundColor: 'background.paper',
-    borderRadius: '0.6rem',
-    '& fieldset': { borderColor: 'divider' },
-    '&:hover fieldset': { borderColor: 'text.secondary' },
-    '&.Mui-focused fieldset': { borderColor: 'primary.main', borderWidth: 2 },
+  "& .MuiOutlinedInput-root": {
+    backgroundColor: "background.paper",
+    borderRadius: "0.6rem",
+    "& fieldset": { borderColor: "divider" },
+    "&:hover fieldset": { borderColor: "text.secondary" },
+    "&.Mui-focused fieldset": { borderColor: "primary.main", borderWidth: 2 },
   },
-  '& .MuiInputLabel-root': { color: 'text.secondary' },
-  '& .MuiInputBase-input': {
-    color: 'text.primary',
-    fontSize: '1rem',
-    py: '0.85rem',
-    px: '1rem',
+  "& .MuiInputLabel-root": { color: "text.secondary" },
+  "& .MuiInputBase-input": {
+    color: "text.primary",
+    fontSize: "1rem",
+    py: "0.85rem",
+    px: "1rem",
   },
-  '& .MuiInputBase-inputMultiline': {
-    px: '1rem',
-    py: '0.85rem',
+  "& .MuiInputBase-inputMultiline": {
+    px: "1rem",
+    py: "0.85rem",
   },
 };
 
 export default function Collaborators() {
   const { t } = useI18n();
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    password: '',
-    phoneNumber: '',
-    identifier: '',
-    description: '',
+    name: "",
+    email: "",
+    password: "",
+    phoneNumber: "",
+    identifier: "",
+    description: "",
   });
 
   function handleChange(event) {
@@ -46,18 +46,26 @@ export default function Collaborators() {
 
   function handleSubmit(event) {
     event.preventDefault(); // evita reload da página
-    console.log('Dados do colaborador:', formData);
+    console.log("Dados do colaborador:", formData);
   }
 
   return (
     <div className={stockStyles.styleStock}>
       <section>
-        <Paper className={stockStyles.containerStock} elevation={0} sx={{ bgcolor: 'background.paper', color: 'text.primary' }}>
-          <h1 className={stockStyles.h1}>{t('pages.collaborators.title')}</h1>
+        <Paper
+          className={stockStyles.containerStock}
+          elevation={0}
+          sx={{ bgcolor: "background.paper", color: "text.primary" }}
+        >
+          <h1 className={stockStyles.h1}>{t("pages.collaborators.title")}</h1>
 
-          <Box component="form" className={stockStyles.form} onSubmit={handleSubmit}>
+          <Box
+            component="form"
+            className={stockStyles.form}
+            onSubmit={handleSubmit}
+          >
             <TextField
-              label={t('pages.collaborators.name')}
+              label={t("pages.collaborators.name")}
               variant="outlined"
               fullWidth
               name="name"
@@ -68,7 +76,7 @@ export default function Collaborators() {
             />
 
             <TextField
-              label={t('pages.collaborators.email')}
+              label={t("pages.collaborators.email")}
               variant="outlined"
               fullWidth
               type="email"
@@ -80,7 +88,7 @@ export default function Collaborators() {
             />
 
             <TextField
-              label={t('pages.collaborators.password')}
+              label={t("pages.collaborators.password")}
               variant="outlined"
               fullWidth
               type="password"
@@ -92,7 +100,7 @@ export default function Collaborators() {
             />
 
             <TextField
-              label={t('pages.collaborators.phone')}
+              label={t("pages.collaborators.phone")}
               variant="outlined"
               fullWidth
               name="phoneNumber"
@@ -103,7 +111,7 @@ export default function Collaborators() {
             />
 
             <TextField
-              label={t('pages.collaborators.identifier')}
+              label={t("pages.collaborators.identifier")}
               variant="outlined"
               fullWidth
               name="identifier"
@@ -114,7 +122,7 @@ export default function Collaborators() {
             />
 
             <TextField
-              label={t('pages.collaborators.description')}
+              label={t("pages.collaborators.description")}
               variant="outlined"
               fullWidth
               multiline
@@ -123,7 +131,7 @@ export default function Collaborators() {
               value={formData.description}
               onChange={handleChange}
               InputLabelProps={{ shrink: true }}
-              sx={{ ...fieldSx, gridColumn: '1 / -1' }}
+              sx={{ ...fieldSx, gridColumn: "1 / -1" }}
             />
 
             <Button
@@ -132,9 +140,9 @@ export default function Collaborators() {
               color="primary"
               className={stockStyles.buttons}
               fullWidth
-              sx={{ textTransform: 'none', boxShadow: 'none' }}
+              sx={{ textTransform: "none", boxShadow: "none" }}
             >
-              {t('pages.collaborators.submit')}
+              {t("pages.collaborators.submit")}
             </Button>
           </Box>
         </Paper>
