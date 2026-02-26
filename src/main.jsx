@@ -12,6 +12,7 @@ import Stock from './pages/Stock/Stock.jsx';
 import Financial from './pages/Financial/Financial.jsx';
 import Collaborators from './pages/Collaborators/Collaborators.jsx';
 import Settings from './pages/Settings/Settings.jsx';
+import CollaboratorsDash from './pages/Collaborators/CollaboratorsDash.jsx';
 
 const router = createBrowserRouter([
   {
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
       {
         path: 'stock',
         element: <Stock />,
+      },
+      {
+        path: 'collaboratorsdash',
+        element: <CollaboratorsDash/>
       },
       {
         path: 'collaborators',

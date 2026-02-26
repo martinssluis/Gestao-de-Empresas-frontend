@@ -24,7 +24,7 @@ export default function SwipeableTemporaryDrawer() {
     { text: t('menu.dashboard'),path: "/app/dashboard",icon: <InboxIcon />},
     { text: t('menu.financial'),path: "/app/financial",icon: <MailIcon /> }, // Sugestão: deixar de stand-by
     { text: t('menu.stock'),path: "/app/stock", icon: <InboxIcon /> },
-    { text: t('menu.collaborators'),path: "/app/collaborators", icon: <MailIcon /> },// Sugestão: deixar de stand-by
+    { text: t('menu.collaborators'),path: "/app/collaboratorsdash", icon: <MailIcon /> },// Sugestão: deixar de stand-by
     { text: t('menu.settings'), path: '/app/settings', icon: <SettingsIcon /> },
   ];
 
