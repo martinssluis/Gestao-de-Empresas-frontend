@@ -2,6 +2,7 @@ import { useState } from 'react';
 import stockStyles from '../Stock/Stock.module.css';
 import { Box, Button, Paper, TextField } from '@mui/material';
 import { useI18n } from '../../i18n/useI18n';
+import { useNavigate } from 'react-router-dom';
 
 const fieldSx = {
   '& .MuiOutlinedInput-root': {
@@ -25,6 +26,7 @@ const fieldSx = {
 };
 
 export default function Collaborators() {
+  const navigate = useNavigate()
   const { t } = useI18n();
   const [formData, setFormData] = useState({
     name: '',
@@ -137,6 +139,10 @@ export default function Collaborators() {
               {t('pages.collaborators.submit')}
             </Button>
           </Box>
+          <Button onClick={()=> navigate('/app/collaboratorsdash')} >
+            Voltar
+          </Button>
+          
         </Paper>
       </section>
     </div>
