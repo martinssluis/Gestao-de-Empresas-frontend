@@ -1,7 +1,8 @@
 import { useNavigate } from "react-router-dom"
-import { Box, Button, Card, Grid, Typography } from "@mui/material"
+import { Box, Button, Grid, Table, Typography, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from "@mui/material"
 import styles from './CollaboratorsDash.module.css'
 import StatCard from "../../components/StatCard/StatCard"
+import DataTable from "../../components/DataTable/DataTable"
 
 const colaboradoresMock = [
   { id: 1, nome: "João", cargo: "Dev", departamento: "TI", salario: 5500, status: "Ativo", admissao: "2023-03-15" },
@@ -28,6 +29,24 @@ const contratacoesPorAno = colaboradoresMock.reduce((acc, c) => {
 const anoMaisContratou = Object.entries(contratacoesPorAno)
   .sort((a, b) => b[1] - a[1])[0][0];
 
+const columns = [
+  { field: "nome", headerName: "Nome", flex: 1 },
+  { field: "cargo", headerName: "Cargo", flex: 1 },
+  { field: "departamento", headerName: "Departamento", flex: 1 },
+  {
+    field: "salario",
+    headerName: "Salário",
+    flex: 1,
+    valueFormatter: (params) =>
+      new Intl.NumberFormat("pt-BR", {
+        style: "currency",
+        currency: "BRL"
+      }).format(params.value)
+  },
+  { field: "status", headerName: "Status", flex: 1 },
+  { field: "admissao", headerName: "Admissão", flex: 1 }
+];
+
 export default function CollaboratorsDash(){
     const navigate = useNavigate()
     return(
@@ -35,6 +54,14 @@ export default function CollaboratorsDash(){
             <Typography variant="h3" className="h3" gutterBottom fontWeight={700} >
                 Colaboradores
             </Typography>
+            <Button onClick={() => navigate('/app/collaborators')}
+                    sx={{
+                        borderRadius: 10,
+                        fontWeight: 600
+                    }}    
+                >
+                    incluir colaborador
+                </Button>
             <Grid container spacing={3}  mt={2} className="main">
                 <Grid item xs={12} md={2} lg={3}>
                     <StatCard
@@ -56,10 +83,12 @@ export default function CollaboratorsDash(){
                         title="Ano que mais contratou" value={anoMaisContratou}
                     />
                 </Grid>
-                <Button onClick={() => navigate('/app/collaborators')}>
-                    incluir colaborador
-                </Button>
+                <DataTable
+                columns={columns}
+                rows={colaboradoresMock}
+                />                    
             </Grid>
         </Box>
+
     )
 }
