@@ -12,7 +12,6 @@ export default function DataTable({
       sx={{
         height: 500,
         width: "100%",
-        backgroundColor: "#1e1e2f",
         borderRadius: 3,
         p: 2
       }}
@@ -29,10 +28,8 @@ export default function DataTable({
         checkboxSelection={checkboxSelection}
         sx={{
           border: "none",
-          color: "#fff",
           "& .MuiDataGrid-columnHeaders": {
-            backgroundColor: "#27293d",
-            fontWeight: "bold"
+            fontWeight: "bold",
           }
         }}
       />

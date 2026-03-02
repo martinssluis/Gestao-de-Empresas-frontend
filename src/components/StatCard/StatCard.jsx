@@ -1,8 +1,10 @@
 import { Card,CardContent, Typography } from "@mui/material";
 
-export default function StatCard({title, value}){
+export default function StatCard({title, value,sx}){
     return (
-        <Card>
+        <Card
+        sx={sx}
+        >
             <CardContent>
                 <Typography
                     variant="subtitle"

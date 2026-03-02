@@ -33,8 +33,11 @@ export default function Collaborators() {
     email: '',
     password: '',
     phoneNumber: '',
-    identifier: '',
     description: '',
+    isActive: false,
+    lastLogin: "2026-02-28T00:23:53.464891Z",
+    role: 1,
+    baseSalary: '',
   });
 
   function handleChange(event) {

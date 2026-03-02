@@ -1,5 +1,6 @@
-import { useNavigate } from "react-router-dom"
-import { Box, Button, Grid, Table, Typography, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from "@mui/material"
+import { useNavigate,  } from "react-router-dom"
+import { useState } from "react"
+import { Box, Button, Grid, Typography, Card, Input} from "@mui/material"
 import styles from './CollaboratorsDash.module.css'
 import StatCard from "../../components/StatCard/StatCard"
 import DataTable from "../../components/DataTable/DataTable"
@@ -46,47 +47,100 @@ const columns = [
   { field: "status", headerName: "Status", flex: 1 },
   { field: "admissao", headerName: "Admissão", flex: 1 }
 ];
+/*
+const [searchTerm, setSearchTerm] = useState('');
 
+const filteredCollaborators = colaboradoresMock.filter((collaborator) => {collaborator.nome.toLowerCase().includes(searchTerm.toLowerCase())});
+
+const selectedCollaborator = filteredCollaborators[0] || null
+*/
 export default function CollaboratorsDash(){
     const navigate = useNavigate()
     return(
-        <Box component={'div'} className={styles.containerCd}>
-            <Typography variant="h3" className="h3" gutterBottom fontWeight={700} >
+        <Box component={'div'} className={styles.containerCd}
+        >
+            <Typography variant="h3" className="h3" gutterBottom fontWeight={700} 
+            >
                 Colaboradores
             </Typography>
-            <Button onClick={() => navigate('/app/collaborators')}
-                    sx={{
-                        borderRadius: 10,
-                        fontWeight: 600
-                    }}    
-                >
-                    incluir colaborador
+            <Grid item xs={6} textAlign="right">
+                <Button variant="contained" onClick={() => navigate('/app/collaborators')}
+                        sx={{
+                            borderRadius: 3,
+                            fontWeight: 600,
+                            textTransform: "uppercase"
+                        }}    
+                    >
+                        Incluir colaborador
                 </Button>
+            </Grid>
             <Grid container spacing={3}  mt={2} className="main">
                 <Grid item xs={12} md={2} lg={3}>
                     <StatCard
+                    sx={{
+                    borderRadius: 4,
+                    p: 1,
+                    boxShadow: "0 8px 32px rgba(0,0,0,0.2)"
+                    }}
                         title="Total de colaboradores" value={totalColaboradores}
                     />
                 </Grid>
                 <Grid item xs={12} md={2}>
                     <StatCard
+                    sx={{
+                    borderRadius: 4,
+                    p: 1,
+                    boxShadow: "0 8px 32px rgba(0,0,0,0.2)"
+                    }}
                         title="Colaboradores ativos" value={totalAtivos}
                     />
                 </Grid>
                 <Grid item xs={12} md={2}>
                     <StatCard
+                    sx={{
+                    borderRadius: 4,
+                    p: 1,
+                    boxShadow: "0 8px 32px rgba(0,0,0,0.2)"
+                    }}
                             title="Média salarial" value={ `R$ ${mediaSalarial.toFixed(2)}`}
                     />
                 </Grid>
                 <Grid item xs={12} md={2}>
                     <StatCard
+                    sx={{
+                    borderRadius: 4,
+                    p: 1,
+                    boxShadow: "0 8px 32px rgba(0,0,0,0.2)"
+                    }}
                         title="Ano que mais contratou" value={anoMaisContratou}
                     />
                 </Grid>
-                <DataTable
-                columns={columns}
-                rows={colaboradoresMock}
-                />                    
+                <Grid item xs={12} md={2}>
+                    <StatCard
+                    sx={{
+                    borderRadius: 4,
+                    p: 1,
+                    width:440,
+                    boxShadow: "0 8px 32px rgba(0,0,0,0.2)"
+                    }}
+                        title="Média de contratações" value="2/y"
+                    />
+                </Grid>
+                <Card sx={{ borderRadius: 4, p: 3, mt: 4, width:2000, marginLeft:3}}>
+                    <Box display="flex" justifyContent="space-between" mb={2}>
+                        <Typography variant="h6">Lista de Colaboradores</Typography>
+                        <Input placeholder="Pesquiar"
+                        sx={{
+                            width:400
+                        }}
+                        
+                        ></Input>
+                    </Box>
+                        <DataTable
+                        columns={columns}
+                        rows={colaboradoresMock}
+                        /> 
+                </Card>
             </Grid>
         </Box>
 
