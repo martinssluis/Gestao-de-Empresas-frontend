@@ -1,8 +1,8 @@
-import styles from "./Login.module.css";
-import HeaderLogin from "./HeaderLogin";
-import { useNavigate } from "react-router-dom";
-import nomeSistema from "/nomeSistema.png";
-import imgLogin from "/imgLogin.png";
+import styles from './Login.module.css';
+import HeaderLogin from './HeaderLogin';
+import { useNavigate } from 'react-router-dom';
+import nomeSistema from '/nomeSistema.png';
+import imgLogin from '/imgLogin.png';
 
 export default function Login() {
   const navigate = useNavigate();
@@ -17,7 +17,7 @@ export default function Login() {
           <section>
             <main className={styles.loginContainer}>
               <img className={styles.imgNomeSG} src={nomeSistema} />
-              <h2>Entre no SG</h2>
+              <h2>Entre no NO</h2>
               <p>usando seu usuário e senha</p>
               <form className={styles.form}>
                 <input
@@ -33,7 +33,7 @@ export default function Login() {
                 <button
                   className={styles.buttons}
                   type="button"
-                  onClick={() => navigate("/app/dashboard")}
+                  onClick={() => navigate('/app/dashboard')}
                 >
                   Entrar
                 </button>
