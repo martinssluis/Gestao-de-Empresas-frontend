@@ -1,41 +1,189 @@
 import { useNavigate,  } from "react-router-dom"
-import { useState } from "react"
 import { Box, Button, Grid, Typography, Card, Input} from "@mui/material"
 import styles from './CollaboratorsDash.module.css'
 import StatCard from "../../components/StatCard/StatCard"
 import DataTable from "../../components/DataTable/DataTable"
+import AddIcon from '@mui/icons-material/Add';
+import PeopleIcon from '@mui/icons-material/People';
+import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
+import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
+import SummarizeIcon from '@mui/icons-material/Summarize';
+import Chip from "@mui/material/Chip"
+import Avatar from "@mui/material/Avatar"
+import Groups2Icon from '@mui/icons-material/Groups2';
+
 
 const colaboradoresMock = [
-  { id: 1, nome: "João", cargo: "Dev", departamento: "TI", salario: 5500, status: "Ativo", admissao: "2023-03-15" },
-  { id: 2, nome: "Maria", cargo: "Financeiro", departamento: "Financeiro", salario: 6200, status: "Ativo", admissao: "2022-08-10" },
-  { id: 3, nome: "Carlos", cargo: "Gerente", departamento: "Logística", salario: 7000, status: "Inativo", admissao: "2021-01-20" },
-  { id: 4, nome: "Fernanda", cargo: "UX", departamento: "Produto", salario: 5800, status: "Ativo", admissao: "2024-02-01" },
-  { id: 5, nome: "Lucas", cargo: "Dev", departamento: "TI", salario: 6000, status: "Ativo", admissao: "2023-07-12" },
-  { id: 6, nome: "Ana", cargo: "Dev", departamento: "TI", salario: 5800, status: "Ativo", admissao: "2023-09-05" }
-];
-
+{
+  id: 1,
+  nome: "João",
+  email: "joao@email.com",
+  telefone: "119999999",
+  descricao: "Dev backend",
+  role: "Dev",
+  salarioBase: 5500,
+  ativo: true,
+},
+{
+  id: 2,
+  nome: "Maria",
+  email: "maria@email.com",
+  telefone: "119888888",
+  descricao: "Financeiro",
+  role: "Financeiro",
+  salarioBase: 6200,
+  ativo: true
+},
+{
+  id: 3,
+  nome: "Carlos",
+  email: "carlos@email.com",
+  telefone: "119777777",
+  descricao: "Gerente de logística",
+  role: "Gerente",
+  salarioBase: 7200,
+  ativo: true
+},
+{
+  id: 4,
+  nome: "Fernanda",
+  email: "fernanda@email.com",
+  telefone: "119666666",
+  descricao: "UX designer",
+  role: "UX",
+  salarioBase: 5800,
+  ativo: true
+},
+{
+  id: 5,
+  nome: "Lucas",
+  email: "lucas@email.com",
+  telefone: "119555555",
+  descricao: "Desenvolvedor frontend",
+  role: "Dev",
+  salarioBase: 6100,
+  ativo: true
+},
+{
+  id: 6,
+  nome: "Ana",
+  email: "ana@email.com",
+  telefone: "119444444",
+  descricao: "Analista financeiro",
+  role: "Financeiro",
+  salarioBase: 6400,
+  ativo: true
+},
+{
+  id: 7,
+  nome: "Bruno",
+  email: "bruno@email.com",
+  telefone: "119333333",
+  descricao: "Dev backend",
+  role: "Dev",
+  salarioBase: 5900,
+  ativo: false
+},
+{
+  id: 8,
+  nome: "Juliana",
+  email: "juliana@email.com",
+  telefone: "119222222",
+  descricao: "Product manager",
+  role: "Produto",
+  salarioBase: 7500,
+  ativo: true
+},
+{
+  id: 9,
+  nome: "Ricardo",
+  email: "ricardo@email.com",
+  telefone: "119111111",
+  descricao: "Dev fullstack",
+  role: "Dev",
+  salarioBase: 6700,
+  ativo: true
+},
+{
+  id: 10,
+  nome: "Patricia",
+  email: "patricia@email.com",
+  telefone: "119000000",
+  descricao: "Especialista em logística",
+  role: "Logística",
+  salarioBase: 6200,
+  ativo: false
+}
+]
 const totalColaboradores = colaboradoresMock.length;
 
-const totalAtivos = colaboradoresMock.filter(c => c.status === "Ativo").length;
+const totalAtivos = colaboradoresMock.filter(c => c.ativo).length;
+
+const totalRoles = [...new Set(colaboradoresMock.map(c => c.role))].length;
+
+const mediaPorCargo = totalColaboradores / totalRoles;
+
+const totalInativos = colaboradoresMock.filter(c => !c.ativo).length;
+
+const totalFolha = colaboradoresMock.reduce(
+  (acc, c) => acc + c.salarioBase,
+  0
+);
 
 const mediaSalarial =
-  colaboradoresMock.reduce((acc, c) => acc + c.salario, 0) / totalColaboradores;
-
-const contratacoesPorAno = colaboradoresMock.reduce((acc, c) => {
-  const ano = new Date(c.admissao).getFullYear();
-  acc[ano] = (acc[ano] || 0) + 1;
-  return acc;
-}, {});
-
-const anoMaisContratou = Object.entries(contratacoesPorAno)
-  .sort((a, b) => b[1] - a[1])[0][0];
+  colaboradoresMock.reduce((acc, c) => acc + c.salarioBase, 0) / totalColaboradores;;
 
 const columns = [
-  { field: "nome", headerName: "Nome", flex: 1 },
-  { field: "cargo", headerName: "Cargo", flex: 1 },
-  { field: "departamento", headerName: "Departamento", flex: 1 },
+    {
+    field: "nome",
+    headerName: "Nome",
+    flex: 1,
+    renderCell: (params) => {
+        return (
+        <Box display="flex" alignItems="center" gap={1}>
+            <Avatar sx={{ width: 28, height: 28 }}>
+            {params.value[0]}
+            </Avatar>
+            {params.value}
+        </Box>
+        )
+    }
+    },
+    {
+        field: "email",
+        headerName: "E-mail",
+        flex: 1.5
+    },
+    {
+        field: "telefone",
+        headerName: "Telefone",
+        flex: 1
+    },
+    {
+        field: "descricao",
+        headerName: "Observação",
+        flex: 2,
+        renderCell: (params) => {
+
+            const text = params.value || ""
+
+            return (
+            <span
+                style={{
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+                whiteSpace: "nowrap",
+                maxWidth: "100%"
+                }}
+            >
+                {text}
+            </span>
+            )
+        }
+    },
+    { field: "role", headerName: "Cargo", flex: 1 },
   {
-    field: "salario",
+    field: "salarioBase",
     headerName: "Salário",
     flex: 1,
     valueFormatter: (params) =>
@@ -44,24 +192,33 @@ const columns = [
         currency: "BRL"
       }).format(params.value)
   },
-  { field: "status", headerName: "Status", flex: 1 },
-  { field: "admissao", headerName: "Admissão", flex: 1 }
+    {
+    field: "ativo",
+    headerName: "Status",
+    flex: 1,
+    renderCell: (params) => {
+
+        const isActive = params.value
+
+        return (
+        <Chip
+            label={isActive ? "Ativo" : "Inativo"}
+            size="small"
+            color={isActive ? "success" : "error"}
+        />
+        )
+    }
+    },
 ];
-/*
-const [searchTerm, setSearchTerm] = useState('');
-
-const filteredCollaborators = colaboradoresMock.filter((collaborator) => {collaborator.nome.toLowerCase().includes(searchTerm.toLowerCase())});
-
-const selectedCollaborator = filteredCollaborators[0] || null
-*/
 export default function CollaboratorsDash(){
     const navigate = useNavigate()
+    const moneyIcon = <MonetizationOnIcon/>
     return(
         <Box component={'div'} className={styles.containerCd}
         >
-            <Typography variant="h3" className="h3" gutterBottom fontWeight={700} 
+            <Typography variant="h3" className="h3" gutterBottom fontWeight={700} sx={{display:"flex", gap:2}}
             >
-                Colaboradores
+                <PeopleIcon sx={{color: "#3b70ab", fontSize:46}}/> Colaboradores
             </Typography>
             <Grid item xs={6} textAlign="right">
                 <Button variant="contained" onClick={() => navigate('/app/collaborators')}
@@ -71,17 +228,19 @@ export default function CollaboratorsDash(){
                             textTransform: "uppercase"
                         }}    
                     >
-                        Incluir colaborador
+                        <AddIcon/> Incluir colaborador
                 </Button>
             </Grid>
             <Grid container spacing={3}  mt={2} className="main">
-                <Grid item xs={12} md={2} lg={3}>
+                <Grid item xs={12} md={2}>
                     <StatCard
                     sx={{
                     borderRadius: 4,
                     p: 1,
                     boxShadow: "0 8px 32px rgba(0,0,0,0.2)"
                     }}
+                        icon={<SummarizeIcon sx={{color: "#ffeb3b"}}/>}
+                        className={styles.statcard}
                         title="Total de colaboradores" value={totalColaboradores}
                     />
                 </Grid>
@@ -92,48 +251,71 @@ export default function CollaboratorsDash(){
                     p: 1,
                     boxShadow: "0 8px 32px rgba(0,0,0,0.2)"
                     }}
+                        icon={<CheckCircleOutlineIcon sx={{color: "#5da11e"}} />}
+                        className={styles.statcard}
                         title="Colaboradores ativos" value={totalAtivos}
                     />
                 </Grid>
                 <Grid item xs={12} md={2}>
                     <StatCard
+                    icon={<Groups2Icon sx={{color:"#42a5f5"}} />}
                     sx={{
-                    borderRadius: 4,
-                    p: 1,
-                    boxShadow: "0 8px 32px rgba(0,0,0,0.2)"
+                        borderRadius: 4,
+                        p: 1,
+                        boxShadow: "0 8px 32px rgba(0,0,0,0.2)"
                     }}
-                            title="Média salarial" value={ `R$ ${mediaSalarial.toFixed(2)}`}
+                    title="Média por cargo"
+                    value={mediaPorCargo.toFixed(1)}
                     />
                 </Grid>
                 <Grid item xs={12} md={2}>
                     <StatCard
+                    icon={<PeopleIcon sx={{color:"#ef5350"}}/>}
                     sx={{
-                    borderRadius: 4,
-                    p: 1,
-                    boxShadow: "0 8px 32px rgba(0,0,0,0.2)"
+                        borderRadius: 4,
+                        p: 1,
+                        boxShadow: "0 8px 32px rgba(0,0,0,0.2)"
                     }}
-                        title="Ano que mais contratou" value={anoMaisContratou}
+                    title="Colaboradores inativos"
+                    value={totalInativos}
+                    trend={{ value: "-2%", positive: false }}
                     />
                 </Grid>
                 <Grid item xs={12} md={2}>
                     <StatCard
+                    
+                    icon={<MonetizationOnIcon sx={{color: "#a1981e"}}/>}
                     sx={{
                     borderRadius: 4,
                     p: 1,
-                    width:440,
                     boxShadow: "0 8px 32px rgba(0,0,0,0.2)"
                     }}
-                        title="Média de contratações" value="2/y"
+                            className={styles.statcard}
+                            title="Média salarial" 
+                            value={ `R$ ${mediaSalarial.toFixed(2)}`}
+                            trend={{ value: "+2%", positive: true }}
                     />
                 </Grid>
-                <Card sx={{ borderRadius: 4, p: 3, mt: 4, width:2000, marginLeft:3}}>
+                <Grid item xs={12} md={2}>
+                    <StatCard
+                    icon={<SummarizeIcon sx={{color:"#26a69a"}}/>}
+                    sx={{
+                        borderRadius: 4,
+                        p: 1,
+                        boxShadow: "0 8px 32px rgba(0,0,0,0.2)"
+                    }}
+                    title="Folha salarial"
+                    value={`R$ ${totalFolha}`}
+                    trend={{ value: "+3.5%", positive: true }}
+                    />
+                </Grid>
+                <Card sx={{ borderRadius: 4, p: 3, mt: 4, width:2000, marginLeft:3, boxShadow: "0 8px 32px rgba(0,0,0,0.4)"}}>
                     <Box display="flex" justifyContent="space-between" mb={2}>
                         <Typography variant="h6">Lista de Colaboradores</Typography>
-                        <Input placeholder="Pesquiar"
+                        <Input placeholder="Pesquisar"
                         sx={{
                             width:400
-                        }}
-                        
+                        }}                        
                         ></Input>
                     </Box>
                         <DataTable

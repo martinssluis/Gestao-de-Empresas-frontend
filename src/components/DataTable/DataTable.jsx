@@ -5,7 +5,7 @@ export default function DataTable({
   columns,
   rows,
   pageSize = 5,
-  checkboxSelection = false
+  checkboxSelection = false,
 }) {
   return (
     <Box
@@ -13,7 +13,7 @@ export default function DataTable({
         height: 500,
         width: "100%",
         borderRadius: 3,
-        p: 2
+        p: 2,                                
       }}
     >
       <DataGrid
