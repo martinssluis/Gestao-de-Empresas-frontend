@@ -1,3 +1,4 @@
+/*
 #logoSistema {
   max-width: 110px;
   padding: 2px 0px 2px 30px;
@@ -7,12 +8,12 @@
   position: sticky;
   display: flex;
   top: 0;
-  z-index: 1000; /* Garante que o header fique acima de outros elementos */
+  z-index: 1000;
   background-image: linear-gradient(00.25turn, #f3f4f6, #3b70ab);
   align-items: center;
   flex-wrap: wrap;
   border-bottom: 1px solid white;
-  /*justify-content: space-around; */ /* RETIRADO PARA TESTE*/
+  /*justify-content: space-around; 
   color: whitesmoke;
 }
 
@@ -53,3 +54,5 @@
 .headerButton:active {
   transform: scale(0.95);
 }
+
+*/

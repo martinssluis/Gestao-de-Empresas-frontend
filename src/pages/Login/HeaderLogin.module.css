@@ -29,4 +29,5 @@
 .navBar ul li {
   padding: 10px 20px;
   margin-left: 10px;
+  cursor: pointer;
 }
