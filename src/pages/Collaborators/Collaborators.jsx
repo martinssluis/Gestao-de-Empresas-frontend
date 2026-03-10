@@ -35,6 +35,24 @@ export default function Collaborators() {
     }));
   }
 
+  const testCreateEmployee = async () => {
+  try {
+
+    const employee = {
+      name: "Teste Front",
+      role: "Developer",
+      salary: 4000
+    };
+
+    const result = await createEmployee(employee);
+
+    console.log("Criado:", result);
+
+  } catch (error) {
+    console.error("Erro:", error);
+  }
+};
+
   async function handleSubmit(event) {
     event.preventDefault();
     setErrorMsg('');
@@ -75,7 +93,7 @@ export default function Collaborators() {
         phoneNumber: '',
         description: '',
         isActive: false,
-        lastLogin: '',
+        lastLogin: "2026-02-28T00:23:53.464891Z",
         role: 1,
         baseSalary: '',
       });
@@ -88,6 +106,7 @@ export default function Collaborators() {
 
   return (
     <Container maxWidth="lg" sx={{ py: 4 }}>
+      <button onClick={testCreateEmployee}> teste</button>
       <Button variant="outlined" sx={{ mb: 2 }} onClick={() =>navigate('/app/collaboratorsdash')}>
         <ArrowBackIosNewIcon/> Voltar
       </Button>
