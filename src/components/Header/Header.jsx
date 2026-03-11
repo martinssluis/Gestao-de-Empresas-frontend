@@ -1,23 +1,4 @@
-// import styles from './Header.module.css';
-// import { useI18n } from '../../i18n/useI18n';
-
-// export default function Header() {
-//   const { t } = useI18n();
-
-//   return (
-//     <header className={styles.header}>
-//       <div className="LeftHeader">
-//         <img
-//           id={styles.logoSistema}
-//           src={logo}
-//           alt={t('header.logoAlt')}
-//         />
-//         {/* Criar funcionalidade do header icon account */}
-//       </div>
-//     </header>
-//   );
-// }
-
+import SwipeableDrawer from '../SideBar/SwipeableDrawer.jsx';
 import logoLight from '/logoLight.png';
 import logoDark from '/logoDark.png';
 import * as React from 'react';
@@ -39,8 +20,12 @@ const pages = [''];
 const settings = ['Meu perfil', 'Minha conta', 'Sair'];
 
 function ResponsiveAppBar() {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
+  const [drawerOpen, setDrawerOpen] = React.useState(false);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+
+  const toggleDrawer = (open) => () => {
+    setDrawerOpen(open);
+  };
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -70,6 +55,10 @@ function ResponsiveAppBar() {
     >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
+          <IconButton size="large" onClick={() => setDrawerOpen(true)}>
+            <MenuIcon sx={{ color: isDark ? '#ffffff' : '#6b7280' }} />
+          </IconButton>
+
           <Box
             component="img"
             src={currentLogo}
@@ -80,40 +69,6 @@ function ResponsiveAppBar() {
               mr: 1,
             }}
           />
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{ display: { xs: 'block', md: 'none' } }}
-            >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography sx={{ textAlign: 'center' }}>{page}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
           <Box
             component="img"
             src={currentLogo}
@@ -135,38 +90,18 @@ function ResponsiveAppBar() {
               </Button>
             ))}
           </Box>
-          <Box sx={{ flexGrow: 0 }}>
+          <Box sx={{ flexGrow: 0, ml: 'auto' }}>
             <Tooltip title="Abrir configurações">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="Mohamed Lee" src="/static/images/avatar/2.jpg" />
               </IconButton>
             </Tooltip>
-            <Menu
-              sx={{ mt: '45px' }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography sx={{ textAlign: 'center' }}>
-                    {setting}
-                  </Typography>
-                </MenuItem>
-              ))}
-            </Menu>
           </Box>
         </Toolbar>
+        <SwipeableDrawer
+          open={drawerOpen}
+          onClose={() => setDrawerOpen(false)}
+        />
       </Container>
     </AppBar>
   );
