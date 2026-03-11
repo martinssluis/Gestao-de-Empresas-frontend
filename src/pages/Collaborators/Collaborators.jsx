@@ -1,13 +1,14 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';;
 import styles from './Collaborators.module.css';
-import { Box, Button, Paper, Container, Typography, Grid, TextField, FormControlLabel, Checkbox, Stack } from '@mui/material';
-import { createEmployee } from '../../service/employeeService';
+import { Box, Button, Paper, Container, Typography, Grid, TextField, FormControlLabel, Checkbox, Stack, MenuItem } from '@mui/material';
+import { createEmployee  } from '../../service/employeeService';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import GroupAddIcon from '@mui/icons-material/GroupAdd';
 
 export default function Collaborators() {
   const navigate = useNavigate();
+
 
   // Form agora contém TODOS os campos que o DTO do backend exige
   const [formData, setFormData] = useState({
@@ -40,8 +41,14 @@ export default function Collaborators() {
 
     const employee = {
       name: "Teste Front",
-      role: "Developer",
-      salary: 4000
+      password: "123",
+      isActive: true,
+      phoneNumber: "123456",
+      email: "teste@email.com",
+      description: "teste",
+      lastLogin: new Date().toISOString(),
+      role: "SELLER",
+      baseSalary: 4000
     };
 
     const result = await createEmployee(employee);
@@ -194,14 +201,17 @@ export default function Collaborators() {
 
             <Grid item xs={12} md={6}>
               <TextField
-                fullWidth
+                select
                 label="Role"
-                type="number"
                 name="role"
                 value={formData.role}
                 onChange={handleChange}
                 required
-              />
+              >
+                <MenuItem value="Seller">Seller</MenuItem>
+                <MenuItem value="Manager">Manager</MenuItem>
+                <MenuItem value="Intern">Intern</MenuItem>
+              </TextField>
             </Grid>
 
             <Grid item xs={12} md={6}>

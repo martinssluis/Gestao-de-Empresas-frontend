@@ -6,6 +6,7 @@ if (!API_URL) {
 }
 
 export const apiFetch = async (endpoint, options = {}) => {
+
   const response = await fetch(`${API_URL}${endpoint}`, {
     headers: {
       "Content-Type": "application/json",
@@ -19,5 +20,7 @@ export const apiFetch = async (endpoint, options = {}) => {
     throw new Error(errorData || "API request failed");
   }
 
-  return response.json();
+  const text = await response.text();
+
+  return text ? JSON.parse(text) : null;
 };

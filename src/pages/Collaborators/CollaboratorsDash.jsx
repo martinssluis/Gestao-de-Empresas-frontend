@@ -1,3 +1,5 @@
+import { useState, useEffect } from 'react';
+import { getEmployees } from '../../service/employeeService';
 import { useNavigate,  } from "react-router-dom"
 import { Box, Button, Grid, Typography, Card, Input} from "@mui/material"
 import styles from './CollaboratorsDash.module.css'
@@ -114,7 +116,11 @@ const colaboradoresMock = [
   salarioBase: 6200,
   ativo: false
 }
+
 ]
+
+
+
 const totalColaboradores = colaboradoresMock.length;
 
 const totalAtivos = colaboradoresMock.filter(c => c.ativo).length;
@@ -133,7 +139,7 @@ const totalFolha = colaboradoresMock.reduce(
 const mediaSalarial =
   colaboradoresMock.reduce((acc, c) => acc + c.salarioBase, 0) / totalColaboradores;;
 
-const columns = [
+/*const columns = [
     {
     field: "nome",
     headerName: "Nome",
@@ -209,8 +215,56 @@ const columns = [
         )
     }
     },
+];*/
+const columns = [
+  { field: "name", headerName: "Nome", flex: 1 },
+  { field: "email", headerName: "Email", flex: 1 },
+  { field: "phoneNumber", headerName: "Telefone", flex: 1 },
+  { field: "description", headerName: "Observação", flex: 1 },
+  { field: "role", headerName: "Cargo", flex: 1 },
+  {
+    field: "baseSalary",
+    headerName: "Salário",
+    flex: 1,
+    renderCell: (params) => `R$ ${params.value}`
+  },
+  {
+    field: "active",
+    headerName: "Status",
+    flex: 1,
+    renderCell: (params) =>
+      params.value ? "Ativo" : "Inativo"
+  }
 ];
 export default function CollaboratorsDash(){
+    const [rows, setRows] = useState([]);
+
+    useEffect(() => {
+    loadEmployees();
+    }, []);
+    const loadEmployees = async () => {
+  try {
+    const data = await getEmployees();
+
+    const formatted = data.map((emp, index) => ({
+      id: index + 1,
+      name: emp.name,
+      email: emp.email,
+      phoneNumber: emp.phoneNumber,
+      description: emp.description,
+      role: emp.role,
+      baseSalary: emp.baseSalary,
+      active: emp.isActive
+    }));
+
+    setRows(formatted);
+
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+
     const navigate = useNavigate()
     const moneyIcon = <MonetizationOnIcon/>
     return(
@@ -320,7 +374,9 @@ export default function CollaboratorsDash(){
                     </Box>
                         <DataTable
                         columns={columns}
-                        rows={colaboradoresMock}
+                        rows={rows}
+                        pageSize={5}
+                        rowsPerPageOptions={[5]}
                         /> 
                 </Card>
             </Grid>
