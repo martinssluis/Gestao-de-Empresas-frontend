@@ -10,10 +10,7 @@ import PeopleIcon from '@mui/icons-material/People';
 import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import SummarizeIcon from '@mui/icons-material/Summarize';
-import Chip from "@mui/material/Chip"
-import Avatar from "@mui/material/Avatar"
 import Groups2Icon from '@mui/icons-material/Groups2';
-
 
 const colaboradoresMock = [
 {
@@ -119,8 +116,6 @@ const colaboradoresMock = [
 
 ]
 
-
-
 const totalColaboradores = colaboradoresMock.length;
 
 const totalAtivos = colaboradoresMock.filter(c => c.ativo).length;
@@ -135,87 +130,9 @@ const totalFolha = colaboradoresMock.reduce(
   (acc, c) => acc + c.salarioBase,
   0
 );
-
 const mediaSalarial =
   colaboradoresMock.reduce((acc, c) => acc + c.salarioBase, 0) / totalColaboradores;;
 
-/*const columns = [
-    {
-    field: "nome",
-    headerName: "Nome",
-    flex: 1,
-    renderCell: (params) => {
-        return (
-        <Box display="flex" alignItems="center" gap={1}>
-            <Avatar sx={{ width: 28, height: 28 }}>
-            {params.value[0]}
-            </Avatar>
-            {params.value}
-        </Box>
-        )
-    }
-    },
-    {
-        field: "email",
-        headerName: "E-mail",
-        flex: 1.5
-    },
-    {
-        field: "telefone",
-        headerName: "Telefone",
-        flex: 1
-    },
-    {
-        field: "descricao",
-        headerName: "Observação",
-        flex: 2,
-        renderCell: (params) => {
-
-            const text = params.value || ""
-
-            return (
-            <span
-                style={{
-                overflow: "hidden",
-                textOverflow: "ellipsis",
-                whiteSpace: "nowrap",
-                maxWidth: "100%"
-                }}
-            >
-                {text}
-            </span>
-            )
-        }
-    },
-    { field: "role", headerName: "Cargo", flex: 1 },
-  {
-    field: "salarioBase",
-    headerName: "Salário",
-    flex: 1,
-    valueFormatter: (params) =>
-      new Intl.NumberFormat("pt-BR", {
-        style: "currency",
-        currency: "BRL"
-      }).format(params.value)
-  },
-    {
-    field: "ativo",
-    headerName: "Status",
-    flex: 1,
-    renderCell: (params) => {
-
-        const isActive = params.value
-
-        return (
-        <Chip
-            label={isActive ? "Ativo" : "Inativo"}
-            size="small"
-            color={isActive ? "success" : "error"}
-        />
-        )
-    }
-    },
-];*/
 const columns = [
   { field: "name", headerName: "Nome", flex: 1 },
   { field: "email", headerName: "Email", flex: 1 },
@@ -237,36 +154,35 @@ const columns = [
   }
 ];
 export default function CollaboratorsDash(){
-    const [rows, setRows] = useState([]);
+  const [rows, setRows] = useState([]);
 
     useEffect(() => {
     loadEmployees();
     }, []);
-    const loadEmployees = async () => {
-  try {
-    const data = await getEmployees();
+  const loadEmployees = async () => {
+    try {
+        const data = await getEmployees();
 
-    const formatted = data.map((emp, index) => ({
-      id: index + 1,
-      name: emp.name,
-      email: emp.email,
-      phoneNumber: emp.phoneNumber,
-      description: emp.description,
-      role: emp.role,
-      baseSalary: emp.baseSalary,
-      active: emp.isActive
-    }));
+        const formatted = data.map((emp, index) => ({
+        id: index + 1, // verificar
+        name: emp.name,
+        email: emp.email,
+        phoneNumber: emp.phoneNumber,
+        description: emp.description,
+        role: emp.role,
+        baseSalary: emp.baseSalary,
+        active: emp.isActive
+        }));
 
-    setRows(formatted);
+        setRows(formatted);
 
-  } catch (error) {
-    console.error(error);
-  }
-};
+    } catch (error) {
+        console.error(error);
+        }
+  };
 
 
     const navigate = useNavigate()
-    const moneyIcon = <MonetizationOnIcon/>
     return(
         <Box component={'div'} className={styles.containerCd}
         >

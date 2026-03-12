@@ -36,30 +36,6 @@ export default function Collaborators() {
     }));
   }
 
-  const testCreateEmployee = async () => {
-  try {
-
-    const employee = {
-      name: "Teste Front",
-      password: "123",
-      isActive: true,
-      phoneNumber: "123456",
-      email: "teste@email.com",
-      description: "teste",
-      lastLogin: new Date().toISOString(),
-      role: "SELLER",
-      baseSalary: 4000
-    };
-
-    const result = await createEmployee(employee);
-
-    console.log("Criado:", result);
-
-  } catch (error) {
-    console.error("Erro:", error);
-  }
-};
-
   async function handleSubmit(event) {
     event.preventDefault();
     setErrorMsg('');
@@ -80,6 +56,7 @@ export default function Collaborators() {
         // Se o backend exigir o "Z", isso já vem no toISOString()
         lastLogin: new Date().toISOString(),
 
+        // AVALIAR !!!
         // garante number
         role: Number(formData.role),
 
@@ -113,7 +90,6 @@ export default function Collaborators() {
 
   return (
     <Container maxWidth="lg" sx={{ py: 4 }}>
-      <button onClick={testCreateEmployee}> teste</button>
       <Button variant="outlined" sx={{ mb: 2 }} onClick={() =>navigate('/app/collaboratorsdash')}>
         <ArrowBackIosNewIcon/> Voltar
       </Button>
