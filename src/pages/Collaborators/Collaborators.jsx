@@ -1,12 +1,8 @@
 import { useState } from 'react';
 import styles from './Collaborators.module.css';
-import { Box, Paper } from '@mui/material';
 import { createEmployee } from '../../service/employeeService';
-import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';;
-import styles from './Collaborators.module.css';
+import { useNavigate } from 'react-router-dom';
 import { Box, Button, Paper, Container, Typography, Grid, TextField, FormControlLabel, Checkbox, Stack, MenuItem } from '@mui/material';
-import { createEmployee  } from '../../service/employeeService';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import GroupAddIcon from '@mui/icons-material/GroupAdd';
 
@@ -100,103 +96,136 @@ export default function Collaborators() {
         component={'section'}
         sx={{ bgcolor: 'background.defaut', color: 'text.primary', minHeight: '100vh' }}
       >
-        <Paper className={styles.collaboratorContainer}>
-          <h1 className={styles.h1}>Cadastro de Colaborador</h1>
+        <Container maxWidth="lg" sx={{ py: 4 }}>
+          <Button variant="outlined" sx={{ mb: 2 }} onClick={() =>navigate('/app/collaboratorsdash')}>
+            <ArrowBackIosNewIcon/> Voltar
+          </Button>
+          <Paper elevation={3} sx={{ p: { xs: 2, md: 4 }, borderRadius: 3 }}>
+            <Typography variant="h5" sx={{ mb: 3 }}>
+              <GroupAddIcon/> Cadastro de Colaborador
+            </Typography>
 
-          {errorMsg && <p className={styles.error}>{errorMsg}</p>}
-          {successMsg && <p className={styles.success}>{successMsg}</p>}
+            {errorMsg && <Typography color="error">{errorMsg}</Typography>}
+            {successMsg && <Typography color="success.main">{successMsg}</Typography>}
 
-          <form className={styles.form} onSubmit={handleSubmit}>
-            <input
-              className={styles.inputs}
-              type="text"
-              placeholder="Nome"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-            />
+            <Box component="form" onSubmit={handleSubmit}>
+              <Grid container spacing={2}>
 
-            <input
-              className={styles.inputs}
-              type="email"
-              placeholder="E-mail"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-            />
+                <Grid item xs={12} md={6}>
+                  <TextField
+                    fullWidth
+                    label="Nome"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                  />
+                </Grid>
 
-            <input
-              className={styles.inputs}
-              type="password"
-              placeholder="Senha"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-              required
-            />
+                <Grid item xs={12} md={6}>
+                  <TextField
+                    fullWidth
+                    label="E-mail"
+                    name="email"
+                    type="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                  />
+                </Grid>
 
-            <input
-              className={styles.inputs}
-              type="text"
-              placeholder="Telefone"
-              name="phoneNumber"
-              value={formData.phoneNumber}
-              onChange={handleChange}
-              required
-            />
+                <Grid item xs={12} md={6}>
+                  <TextField
+                    fullWidth
+                    label="Senha"
+                    type="password"
+                    name="password"
+                    value={formData.password}
+                    onChange={handleChange}
+                    required
+                  />
+                </Grid>
 
-            <textarea
-              className={styles.textarea}
-              placeholder="Descrição"
-              name="description"
-              rows="3"
-              value={formData.description}
-              onChange={handleChange}
-            />
+                <Grid item xs={12} md={6}>
+                  <TextField
+                    fullWidth
+                    label="Telefone"
+                    name="phoneNumber"
+                    value={formData.phoneNumber}
+                    onChange={handleChange}
+                    required
+                  />
+                </Grid>
 
-            {/* isActive */}
-            <label className={styles.checkboxRow}>
-              <input
-                type="checkbox"
-                name="isActive"
-                checked={formData.isActive}
-                onChange={handleChange}
-              />
-              Ativo?
-            </label>
+                <Grid item xs={12}>
+                  <TextField
+                    fullWidth
+                    multiline
+                    rows={3}
+                    label="Descrição"
+                    name="description"
+                    value={formData.description}
+                    onChange={handleChange}
+                  />
+                </Grid>
 
-            {/* role */}
-            <input
-              className={styles.inputs}
-              type="number"
-              placeholder="Role (ex: 1)"
-              name="role"
-              value={formData.role}
-              onChange={handleChange}
-              min={1}
-              required
-            />
+                <Grid item xs={12} md={6}>
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={formData.isActive}
+                        onChange={handleChange}
+                        name="isActive"
+                      />
+                    }
+                    label="Ativo?"
+                  />
+                </Grid>
 
-            {/* baseSalary */}
-            <input
-              className={styles.inputs}
-              type="number"
-              placeholder="Salário Base (ex: 4895.89)"
-              name="baseSalary"
-              value={formData.baseSalary}
-              onChange={handleChange}
-              step="0.01"
-              min="0"
-              required
-            />
+                <Grid item xs={12} md={6}>
+                  <TextField
+                    select
+                    label="Role"
+                    name="role"
+                    value={formData.role}
+                    onChange={handleChange}
+                    required
+                  >
+                    <MenuItem value="Seller">Seller</MenuItem>
+                    <MenuItem value="Manager">Manager</MenuItem>
+                    <MenuItem value="Intern">Intern</MenuItem>
+                  </TextField>
+                </Grid>
 
-            <button className={styles.buttons} type="submit" disabled={isSubmitting}>
-              {isSubmitting ? 'Cadastrando...' : 'Cadastrar'}
-            </button>
-          </form>
-        </Paper>
+                <Grid item xs={12} md={6}>
+                  <TextField
+                    fullWidth
+                    label="Salário Base"
+                    type="number"
+                    name="baseSalary"
+                    value={formData.baseSalary}
+                    onChange={handleChange}
+                    required
+                  />
+                </Grid>
+
+                <Grid item xs={12}>
+                  <Stack alignItems="center">
+                    <Button
+                      variant="contained"
+                      type="submit"
+                      disabled={isSubmitting}
+                      className={styles.registerButton}
+                    >
+                      {isSubmitting ? "Cadastrando..." : "Cadastrar"}
+                    </Button>
+                  </Stack>
+                </Grid>
+
+              </Grid>
+            </Box>
+          </Paper>
+    </Container>
       </Box>
     </Box>
     
