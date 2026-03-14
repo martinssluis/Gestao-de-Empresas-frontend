@@ -22,5 +22,5 @@ export const apiFetch = async (endpoint, options = {}) => {
 
   const text = await response.text();
 
-  return text ? JSON.parse(text) : null;
+  return text ? JSON.parse(text) : null; // Isso ajuda a subir os campos que não estão tecnicamente aparecendo no site
 };
