@@ -1,10 +1,12 @@
 const API_URL = import.meta.env.VITE_API_URL;
+console.log("API URL:",API_URL)
 
 if (!API_URL) {
   throw new Error("VITE_API_URL is not defined in .env file");
 }
 
 export const apiFetch = async (endpoint, options = {}) => {
+
   const response = await fetch(`${API_URL}${endpoint}`, {
     headers: {
       "Content-Type": "application/json",
@@ -18,5 +20,7 @@ export const apiFetch = async (endpoint, options = {}) => {
     throw new Error(errorData || "API request failed");
   }
 
-  return response.json();
+  const text = await response.text();
+
+  return text ? JSON.parse(text) : null; // Isso ajuda a subir os campos que não estão tecnicamente aparecendo no site
 };

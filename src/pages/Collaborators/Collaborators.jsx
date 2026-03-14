@@ -2,8 +2,18 @@ import { useState } from 'react';
 import styles from './Collaborators.module.css';
 import { Box, Paper } from '@mui/material';
 import { createEmployee } from '../../service/employeeService';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';;
+import styles from './Collaborators.module.css';
+import { Box, Button, Paper, Container, Typography, Grid, TextField, FormControlLabel, Checkbox, Stack, MenuItem } from '@mui/material';
+import { createEmployee  } from '../../service/employeeService';
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+import GroupAddIcon from '@mui/icons-material/GroupAdd';
 
 export default function Collaborators() {
+  const navigate = useNavigate();
+
+
   // Form agora contém TODOS os campos que o DTO do backend exige
   const [formData, setFormData] = useState({
     name: '',
@@ -13,6 +23,7 @@ export default function Collaborators() {
     description: '',
     isActive: false,
     lastLogin: '2026-02-28T00:23:53.464891Z',
+    lastLogin: "2026-02-28T00:23:53.464891Z",
     role: 1,
     baseSalary: '',
   });
@@ -50,6 +61,7 @@ export default function Collaborators() {
         // Se o backend exigir o "Z", isso já vem no toISOString()
         lastLogin: new Date().toISOString(),
 
+        // AVALIAR !!!
         // garante number
         role: Number(formData.role),
 
@@ -71,6 +83,7 @@ export default function Collaborators() {
         description: '',
         isActive: false,
         lastLogin: '',
+        lastLogin: "2026-02-28T00:23:53.464891Z",
         role: 1,
         baseSalary: '',
       });
@@ -186,5 +199,6 @@ export default function Collaborators() {
         </Paper>
       </Box>
     </Box>
+    
   );
 }

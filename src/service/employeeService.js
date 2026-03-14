@@ -6,3 +6,7 @@ export const createEmployee = (data) => {
     body: JSON.stringify(data),
   });
 };
+
+export const getEmployees = () => {
+  return apiFetch("/employee");
+};
