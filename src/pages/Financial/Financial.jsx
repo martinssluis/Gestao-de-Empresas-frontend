@@ -111,17 +111,59 @@ export default function Financial() {
         <Typography variant='h3' className='h3' fontWeight={700} sx={{display: "flex", gap:2}}>
           Financeiro
         </Typography>
-        <Grid>
-          <StatCard>
-
-          </StatCard>
+        <Grid container spacing={3} mt={2} className='main'>
+          <Grid item xs={12} md={2}>
+            <StatCard
+              sx={{
+                p:1
+              }}
+            >
+            </StatCard>
+          </Grid>
+          <Grid item xs={12} md={2}>
+            <StatCard
+              sx={{
+                p:1
+              }}
+            >
+            </StatCard>
+          </Grid>
+          <Grid item xs={12} md={2}>
+            <StatCard
+              sx={{
+                p:1
+              }}
+            >
+            </StatCard>
+          </Grid>
+          <Grid item xs={12} md={2}>
+            <StatCard
+              sx={{
+                p:1
+              }}
+            >
+            </StatCard>
+          </Grid>
+          <Card
+            sx={{
+              width:900,
+              mt:4,
+              borderRadius:4,
+              p:3,
+              marginLeft: 3
+            }}
+          >
+            <Box display="flex" mb={2}>
+              <Typography variant='h6'>
+                Movimentações
+              </Typography>
+            </Box>
+            <DataTable
+            rows={financialMock}
+            columns={columns}
+            />
+          </Card>
         </Grid>
-        <Card>
-          <DataTable
-          rows={financialMock}
-          columns={columns}
-          />
-        </Card>
       </Box>
     </>
   );
