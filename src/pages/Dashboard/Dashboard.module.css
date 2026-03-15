@@ -1,15 +1,20 @@
 .containerDashboard {
   display: flex;
   flex-direction: column;
-  align-items: center;
   width: 100%;
-  height: 100vh;
-  padding: 40px;
-}
-.mainGrid {
-  align-items: center;
+  min-height: 100vh;
+  padding: 24px;
 }
 
-.h4 {
-  margin: 5px 0px 5px 0px;
+.mainGrid {
+  width: 100%;
+  max-width: 1200px;
+}
+
+@media (max-width: 768px) {
+
+.containerDashboard {
+  padding: 16px;
+}
+
 }

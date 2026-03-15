@@ -125,14 +125,14 @@ export default function Dashboard() {
           {t("pages.dashboard.title")}
         </Typography>
 
-        <Grid container spacing={4} className="mainGrid">
+        <Grid container spacing={4} className={styles.mainGrid}>
           {stats.map((item, index) => (
-            <Grid item md={2} key={index}>
+            <Grid item xs={12} sm={6} md={3} key={index}>
               <StatCard title={item.title} value={item.value} />
             </Grid>
           ))}
-          <Grid container spacing={1} sx={{ mt: 2 }}>
-            <Grid item xs={8} md={4} spacing={2}>
+          <Grid container spacing={3} sx={{ mt: 2 }}>
+            <Grid item xs={12} md={4}>
               {selectedProduct ? (
                 <Chart
                   title={`${t("pages.dashboard.outputHistory")} - ${selectedProduct.name}`}
@@ -157,7 +157,7 @@ export default function Dashboard() {
                 items={filteredProducts}
               />
             </Grid>
-            <Grid item xs={8}>
+            <Grid item xs={12} md={8}>
               <ChartColumn
                 title={t("pages.dashboard.salesLastMonths")}
                 data={salesData}
