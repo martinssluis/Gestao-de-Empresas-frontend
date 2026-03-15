@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import styles from './Stock.module.css';
 import { useI18n } from '../../i18n/useI18n';
+import { Button } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 export default function Stock() {
   const { t } = useI18n();
@@ -29,10 +31,14 @@ export default function Stock() {
     console.log('Dados do produto:', dataResume);
   }
 
+  const navigate = useNavigate();
 
   return (   
       <div className={styles.styleStock}>
         <section>
+          <Button variant='contained' onClick={()=>navigate('/app/stockdash')}>
+            Voltar
+          </Button>
           <main className={styles.containerStock}>
             <h1 className={styles.h1}>{t('pages.stock.title')}</h1>
 
