@@ -1,12 +1,12 @@
 import { useState } from 'react';
-import styles from './Collaborators.module.css';
+import styles from './Employees.module.css';
 import { createEmployee } from '../../service/employeeService';
 import { useNavigate } from 'react-router-dom';
 import { Box, Button, Paper, Container, Typography, Grid, TextField, FormControlLabel, Checkbox, Stack, MenuItem } from '@mui/material';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import GroupAddIcon from '@mui/icons-material/GroupAdd';
 
-export default function Collaborators() {
+export default function Employees() {
   const navigate = useNavigate();
 
 
@@ -16,10 +16,9 @@ export default function Collaborators() {
     email: '',
     password: '',
     phoneNumber: '',
+    identifier: '',
     description: '',
-    isActive: false,
-    lastLogin: '2026-02-28T00:23:53.464891Z',
-    lastLogin: "2026-02-28T00:23:53.464891Z",
+    active: false,
     role: 1,
     baseSalary: '',
   });
@@ -48,18 +47,17 @@ export default function Collaborators() {
       const dto = {
         name: formData.name,
         password: formData.password,
-        isActive: Boolean(formData.isActive),
+        active: Boolean(formData.active),
         phoneNumber: formData.phoneNumber,
+        identifier: formData.identifier,
         email: formData.email,
         description: formData.description,
 
         // lastLogin no formato ISO (ex: 2026-02-28T00:23:53.464Z)
         // Se o backend exigir o "Z", isso já vem no toISOString()
-        lastLogin: new Date().toISOString(),
+        // lastLogin: new Date().toISOString(),
 
-        // AVALIAR !!!
-        // garante number
-        role: Number(formData.role),
+        role: formData.role,
 
         // garante decimal (se estiver vazio vira 0)
         baseSalary: formData.baseSalary === '' ? 0 : Number(formData.baseSalary),
@@ -76,11 +74,10 @@ export default function Collaborators() {
         email: '',
         password: '',
         phoneNumber: '',
+        identifier: '',
         description: '',
-        isActive: false,
-        lastLogin: '',
-        lastLogin: "2026-02-28T00:23:53.464891Z",
-        role: 1,
+        active: false,
+        role: '',
         baseSalary: '',
       });
     } catch (err) {
@@ -97,7 +94,7 @@ export default function Collaborators() {
         sx={{ bgcolor: 'background.defaut', color: 'text.primary', minHeight: '100vh' }}
       >
         <Container maxWidth="lg" sx={{ py: 4 }}>
-          <Button variant="outlined" sx={{ mb: 2 }} onClick={() =>navigate('/app/collaboratorsdash')}>
+          <Button variant="outlined" sx={{ mb: 2 }} onClick={() =>navigate('/app/employeesdash')}>
             <ArrowBackIosNewIcon/> Voltar
           </Button>
           <Paper elevation={3} sx={{ p: { xs: 2, md: 4 }, borderRadius: 3 }}>
@@ -149,12 +146,61 @@ export default function Collaborators() {
                 <Grid item xs={12} md={6}>
                   <TextField
                     fullWidth
+                    rows={3}
+                    label="Identificador"
+                    name="identifier"
+                    value={formData.identifier}
+                    onChange={handleChange}
+                  />
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <TextField
+                    fullWidth
                     label="Telefone"
                     name="phoneNumber"
                     value={formData.phoneNumber}
                     onChange={handleChange}
                     required
                   />
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <TextField
+                    fullWidth
+                    label="Salário Base"
+                    type="number"
+                    name="baseSalary"
+                    value={formData.baseSalary}
+                    onChange={handleChange}
+                    required
+                  />
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={formData.active}
+                        onChange={handleChange}
+                        name="active"
+                      />
+                    }
+                    label="Ativo?"
+                  />
+                </Grid>
+
+                <Grid item xs={12} md={6}>
+                  <TextField
+                    select
+                    label="Cargo"
+                    name="role"
+                    fullWidth={200}
+                    value={formData.role}
+                    onChange={handleChange}
+                    required
+                  >
+                    <MenuItem value="Vendedor">Vendedor</MenuItem>
+                    <MenuItem value="Gestor">Gestor</MenuItem>
+                    <MenuItem value="Estagiário">Estagiário</MenuItem>
+                  </TextField>
                 </Grid>
 
                 <Grid item xs={12}>
@@ -166,46 +212,6 @@ export default function Collaborators() {
                     name="description"
                     value={formData.description}
                     onChange={handleChange}
-                  />
-                </Grid>
-
-                <Grid item xs={12} md={6}>
-                  <FormControlLabel
-                    control={
-                      <Checkbox
-                        checked={formData.isActive}
-                        onChange={handleChange}
-                        name="isActive"
-                      />
-                    }
-                    label="Ativo?"
-                  />
-                </Grid>
-
-                <Grid item xs={12} md={6}>
-                  <TextField
-                    select
-                    label="Role"
-                    name="role"
-                    value={formData.role}
-                    onChange={handleChange}
-                    required
-                  >
-                    <MenuItem value="Seller">Seller</MenuItem>
-                    <MenuItem value="Manager">Manager</MenuItem>
-                    <MenuItem value="Intern">Intern</MenuItem>
-                  </TextField>
-                </Grid>
-
-                <Grid item xs={12} md={6}>
-                  <TextField
-                    fullWidth
-                    label="Salário Base"
-                    type="number"
-                    name="baseSalary"
-                    value={formData.baseSalary}
-                    onChange={handleChange}
-                    required
                   />
                 </Grid>
 

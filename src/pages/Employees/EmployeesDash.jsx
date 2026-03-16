@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { getEmployees } from '../../service/employeeService';
 import { useNavigate,  } from "react-router-dom"
 import { Box, Button, Grid, Typography, Card, Input} from "@mui/material"
-import styles from './CollaboratorsDash.module.css'
+import styles from './EmployeesDash.module.css'
 import StatCard from "../../components/StatCard/StatCard"
 import DataTable from "../../components/DataTable/DataTable"
 import AddIcon from '@mui/icons-material/Add';
@@ -153,7 +153,7 @@ const columns = [
       params.value ? "Ativo" : "Inativo"
   }
 ];
-export default function CollaboratorsDash(){
+export default function EmployeesDash(){
   const [rows, setRows] = useState([]);
 
     useEffect(() => {
@@ -191,7 +191,7 @@ export default function CollaboratorsDash(){
                 <PeopleIcon sx={{color: "#3b70ab", fontSize:46}}/> Colaboradores
             </Typography>
             <Grid item xs={6} textAlign="right">
-                <Button variant="contained" onClick={() => navigate('/app/collaborators')}
+                <Button variant="contained" onClick={() => navigate('/app/employees')}
                         sx={{
                             borderRadius: 3,
                             fontWeight: 600,

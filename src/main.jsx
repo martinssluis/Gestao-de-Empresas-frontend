@@ -11,9 +11,9 @@ import Login from './pages/Login/Login.jsx';
 import Stock from './pages/Stock/Stock.jsx';
 import StockDash from './pages/Stock/StockDash.jsx';
 import Financial from './pages/Financial/Financial.jsx';
-import Collaborators from './pages/Collaborators/Collaborators.jsx';
 import Settings from './pages/Settings/Settings.jsx';
-import CollaboratorsDash from './pages/Collaborators/CollaboratorsDash.jsx';
+import Employees from './pages/Employees/Employees.jsx';
+import EmployeesDash from './pages/Employees/EmployeesDash.jsx';
 
 const router = createBrowserRouter([
   {
@@ -57,12 +57,12 @@ const router = createBrowserRouter([
         element: <Stock />,
       },
       {
-        path: 'collaboratorsdash',
-        element: <CollaboratorsDash/>
+        path: 'employeesdash',
+        element: <EmployeesDash/>
       },
       {
-        path: 'collaborators',
-        element: <Collaborators />,
+        path: 'employees',
+        element: <Employees />,
       },
       {
         path: 'financial',

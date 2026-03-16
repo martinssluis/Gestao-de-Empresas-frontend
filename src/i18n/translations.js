@@ -4,7 +4,7 @@ export const translations = {
       dashboard: 'Dashboard',
       financial: 'Financeiro',
       stock: 'Estoque',
-      collaborators: 'Colaboradores',
+      employees: 'Colaboradores',
       settings: 'Configurações',
       logout: 'Sair',
       sidebar: 'Sidebar',
@@ -38,7 +38,7 @@ export const translations = {
         salesLastMonths: 'Vendas nos últimos meses',
         outputHistory: 'Histórico de saída',
         stats: {
-          collaborators: 'Colaboradores',
+          employeess: 'Colaboradores',
           pendingPayments: 'Pagamentos pendentes',
           products: 'Produtos',
           totalSales: 'Total de vendas',
@@ -68,7 +68,7 @@ export const translations = {
         category: 'Categoria',
         submit: 'Cadastrar',
       },
-      collaborators: {
+      employees: {
         title: 'Cadastro de Colaborador',
         name: 'Nome',
         email: 'E-mail',
@@ -100,7 +100,7 @@ export const translations = {
       dashboard: 'Dashboard',
       financial: 'Financial',
       stock: 'Stock',
-      collaborators: 'Collaborators',
+      employees: 'Collaborators',
       settings: 'Settings',
       logout: 'Logout',
       sidebar: 'Sidebar',
@@ -134,7 +134,7 @@ export const translations = {
         salesLastMonths: 'Sales in recent months',
         outputHistory: 'Output history',
         stats: {
-          collaborators: 'Collaborators',
+          employees: 'Collaborators',
           pendingPayments: 'Pending payments',
           products: 'Products',
           totalSales: 'Total sales',
@@ -164,7 +164,7 @@ export const translations = {
         category: 'Category',
         submit: 'Register',
       },
-      collaborators: {
+      employees: {
         title: 'Collaborator registration',
         name: 'Name',
         email: 'E-mail',
