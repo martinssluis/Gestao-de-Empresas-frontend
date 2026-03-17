@@ -35,6 +35,11 @@
   font-weight: 600;
   padding: 0.75rem;
   border-radius: 0.5rem;
+  background-color: #001c600f;
+}
+
+.divImagem {
+  max-width: 45%;
 }
 
 .imgNomeSG {

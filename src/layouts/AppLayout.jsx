@@ -1,6 +1,7 @@
 import Header from '../components/Header/Header';
-import MainContent from '../components/MainContent/MainContent';
 import { Outlet } from 'react-router-dom';
+
+function MainContent() {}
 
 export default function AppLayout() {
   return (

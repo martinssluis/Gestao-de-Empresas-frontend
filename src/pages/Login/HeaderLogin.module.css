@@ -9,8 +9,8 @@
   justify-content: space-around;
 }
 
-.nomeSistemaImg {
-  width: 40%;
+.imgDiv {
+  width: 7%;
 }
 
 .navBar {
@@ -29,4 +29,5 @@
 .navBar ul li {
   padding: 10px 20px;
   margin-left: 10px;
+  cursor: pointer;
 }
