@@ -1,10 +1,4 @@
-import {
-  PieChart,
-  Pie,
-  Cell,
-  Tooltip,
-  ResponsiveContainer
-} from "recharts";
+import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from "recharts";
 import { Card } from "@mui/material";
 
 const defaultColors = [
@@ -14,7 +8,7 @@ const defaultColors = [
   "#F44336"
 ];
 
-function DonutChart({ title, data, dataKey, nameKey, height , width, colors = defaultColors }) {
+export default function DonutChart({ title, data, dataKey, nameKey, height , width, colors = defaultColors }) {
 
   return (
     <Card>
@@ -44,6 +38,4 @@ function DonutChart({ title, data, dataKey, nameKey, height , width, colors = de
         </ResponsiveContainer>
     </Card>
   );
-}
-
-export default DonutChart;
+};

@@ -1,9 +1,8 @@
 import styles from './Financial.module.css';
 import { Box,Typography,Card, Grid } from '@mui/material';
-import Piechart from '../../components/PieChart/PieChart.jsx'
+import DonutChart from '../../components/DonutChart/DonutChart';
 import StatCard from '../../components/StatCard/StatCard';
 import DataTable from '../../components/DataTable/DataTable';
-
 export default function Financial() {
   const financialMock = [
     {
@@ -97,6 +96,20 @@ export default function Financial() {
     financialMock.map(item => item.categoria)
   ).size;
 
+  const chartData = [
+  {
+    name: "Receitas",
+    value: financialMock
+      .filter(item => item.tipo === "Receita")
+      .reduce((acc, item) => acc + item.valor, 0)
+  },
+  {
+    name: "Despesas",
+    value: financialMock
+      .filter(item => item.tipo === "Despesa")
+      .reduce((acc, item) => acc + item.valor, 0)
+  }
+  ];
   const columns = [
     { field: "descricao", headerName: "Descrição", flex: 1 },
     { field: "categoria", headerName: "Categoria", flex: 1 },
@@ -136,17 +149,22 @@ export default function Financial() {
             >
             </StatCard>
           </Grid>
-          <Grid item xs={12} md={2}>
-            <StatCard
-              sx={{
-                p:1
-              }}
-            >
-            </StatCard>
+          <Grid item xs={3} md={4}>
+            <Card sx={{borderRadius: 3,p:3, alignItems: "center"}}>
+              <DonutChart
+                title="Fluxo Financeiro"
+                data={chartData}
+                dataKey="value"
+                nameKey="name"
+                width={300}
+                height={300}
+              />
+            </Card>
           </Grid>
+          
           <Card
             sx={{
-              width:900,
+              width:"100%",
               mt:4,
               borderRadius:4,
               p:3,
