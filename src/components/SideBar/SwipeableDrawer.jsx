@@ -36,7 +36,7 @@ export default function SwipeableTemporaryDrawer({ open, onClose }) {
     },
     {
       text: t('menu.collaborators'),
-      path: '/app/collaborators',
+      path: '/app/collaboratorsdash',
       icon: <GroupsIcon />,
     },
     { text: t('menu.settings'), path: '/app/settings', icon: <SettingsIcon /> },
