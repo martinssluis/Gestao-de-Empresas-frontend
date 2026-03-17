@@ -1,11 +1,10 @@
 /*
 #logoSistema {
-  max-width: 110px;
-  padding: 2px 0px 2px 30px;
+  width: 240px;
+  padding: 10px 0px 10px 30px;
 }
 
 .header {
-  position: sticky;
   display: flex;
   top: 0;
   z-index: 1000;

@@ -1,145 +1,233 @@
 import { useState } from 'react';
-import stockStyles from '../Stock/Stock.module.css';
-import { Box, Button, Paper, TextField } from '@mui/material';
-import { useI18n } from '../../i18n/useI18n';
-
-const fieldSx = {
-  '& .MuiOutlinedInput-root': {
-    backgroundColor: 'background.paper',
-    borderRadius: '0.6rem',
-    '& fieldset': { borderColor: 'divider' },
-    '&:hover fieldset': { borderColor: 'text.secondary' },
-    '&.Mui-focused fieldset': { borderColor: 'primary.main', borderWidth: 2 },
-  },
-  '& .MuiInputLabel-root': { color: 'text.secondary' },
-  '& .MuiInputBase-input': {
-    color: 'text.primary',
-    fontSize: '1rem',
-    py: '0.85rem',
-    px: '1rem',
-  },
-  '& .MuiInputBase-inputMultiline': {
-    px: '1rem',
-    py: '0.85rem',
-  },
-};
+import styles from './Collaborators.module.css';
+import { createEmployee } from '../../service/employeeService';
+import { useNavigate } from 'react-router-dom';
+import { Box, Button, Paper, Container, Typography, Grid, TextField, FormControlLabel, Checkbox, Stack, MenuItem } from '@mui/material';
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+import GroupAddIcon from '@mui/icons-material/GroupAdd';
 
 export default function Collaborators() {
-  const { t } = useI18n();
+  const navigate = useNavigate();
+
+
+  // Form agora contém TODOS os campos que o DTO do backend exige
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     password: '',
     phoneNumber: '',
-    identifier: '',
     description: '',
+    isActive: false,
+    lastLogin: '2026-02-28T00:23:53.464891Z',
+    lastLogin: "2026-02-28T00:23:53.464891Z",
+    role: 1,
+    baseSalary: '',
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMsg, setErrorMsg] = useState('');
+  const [successMsg, setSuccessMsg] = useState('');
+
   function handleChange(event) {
-    const { name, value } = event.target;
+    const { name, value, type, checked } = event.target;
 
     setFormData((prevData) => ({
       ...prevData,
-      [name]: value,
+      [name]: type === 'checkbox' ? checked : value,
     }));
   }
 
-  function handleSubmit(event) {
-    event.preventDefault(); // evita reload da página
-    console.log('Dados do colaborador:', formData);
+  async function handleSubmit(event) {
+    event.preventDefault();
+    setErrorMsg('');
+    setSuccessMsg('');
+    setIsSubmitting(true);
+
+    try {
+      // Monta exatamente o JSON que o backend espera
+      const dto = {
+        name: formData.name,
+        password: formData.password,
+        isActive: Boolean(formData.isActive),
+        phoneNumber: formData.phoneNumber,
+        email: formData.email,
+        description: formData.description,
+
+        // lastLogin no formato ISO (ex: 2026-02-28T00:23:53.464Z)
+        // Se o backend exigir o "Z", isso já vem no toISOString()
+        lastLogin: new Date().toISOString(),
+
+        // AVALIAR !!!
+        // garante number
+        role: Number(formData.role),
+
+        // garante decimal (se estiver vazio vira 0)
+        baseSalary: formData.baseSalary === '' ? 0 : Number(formData.baseSalary),
+      };
+
+      const created = await createEmployee(dto);
+
+      setSuccessMsg('Colaborador cadastrado com sucesso!');
+      console.log('Criado:', created);
+
+      // Reset do form
+      setFormData({
+        name: '',
+        email: '',
+        password: '',
+        phoneNumber: '',
+        description: '',
+        isActive: false,
+        lastLogin: '',
+        lastLogin: "2026-02-28T00:23:53.464891Z",
+        role: 1,
+        baseSalary: '',
+      });
+    } catch (err) {
+      setErrorMsg(err?.message || 'Erro ao cadastrar colaborador.');
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
-    <div className={stockStyles.styleStock}>
-      <section>
-        <Paper className={stockStyles.containerStock} elevation={0} sx={{ bgcolor: 'background.paper', color: 'text.primary' }}>
-          <h1 className={stockStyles.h1}>{t('pages.collaborators.title')}</h1>
+    <Box component={'div'} className={styles.estiloCollaborator}>
+      <Box
+        component={'section'}
+        sx={{ bgcolor: 'background.defaut', color: 'text.primary', minHeight: '100vh' }}
+      >
+        <Container maxWidth="lg" sx={{ py: 4 }}>
+          <Button variant="outlined" sx={{ mb: 2 }} onClick={() =>navigate('/app/collaboratorsdash')}>
+            <ArrowBackIosNewIcon/> Voltar
+          </Button>
+          <Paper elevation={3} sx={{ p: { xs: 2, md: 4 }, borderRadius: 3 }}>
+            <Typography variant="h5" sx={{ mb: 3 }}>
+              <GroupAddIcon/> Cadastro de Colaborador
+            </Typography>
 
-          <Box component="form" className={stockStyles.form} onSubmit={handleSubmit}>
-            <TextField
-              label={t('pages.collaborators.name')}
-              variant="outlined"
-              fullWidth
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              InputLabelProps={{ shrink: true }}
-              sx={fieldSx}
-            />
+            {errorMsg && <Typography color="error">{errorMsg}</Typography>}
+            {successMsg && <Typography color="success.main">{successMsg}</Typography>}
 
-            <TextField
-              label={t('pages.collaborators.email')}
-              variant="outlined"
-              fullWidth
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              InputLabelProps={{ shrink: true }}
-              sx={fieldSx}
-            />
+            <Box component="form" onSubmit={handleSubmit}>
+              <Grid container spacing={2}>
 
-            <TextField
-              label={t('pages.collaborators.password')}
-              variant="outlined"
-              fullWidth
-              type="password"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-              InputLabelProps={{ shrink: true }}
-              sx={fieldSx}
-            />
+                <Grid item xs={12} md={6}>
+                  <TextField
+                    fullWidth
+                    label="Nome"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                  />
+                </Grid>
 
-            <TextField
-              label={t('pages.collaborators.phone')}
-              variant="outlined"
-              fullWidth
-              name="phoneNumber"
-              value={formData.phoneNumber}
-              onChange={handleChange}
-              InputLabelProps={{ shrink: true }}
-              sx={fieldSx}
-            />
+                <Grid item xs={12} md={6}>
+                  <TextField
+                    fullWidth
+                    label="E-mail"
+                    name="email"
+                    type="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                  />
+                </Grid>
 
-            <TextField
-              label={t('pages.collaborators.identifier')}
-              variant="outlined"
-              fullWidth
-              name="identifier"
-              value={formData.identifier}
-              onChange={handleChange}
-              InputLabelProps={{ shrink: true }}
-              sx={fieldSx}
-            />
+                <Grid item xs={12} md={6}>
+                  <TextField
+                    fullWidth
+                    label="Senha"
+                    type="password"
+                    name="password"
+                    value={formData.password}
+                    onChange={handleChange}
+                    required
+                  />
+                </Grid>
 
-            <TextField
-              label={t('pages.collaborators.description')}
-              variant="outlined"
-              fullWidth
-              multiline
-              rows={4}
-              name="description"
-              value={formData.description}
-              onChange={handleChange}
-              InputLabelProps={{ shrink: true }}
-              sx={{ ...fieldSx, gridColumn: '1 / -1' }}
-            />
+                <Grid item xs={12} md={6}>
+                  <TextField
+                    fullWidth
+                    label="Telefone"
+                    name="phoneNumber"
+                    value={formData.phoneNumber}
+                    onChange={handleChange}
+                    required
+                  />
+                </Grid>
 
-            <Button
-              type="submit"
-              variant="contained"
-              color="primary"
-              className={stockStyles.buttons}
-              fullWidth
-              sx={{ textTransform: 'none', boxShadow: 'none' }}
-            >
-              {t('pages.collaborators.submit')}
-            </Button>
-          </Box>
-        </Paper>
-      </section>
-    </div>
+                <Grid item xs={12}>
+                  <TextField
+                    fullWidth
+                    multiline
+                    rows={3}
+                    label="Descrição"
+                    name="description"
+                    value={formData.description}
+                    onChange={handleChange}
+                  />
+                </Grid>
+
+                <Grid item xs={12} md={6}>
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={formData.isActive}
+                        onChange={handleChange}
+                        name="isActive"
+                      />
+                    }
+                    label="Ativo?"
+                  />
+                </Grid>
+
+                <Grid item xs={12} md={6}>
+                  <TextField
+                    select
+                    label="Role"
+                    name="role"
+                    value={formData.role}
+                    onChange={handleChange}
+                    required
+                  >
+                    <MenuItem value="Seller">Seller</MenuItem>
+                    <MenuItem value="Manager">Manager</MenuItem>
+                    <MenuItem value="Intern">Intern</MenuItem>
+                  </TextField>
+                </Grid>
+
+                <Grid item xs={12} md={6}>
+                  <TextField
+                    fullWidth
+                    label="Salário Base"
+                    type="number"
+                    name="baseSalary"
+                    value={formData.baseSalary}
+                    onChange={handleChange}
+                    required
+                  />
+                </Grid>
+
+                <Grid item xs={12}>
+                  <Stack alignItems="center">
+                    <Button
+                      variant="contained"
+                      type="submit"
+                      disabled={isSubmitting}
+                      className={styles.registerButton}
+                    >
+                      {isSubmitting ? "Cadastrando..." : "Cadastrar"}
+                    </Button>
+                  </Stack>
+                </Grid>
+
+              </Grid>
+            </Box>
+          </Paper>
+    </Container>
+      </Box>
+    </Box>
+    
   );
-  // Abas relacionais: consultas, dashboard
 }
