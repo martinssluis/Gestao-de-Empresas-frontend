@@ -1,4 +1,3 @@
-import * as React from 'react';
 import Box from '@mui/material/Box';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import List from '@mui/material/List';
@@ -6,8 +5,10 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
+import DashboardOutlinedIcon from '@mui/icons-material/DashboardOutlined';
+import LocalAtmOutlinedIcon from '@mui/icons-material/LocalAtmOutlined';
+import Inventory2OutlinedIcon from '@mui/icons-material/Inventory2Outlined';
+import GroupsIcon from '@mui/icons-material/Groups';
 import LogoutIcon from '@mui/icons-material/Logout';
 import SettingsIcon from '@mui/icons-material/Settings';
 import { Link } from 'react-router-dom';
@@ -18,14 +19,26 @@ export default function SwipeableTemporaryDrawer({ open, onClose }) {
   const navigate = useNavigate();
   const { t } = useI18n();
   const menuItems = [
-    { text: t('menu.dashboard'), path: '/app/dashboard', icon: <InboxIcon /> },
-    { text: t('menu.financial'), path: '/app/financial', icon: <MailIcon /> }, // Sugestão: deixar de stand-by
-    { text: t('menu.stock'), path: '/app/stock', icon: <InboxIcon /> },
+    {
+      text: t('menu.dashboard'),
+      path: '/app/dashboard',
+      icon: <DashboardOutlinedIcon />,
+    },
+    {
+      text: t('menu.financial'),
+      path: '/app/financial',
+      icon: <LocalAtmOutlinedIcon />,
+    },
+    {
+      text: t('menu.stock'),
+      path: '/app/stock',
+      icon: <Inventory2OutlinedIcon />,
+    },
     {
       text: t('menu.collaborators'),
       path: '/app/collaborators',
-      icon: <MailIcon />,
-    }, // Sugestão: deixar de stand-by
+      icon: <GroupsIcon />,
+    },
     { text: t('menu.settings'), path: '/app/settings', icon: <SettingsIcon /> },
   ];
 
