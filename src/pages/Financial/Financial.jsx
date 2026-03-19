@@ -3,6 +3,7 @@ import { Box,Typography,Card, Grid } from '@mui/material';
 import DonutChart from '../../components/DonutChart/DonutChart';
 import StatCard from '../../components/StatCard/StatCard';
 import DataTable from '../../components/DataTable/DataTable';
+import RankList from '../../components/RankList/RankList';
 export default function Financial() {
   const financialMock = [
     {
@@ -110,6 +111,12 @@ export default function Financial() {
       .reduce((acc, item) => acc + item.valor, 0)
   }
   ];
+  const rankData = [
+  { nome: "Vendas", valor: "R$ 11k", percentual: 80 },
+  { nome: "Serviços", valor: "R$ 3k", percentual: 40 },
+  { nome: "Marketing", valor: "R$ 2k", percentual: 30 },
+  { nome: "Infra", valor: "R$ 1k", percentual: 20 }
+];
   const columns = [
     { field: "descricao", headerName: "Descrição", flex: 1 },
     { field: "categoria", headerName: "Categoria", flex: 1 },
@@ -125,7 +132,7 @@ export default function Financial() {
           Financeiro
         </Typography>
         <Grid container spacing={3} mt={2} className='main'>
-          <Grid item xs={12} md={2}>
+          <Grid item xs={12} md={3}>
             <StatCard
               sx={{
                 p:1
@@ -133,7 +140,7 @@ export default function Financial() {
             >
             </StatCard>
           </Grid>
-          <Grid item xs={12} md={2}>
+          <Grid item xs={12} md={3}>
             <StatCard
               sx={{
                 p:1
@@ -141,7 +148,7 @@ export default function Financial() {
             >
             </StatCard>
           </Grid>
-          <Grid item xs={12} md={2}>
+          <Grid item xs={12} md={3}>
             <StatCard
               sx={{
                 p:1
@@ -149,23 +156,54 @@ export default function Financial() {
             >
             </StatCard>
           </Grid>
-          <Grid item xs={3} md={4}>
-            <Card sx={{borderRadius: 3,p:3, alignItems: "center"}}>
-              <DonutChart
-                title="Fluxo Financeiro"
-                data={chartData}
-                dataKey="value"
-                nameKey="name"
-                width={300}
-                height={300}
-              />
-            </Card>
+          <Grid item xs={12} md={3}>
+            <StatCard
+              sx={{
+                p:1
+              }}
+            >
+            </StatCard>
           </Grid>
-          
+          <Grid container spacing={3} mt={1} ml={0.1}>
+            <Grid item xs={12} md={3}>
+              <Card sx={{borderRadius: 3,p:3, alignItems: "center"}}>
+                <DonutChart
+                  title="Fluxo Financeiro"
+                  data={chartData}
+                  dataKey="value"
+                  nameKey="name"
+                  width={300}
+                  height={250}
+                />
+              </Card>
+            </Grid>
+
+              <Grid item xs={12} md={4}>
+                <Card sx={{ borderRadius: 4, p: 3 }}>
+                  <Typography variant="h6">Top Categorias</Typography>
+
+                  <Box mt={2}>
+                    <RankList data={rankData} />
+                  </Box>
+                </Card>
+              </Grid>
+              <Grid item xs={12} md={3}>
+                <Card sx={{ borderRadius: 4, p: 3 }}>
+                  <Typography variant="h6">Evolução Financeira</Typography>
+
+                  <Box mt={2}>
+                    <Typography variant="body2" color="text.secondary">
+                      (Aqui entra um gráfico de linha)
+                    </Typography>
+                  </Box>
+                </Card>
+              </Grid>
+
+          </Grid>
           <Card
             sx={{
               width:"100%",
-              mt:4,
+              mt:2,
               borderRadius:4,
               p:3,
               marginLeft: 3

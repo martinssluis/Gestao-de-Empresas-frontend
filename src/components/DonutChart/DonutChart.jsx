@@ -19,10 +19,8 @@ export default function DonutChart({ title, data, dataKey, nameKey, height , wid
             data={data}
             dataKey={dataKey}
             nameKey={nameKey}
-            cx="50%"
-            cy="50%"
-            innerRadius="60%"
-            outerRadius="80%"
+            innerRadius="50%"
+            outerRadius="90%"
             paddingAngle={2}
             >
             {data.map((entry, index) => (
