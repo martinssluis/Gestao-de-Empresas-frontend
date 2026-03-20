@@ -6,4 +6,9 @@
 }
 .main{
   align-items: center;
+  
+}
+.statContainer{
+  padding: 0.5rem;
+  padding-left: 20px;
 }

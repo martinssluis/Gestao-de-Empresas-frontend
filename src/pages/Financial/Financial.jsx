@@ -133,7 +133,7 @@ export default function Financial() {
   return (
     <>
       <Box component="div" className={styles.containerFinancial}>
-        <Typography variant='h3' className='h3' fontWeight={700} sx={{display: "flex", gap:2}}>
+        <Typography variant='h3' className='h3' fontWeight={700} sx={{display: "flex", gap:1}}>
           Financeiro
         </Typography>
         <Grid container spacing={3} mt={2} className='main'>
@@ -177,11 +177,11 @@ export default function Financial() {
             >
             </StatCard>
           </Grid>
-          <Grid container spacing={3} mt={1} ml={0.1}>
+          <Grid container spacing={3} mt={1} className={styles.statContainer}>
             <Grid item xs={12} md={3}>
-              <Card sx={{borderRadius: 3,p:3, alignItems: "center"}}>
+              <Card sx={{borderRadius: 3,p:3, display:'flex', flexDirection:'column', justifyContent: 'center', alignItems: "center"}}>
                 <DonutChart
-                  title="Fluxo Financeiro"
+                  title="Overview financeiro"
                   data={chartData}
                   dataKey="value"
                   nameKey="name"
@@ -222,7 +222,6 @@ export default function Financial() {
               mt:2,
               borderRadius:4,
               p:3,
-              marginLeft: 3
             }}
           >
             <Box display="flex" mb={2}>
