@@ -177,63 +177,63 @@ export default function Financial() {
             >
             </StatCard>
           </Grid>
-          <Grid container spacing={3} mt={1} className={styles.statContainer}>
-            <Grid item xs={12} md={3}>
-              <Card sx={{borderRadius: 3,p:3, display:'flex', flexDirection:'column', justifyContent: 'center', alignItems: "center"}}>
-                <DonutChart
-                  title="Overview financeiro"
-                  data={chartData}
-                  dataKey="value"
-                  nameKey="name"
-                  width={300}
-                  height={245}
-                />
-              </Card>
-            </Grid>
-            <Grid item xs={12} md={6}>
-                <Card sx={{ borderRadius: 4, p: 3, height:330 }}>
-                  <Typography variant="h6">Top Categorias</Typography>
-
-                  <Box mt={2}>
-                    <RankList data={rankData} />
-                  </Box>
+          <Grid item xs={12}>
+            <Grid container spacing={3} className={styles.statContainer}>
+              <Grid item xs={12} md={3}>
+                <Card sx={{borderRadius: 3,p:3, display:'flex', flexDirection:'column', justifyContent: 'center', alignItems: "center"}}>
+                  <DonutChart
+                    title="Overview financeiro"
+                    data={chartData}
+                    dataKey="value"
+                    nameKey="name"
+                    width="100%"
+                    height={280}
+                  />
                 </Card>
+              </Grid>
+              <Grid item xs={12} md={6}>
+                  <Card sx={{ borderRadius: 4, p: 3 }}>
+                    <Typography variant="h6">Evolução Financeira</Typography>
+
+                    <Box mt={2}>
+                        <Chart
+                        height={190}
+                        />
+                    </Box>
+                  </Card>
+              </Grid>
+              <Grid item xs={12} md={3}>
+                  <Card sx={{ borderRadius: 4, p: 3, height:333 }}>
+                    <Typography variant="h6">Top Categorias</Typography>
+
+                    <Box mt={2}>
+                      <RankList data={rankData} />
+                    </Box>
+                  </Card>
+              </Grid>
+
             </Grid>
-
-            <Grid item xs={12} md={3}>
-                <Card sx={{ borderRadius: 4, p: 3 }}>
-                  <Typography variant="h6">Evolução Financeira</Typography>
-
-                  <Box mt={2}>
-                    <Typography variant="body2" color="text.secondary">
-                      Gráfico de linha  
-                    </Typography>
-                      <Chart
-                      height={170}
-                      />
-                  </Box>
-                </Card>
-            </Grid>
-
           </Grid>
-          <Card
-            sx={{
-              width:"100%",
-              mt:2,
-              borderRadius:4,
-              p:3,
-            }}
-          >
-            <Box display="flex" mb={2}>
-              <Typography variant='h6'>
-                Movimentações
-              </Typography>
-            </Box>
-            <DataTable
-            rows={financialMock}
-            columns={columns}
-            />
-          </Card>
+          <Grid item xs={12}>
+            <Card
+              sx={{
+                width:"100%",
+                borderRadius:4,
+                p:3,
+                alignItems:'center',
+              }}
+            >
+              <Box display="flex" mb={2}>
+                <Typography variant='h6'>
+                  Movimentações
+                </Typography>
+              </Box>
+              <DataTable
+              rows={financialMock}
+              columns={columns}
+              />
+            </Card>
+          </Grid>
         </Grid>
       </Box>
     </>

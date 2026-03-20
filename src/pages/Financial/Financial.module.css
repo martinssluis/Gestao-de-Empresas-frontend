@@ -1,13 +1,9 @@
 .containerFinancial {
-  flex-direction: column;
   align-items: center;
+  flex-direction: column;
   width: 100%;
   padding: 40px;
 }
 .main{
-  align-items: center;
-  
-}
-.statContainer{
-  padding: 1rem;
+  align-items: center; 
 }

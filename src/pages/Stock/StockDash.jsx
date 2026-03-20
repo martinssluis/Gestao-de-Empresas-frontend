@@ -138,24 +138,24 @@ export default function StockDash(){
                         value={totalCategorias}
                     />
                 </Grid>
-                <Card sx={{
-                    width:2000,
-                    mt:4,
-                    marginLeft:3,
-                    boxShadow: "0 8px 32px rgba(0,0,0,0.4)",
-                    borderRadius:4,
-                    p:3
-                }}>
-                    <Box display="flex" justifyContent="space-between" mb={2}>
-                        <Typography variant="h6">
-                            Lista de produtos
-                        </Typography>
-                    </Box>
-                    <DataTable
-                        rows={productsMock}
-                        columns={columns}
-                    />
-                </Card>
+                <Grid item xs={12}>
+                    <Card sx={{
+                        width:"100%",
+                        boxShadow: "0 8px 32px rgba(0,0,0,0.4)",
+                        borderRadius:4,
+                        p:3
+                    }}>
+                        <Box display="flex" justifyContent="space-between" mb={2}>
+                            <Typography variant="h6">
+                                Lista de produtos
+                            </Typography>
+                        </Box>
+                        <DataTable
+                            rows={productsMock}
+                            columns={columns}
+                        />
+                    </Card>
+                </Grid>
             </Grid>
         </Box>
     );  
