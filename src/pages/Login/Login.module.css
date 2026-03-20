@@ -29,6 +29,16 @@
   padding: 0.75rem 1rem;
   border-bottom: 1px solid #234368;
   font-size: 1rem;
+  border-radius: 2px;
+  box-shadow: 0 0 0 0 rgba(37, 99, 235, 0);
+  transition:
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+.inputs:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
 }
 
 .buttons {
