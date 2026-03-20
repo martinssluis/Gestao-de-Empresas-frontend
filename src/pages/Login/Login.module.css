@@ -29,59 +29,27 @@
   padding: 0.75rem 1rem;
   border-bottom: 1px solid #234368;
   font-size: 1rem;
-  border-radius: 8px;
-
+  border-radius: 2px;
+  box-shadow: 0 0 0 0 rgba(37, 99, 235, 0);
+  transition:
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
 }
-/*inputs  animações*/
+
 .inputs:focus {
   border-color: #2563eb;
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
 }
 
-.input-login {
-  width: 100%;
-  padding: 12px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  outline: none;
-  transition: all 0.2s ease;
-}
-
-.input-login:focus {
-  border-color: #2563eb;
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
-}
-
-
 .buttons {
   font-weight: 600;
   padding: 0.75rem;
-  border-radius: 10px;
-  border: none;
-  cursor: pointer;
-  background: #3b82f6; 
-  color: white;
-  transition: all 0.25s ease;
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.25);
+  border-radius: 0.5rem;
+  background-color: #001c600f;
 }
 
-/* hover  efeito mudar cor do botão*/
-.buttons:hover {
-  background: #2563eb; 
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(59, 130, 246, 0.3);
-}
-
-/* clique */
-.buttons:active {
-  transform: scale(0.96);
-  background: #1d4ed8;
-}
-
-
-.buttons:focus {
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.4);
+.divImagem {
+  max-width: 45%;
 }
 
 .imgNomeSG {
