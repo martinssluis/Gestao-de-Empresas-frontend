@@ -3,8 +3,7 @@ import styles from './Employees.module.css';
 import { createEmployee } from '../../service/employeeService';
 import { useNavigate } from 'react-router-dom';
 import { Box, Button, Paper, Container, Typography, Grid, TextField, FormControlLabel, Checkbox, Stack, MenuItem } from '@mui/material';
-import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
-import GroupAddIcon from '@mui/icons-material/GroupAdd';
+import Icon from '../../components/IconLibrary/IconLibrary';
 
 export default function Employees() {
   const navigate = useNavigate();
@@ -95,11 +94,11 @@ export default function Employees() {
       >
         <Container maxWidth="lg" sx={{ py: 4 }}>
           <Button variant="outlined" sx={{ mb: 2 }} onClick={() =>navigate('/app/employeesdash')}>
-            <ArrowBackIosNewIcon/> Voltar
+            <Icon name="arrowBackIosNewIcon"/> Voltar
           </Button>
           <Paper elevation={3} sx={{ p: { xs: 2, md: 4 }, borderRadius: 3 }}>
             <Typography variant="h5" sx={{ mb: 3 }}>
-              <GroupAddIcon/> Cadastro de Colaborador
+              <Icon name="groupAddIcon"/> Cadastro de Colaborador
             </Typography>
 
             {errorMsg && <Typography color="error">{errorMsg}</Typography>}

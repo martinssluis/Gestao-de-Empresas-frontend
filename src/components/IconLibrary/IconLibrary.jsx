@@ -8,11 +8,26 @@ import SummarizeIcon from '@mui/icons-material/Summarize';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import GroupAddIcon from '@mui/icons-material/GroupAdd';
 
-export default function IconLibrary(){
-    const addIcon = <AddIcon/>
-    const peopleIcon = <PeopleIcon/>
-    const monetizationOnIcon = <MonetizationOnIcon/>
-    const editCalendarIcon = <EditCalendarIcon/>
-    const groups2Icon = <Groups2Icon/>
+const icons ={
+    addIcon: AddIcon,
+    peopleIcon: PeopleIcon,
+    monetizationOnIcon: MonetizationOnIcon,
+    editCalendarIcon: EditCalendarIcon,
+    groups2Icon: Groups2Icon,
+    checkCircleOutline: CheckCircleOutlineIcon,
+    summarizeIcon: SummarizeIcon,
+    arrowBackIosNewIcon: ArrowBackIosNewIcon,
+    groupAddIcon: GroupAddIcon
 
+}
+
+export default function Icon({name, ...props}){
+    const IconComponent = icons[name]
+
+    if (!IconComponent){
+        console.warn(`Icon ${name} não encontrado`)
+        return null
+    }
+
+    return <IconComponent{...props}/>
 }
