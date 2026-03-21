@@ -212,6 +212,7 @@ export default function EmployeesDash(){
                         icon={<SummarizeIcon sx={{color: "#ffeb3b"}}/>}
                         className={styles.statcard}
                         title="Total de colaboradores" value={totalColaboradores}
+                        trend={{ value: "+2%", positive: true }}
                     />
                 </Grid>
                 <Grid item xs={12} md={2}>
@@ -224,6 +225,7 @@ export default function EmployeesDash(){
                         icon={<CheckCircleOutlineIcon sx={{color: "#5da11e"}} />}
                         className={styles.statcard}
                         title="Colaboradores ativos" value={totalAtivos}
+                        trend={{ value: "+2%", positive: true }}
                     />
                 </Grid>
                 <Grid item xs={12} md={2}>
@@ -236,6 +238,7 @@ export default function EmployeesDash(){
                     }}
                     title="Média por cargo"
                     value={mediaPorCargo.toFixed(1)}
+                    trend={{ value: "+2%", positive: true }}
                     />
                 </Grid>
                 <Grid item xs={12} md={2}>

@@ -8,7 +8,7 @@ const defaultColors = [
   "#F44336"
 ];
 
-export default function DonutChart({ title, data, dataKey, nameKey, height , width, colors = defaultColors }) {
+export default function DonutChart({ data, dataKey, nameKey, height , width, colors = defaultColors }) {
 
   return (
         <ResponsiveContainer  width={width} height={height}>

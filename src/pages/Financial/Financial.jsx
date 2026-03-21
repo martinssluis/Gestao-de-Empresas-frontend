@@ -115,6 +115,14 @@ export default function Financial() {
       .reduce((acc, item) => acc + item.valor, 0)
   }
   ];
+  const lineData = [
+  { name: "Jan", value: 5500, value2: 1200 },
+  { name: "Fev", value: 3200, value2: 1800 },
+  { name: "Mar", value: 4800, value2: 1500 },
+  { name: "Abr", value: 6000, value2: 2000 },
+  { name: "Mai", value: 7200, value2: 2500 },
+  { name: "Jun", value: 6800, value2: 2200 }
+];
 
   const rankData = [
   { nome: "Vendas", valor: "R$ 11k", percentual: 80 },
@@ -144,6 +152,7 @@ export default function Financial() {
               }}
               title="Saldo da conta"
               value={`R$ ${saldo}`}
+              trend={{ value: "+2%", positive: true }}
             >
             </StatCard>
           </Grid>
@@ -154,6 +163,7 @@ export default function Financial() {
               }}
               title="Pendentes a pagar"
               value={contasPendentes}
+              trend={{ value: "+2%", positive: true }}
             >
             </StatCard>
           </Grid>
@@ -164,6 +174,7 @@ export default function Financial() {
               }}
               title="Categorias"
               value={totalCategorias}
+              trend={{ value: "+2%", positive: true }}
             >
             </StatCard>
           </Grid>
@@ -174,13 +185,14 @@ export default function Financial() {
               }}
               title="Despezas"
               value={`R$ ${totalDespesas}`}
+              trend={{ value: "-2%", positive: false }}
             >
             </StatCard>
           </Grid>
           <Grid item xs={12}>
             <Grid container spacing={3} className={styles.statContainer}>
               <Grid item xs={12} md={3}>
-                <Card sx={{borderRadius: 3,p:3, display:'flex', flexDirection:'column', justifyContent: 'center', alignItems: "center"}}>
+                <Card sx={{borderRadius: 3,p:3, display:'flex', flexDirection:'column', justifyContent: 'center', alignItems: "center",}}>
                   <DonutChart
                     title="Overview financeiro"
                     data={chartData}
@@ -194,10 +206,10 @@ export default function Financial() {
               <Grid item xs={12} md={6}>
                   <Card sx={{ borderRadius: 4, p: 3 }}>
                     <Typography variant="h6">Evolução Financeira</Typography>
-
                     <Box mt={2}>
                         <Chart
                         height={190}
+                        data={lineData}
                         />
                     </Box>
                   </Card>
@@ -205,7 +217,6 @@ export default function Financial() {
               <Grid item xs={12} md={3}>
                   <Card sx={{ borderRadius: 4, p: 3, height:333 }}>
                     <Typography variant="h6">Top Categorias</Typography>
-
                     <Box mt={2}>
                       <RankList data={rankData} />
                     </Box>
@@ -221,6 +232,7 @@ export default function Financial() {
                 borderRadius:4,
                 p:3,
                 alignItems:'center',
+                boxShadow: "0 8px 32px rgba(0,0,0,0.4)",
               }}
             >
               <Box display="flex" mb={2}>
