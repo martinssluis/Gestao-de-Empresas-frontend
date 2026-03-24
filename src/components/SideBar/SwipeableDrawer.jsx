@@ -19,26 +19,10 @@ export default function SwipeableTemporaryDrawer({ open, onClose }) {
   const navigate = useNavigate();
   const { t } = useI18n();
   const menuItems = [
-    {
-      text: t('menu.dashboard'),
-      path: '/app/dashboard',
-      icon: <DashboardOutlinedIcon />,
-    },
-    {
-      text: t('menu.financial'),
-      path: '/app/financial',
-      icon: <LocalAtmOutlinedIcon />,
-    },
-    {
-      text: t('menu.stock'),
-      path: '/app/stock',
-      icon: <Inventory2OutlinedIcon />,
-    },
-    {
-      text: t('menu.collaborators'),
-      path: '/app/collaboratorsdash',
-      icon: <GroupsIcon />,
-    },
+    { text: t('menu.dashboard'),path: "/app/dashboard",icon: <InboxIcon />},
+    { text: t('menu.financial'),path: "/app/financial",icon: <MailIcon /> }, // Sugestão: deixar de stand-by
+    { text: t('menu.stock'),path: "/app/stockdash", icon: <InboxIcon /> },
+    { text: t('menu.employees'),path: "/app/employeesdash", icon: <MailIcon /> },// Sugestão: deixar de stand-by
     { text: t('menu.settings'), path: '/app/settings', icon: <SettingsIcon /> },
   ];
 
