@@ -11,6 +11,8 @@ import Inventory2OutlinedIcon from '@mui/icons-material/Inventory2Outlined';
 import GroupsIcon from '@mui/icons-material/Groups';
 import LogoutIcon from '@mui/icons-material/Logout';
 import SettingsIcon from '@mui/icons-material/Settings';
+import MailIcon from '@mui/icons-material/Mail';
+import { Inbox } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useI18n } from '../../i18n/useI18n';
@@ -19,9 +21,9 @@ export default function SwipeableTemporaryDrawer({ open, onClose }) {
   const navigate = useNavigate();
   const { t } = useI18n();
   const menuItems = [
-    { text: t('menu.dashboard'),path: "/app/dashboard",icon: <InboxIcon />},
+    { text: t('menu.dashboard'),path: "/app/dashboard",icon: <Inbox/>},
     { text: t('menu.financial'),path: "/app/financial",icon: <MailIcon /> }, // Sugestão: deixar de stand-by
-    { text: t('menu.stock'),path: "/app/stockdash", icon: <InboxIcon /> },
+    { text: t('menu.stock'),path: "/app/stockdash", icon: <Inbox/> },
     { text: t('menu.employees'),path: "/app/employeesdash", icon: <MailIcon /> },// Sugestão: deixar de stand-by
     { text: t('menu.settings'), path: '/app/settings', icon: <SettingsIcon /> },
   ];
