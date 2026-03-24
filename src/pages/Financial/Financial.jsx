@@ -7,6 +7,7 @@ import RankList from '../../components/RankList/RankList';
 import Chart from '../../components/Chart/ChartCard';
 import Icon from '../../components/IconLibrary/IconLibrary';
 import ChartIndicators from '../../components/ChartIndicators/ChartIndicators';
+import { chartColors } from '../../components/chartcolors/chartcolors';
 
 export default function Financial() {
   const financialMock = [
@@ -84,8 +85,6 @@ export default function Financial() {
     }
   ];
 
- // variável para o lineChart const returnedValueChart = financialMock[0] || null
-
   const totalReceitas = financialMock
   .filter(item => item.tipo === "Receita")
   .reduce((acc, item) => acc + item.valor, 0);
@@ -142,13 +141,14 @@ export default function Financial() {
   ]
   const chartDataWithColors = chartData.map((item, index) => ({
   ...item,
-  color: defaultColors[index % defaultColors.length]
+  color: chartColors[index % chartColors.length]
 }));
+console.log(chartDataWithColors)
   return (
     <>
       <Box component="div" className={styles.containerFinancial}>
         <Typography variant='h3' className='h3' fontWeight={700} sx={{display: "flex", gap:1}}>
-          Financeiro
+           <Icon name="creditScoreTwoToneIcon" sx={{fontSize:46, color: "#28c03c"}} /> Financeiro
         </Typography>
         <Grid container spacing={3} mt={2} className='main'>
           <Grid item xs={12} md={3}>
@@ -156,7 +156,7 @@ export default function Financial() {
               sx={{
                 p:1
               }}
-              icon={<Icon name="accountBalanceWalletTwoToneIcon"/>}
+              icon={<Icon name="accountBalanceWalletTwoToneIcon" sx={{ color: "#fdfa3d"}}/>}
               title="Saldo da conta"
               value={`R$ ${saldo}`}
               trend={{ value: "+2%", positive: true }}
@@ -168,7 +168,7 @@ export default function Financial() {
               sx={{
                 p:1
               }}
-              icon={<Icon name="pendingActionsTwoToneIcon"/>}
+              icon={<Icon name="pendingActionsTwoToneIcon" sx={{ color: "#be7609"}}/>}
               title="Pendentes a pagar"
               value={contasPendentes}
               trend={{ value: "+2%", positive: true }}
@@ -180,7 +180,7 @@ export default function Financial() {
               sx={{
                 p:1
               }}
-              icon={<Icon name="categoryTwoToneIcon"/>}
+              icon={<Icon name="categoryTwoToneIcon" sx={{ color: "#3db7fd"}}/>}
               title="Categorias"
               value={totalCategorias}
               trend={{ value: "+2%", positive: true }}
@@ -192,7 +192,7 @@ export default function Financial() {
               sx={{
                 p:1
               }}
-              icon={<Icon name="exposureTwoToneIcon"/>}
+              icon={<Icon name="exposureTwoToneIcon" sx={{ color: "#b96044"}}/>}
               title="Despezas"
               value={`R$ ${totalDespesas}`}
               trend={{ value: "-2%", positive: false }}
@@ -202,19 +202,19 @@ export default function Financial() {
           <Grid item xs={12}>
             <Grid container spacing={3} className={styles.statContainer}>
               <Grid item xs={12} md={3}>
-                <Card sx={{borderRadius: 3,p:3,height:"100%"}}>
+                <Card sx={{borderRadius: 3,p:3,height:"99%"}}>
                     <Box display="flex" gap={3} alignItems="center">
-                      <Box sx={{ width:800,height:80 }}>
-                        <Box sx={{flex:1, width:40,height:40,alignItems:"center"}}>
-                        <ChartIndicators data={chartData}/>
-                      </Box>
+                      <Box sx={{ width:800 }}>
+                        <Box sx={{flex:1,alignItems:"center"}}>
+                          <ChartIndicators data={chartDataWithColors}/>
+                        </Box>
                         <DonutChart
                         title="Overview financeiro"
                         data={chartData}
                         dataKey="value"
                         nameKey="name"
                         width="100%"
-                        height={260}
+                        height={200}
                         />
                       </Box>
                     </Box>

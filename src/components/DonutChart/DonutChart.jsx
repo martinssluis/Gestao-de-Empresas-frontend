@@ -1,13 +1,7 @@
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from "recharts";
+import { chartColors } from "../chartcolors/chartcolors";
 
-const defaultColors = [
-  "#4CAF50",
-  "#2196F3",
-  "#FF9800",
-  "#F44336"
-];
-
-export default function DonutChart({ data, dataKey, nameKey, height , width, colors = defaultColors }) {
+export default function DonutChart({ data, dataKey, nameKey, height , width }) {
 
   return (
         <ResponsiveContainer  width={width} height={height}>
@@ -23,7 +17,7 @@ export default function DonutChart({ data, dataKey, nameKey, height , width, col
               {data.map((entry, index) => (
                   <Cell
                   key={`cell-${index}`}
-                  fill={colors[index % colors.length]}
+                  fill={chartColors[index % chartColors.length]}
                   />
               ))}
               </Pie>

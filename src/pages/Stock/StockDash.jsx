@@ -48,7 +48,7 @@ export default function StockDash(){
         >
             <Typography variant="h3" className="h3" fontWeight={700} sx={{display:"flex", gap:2}}>
                 <Icon name="warehouseTwoToneIcon"
-                sx={{fontSize:46}}
+                sx={{fontSize:46, color: "#5a50e7"}}
                 /> Estoque
             </Typography>
             <Grid item xs={6} textAlign="right">
@@ -70,7 +70,7 @@ export default function StockDash(){
                             p:1,
                             boxShadow: "0 8px 32px rgba(0,0,0,0.2)"
                         }}
-                        icon={<Icon name="dataSaverOffTwoToneIcon"/>}
+                        icon={<Icon name="dataSaverOffTwoToneIcon" sx={{ color: "#fffb00"}}/>}
                         className={styles.statcard}
                         title="Total de produtos" 
                         value={totalProdutos}
@@ -112,7 +112,7 @@ export default function StockDash(){
                             p:1,
                             boxShadow: "0 8px 32px rgba(0,0,0,0.2)"
                         }}
-                        icon={<Icon name="keyboardDoubleArrowDownTwoToneIcon"/>}
+                        icon={<Icon name="keyboardDoubleArrowDownTwoToneIcon" sx={{ color: "#ce0505"}}/>}
                         className={styles.statcard}
                         title="Média de saídas" 
                         value={`${mediaSaidas.toFixed(1)}%`}
@@ -126,7 +126,7 @@ export default function StockDash(){
                             p:1,
                             boxShadow: "0 8px 32px rgba(0,0,0,0.2)"
                         }}
-                        icon={<Icon name="keyboardDoubleArrowUpTwoToneIcon"/>}
+                        icon={<Icon name="keyboardDoubleArrowUpTwoToneIcon" sx={{ color: "#6ff700"}}/>}
                         className={styles.statcard}
                         title="Média de entradas" 
                         value={`${mediaEntradas.toFixed(1)}%`}
@@ -140,7 +140,7 @@ export default function StockDash(){
                             p:1,
                             boxShadow: "0 8px 32px rgba(0,0,0,0.2)"
                         }}
-                        icon={<Icon name="categoryTwoToneIcon"/>}
+                        icon={<Icon name="categoryTwoToneIcon" sx={{ color: "#00a2ff"}}/>}
                         className={styles.statcard}
                         title="Total de categorias" 
                         value={totalCategorias}

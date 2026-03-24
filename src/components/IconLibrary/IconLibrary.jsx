@@ -19,6 +19,7 @@ import AccountBalanceWalletTwoToneIcon from '@mui/icons-material/AccountBalanceW
 import PendingActionsTwoToneIcon from '@mui/icons-material/PendingActionsTwoTone';
 import ExposureTwoToneIcon from '@mui/icons-material/ExposureTwoTone';
 import PaidTwoToneIcon from '@mui/icons-material/PaidTwoTone';
+import CreditScoreTwoToneIcon from '@mui/icons-material/CreditScoreTwoTone';
 
 const icons ={
     addIcon: AddIcon,
@@ -41,7 +42,8 @@ const icons ={
     accountBalanceWalletTwoToneIcon: AccountBalanceWalletTwoToneIcon,
     pendingActionsTwoToneIcon:PendingActionsTwoToneIcon,
     exposureTwoToneIcon: ExposureTwoToneIcon,
-    paidTwoToneIcon: PaidTwoToneIcon
+    paidTwoToneIcon: PaidTwoToneIcon,
+    creditScoreTwoToneIcon:CreditScoreTwoToneIcon
 }
 
 export default function Icon({name, ...props}){
