@@ -4,6 +4,7 @@ import { Box, Button, Grid, Typography, Card, Input  } from "@mui/material"
 import DataTable from "../../components/DataTable/DataTable";
 import AddIcon from '@mui/icons-material/Add';
 import StatCard from "../../components/StatCard/StatCard";
+import Icon from "../../components/IconLibrary/IconLibrary";
 
 const productsMock = [
   { id: 1, nome: "Notebook Dell", categoria: "Eletrônicos", estoque: 15, entradas: 30, saidas: 15, status: "Ativo" },
@@ -46,7 +47,9 @@ export default function StockDash(){
             component={'div'} className={styles.containerSd}
         >
             <Typography variant="h3" className="h3" fontWeight={700} sx={{display:"flex", gap:2}}>
-                Estoque
+                <Icon name="warehouseTwoToneIcon"
+                sx={{fontSize:46}}
+                /> Estoque
             </Typography>
             <Grid item xs={6} textAlign="right">
                 <Button variant="contained" onClick={() => navigate('/app/stock') }
@@ -67,10 +70,11 @@ export default function StockDash(){
                             p:1,
                             boxShadow: "0 8px 32px rgba(0,0,0,0.2)"
                         }}
-                        icon={''}
+                        icon={<Icon name="dataSaverOffTwoToneIcon"/>}
                         className={styles.statcard}
                         title="Total de produtos" 
                         value={totalProdutos}
+                        trend={{value: "+4", positive: true}}
                     />
                 </Grid>
                 <Grid item xs={12} md={2}>
@@ -80,10 +84,11 @@ export default function StockDash(){
                             p:1,
                             boxShadow: "0 8px 32px rgba(0,0,0,0.2)"
                         }}
-                        icon={''}
+                        icon={<Icon name="checkCircleTwoToneIcon" sx={{color: "#5da11e"}}/>}
                         className={styles.statcard}
                         title="Produtos ativos" 
                         value={produtosAtivos}
+                        trend={{value: "+4", positive: true}}
                     />
                 </Grid>
                 <Grid item xs={12} md={2}>
@@ -93,10 +98,11 @@ export default function StockDash(){
                             p:1,
                             boxShadow: "0 8px 32px rgba(0,0,0,0.2)"
                         }}
-                        icon={''}
+                        icon={<Icon name="cancelTwoToneIcon" sx={{color:"#ef5350"}}/>}
                         className={styles.statcard}
                         title="Produtos inativos" 
                         value={produtosInativos}
+                        trend={{value: "-2.9", positive: false}}
                     />
                 </Grid>
                 <Grid item xs={12} md={2}>
@@ -106,10 +112,11 @@ export default function StockDash(){
                             p:1,
                             boxShadow: "0 8px 32px rgba(0,0,0,0.2)"
                         }}
-                        icon={''}
+                        icon={<Icon name="keyboardDoubleArrowDownTwoToneIcon"/>}
                         className={styles.statcard}
                         title="Média de saídas" 
-                        value={mediaSaidas.toFixed(1)}
+                        value={`${mediaSaidas.toFixed(1)}%`}
+                        trend={{value: "+1.6", positive: true}}
                     />
                 </Grid>
                 <Grid item xs={12} md={2}>
@@ -119,10 +126,11 @@ export default function StockDash(){
                             p:1,
                             boxShadow: "0 8px 32px rgba(0,0,0,0.2)"
                         }}
-                        icon={''}
+                        icon={<Icon name="keyboardDoubleArrowUpTwoToneIcon"/>}
                         className={styles.statcard}
                         title="Média de entradas" 
-                        value={mediaEntradas.toFixed(1)}
+                        value={`${mediaEntradas.toFixed(1)}%`}
+                        trend={{value: "+5", positive: true}}
                     />
                 </Grid>
                 <Grid item xs={12} md={2}>
@@ -132,10 +140,11 @@ export default function StockDash(){
                             p:1,
                             boxShadow: "0 8px 32px rgba(0,0,0,0.2)"
                         }}
-                        icon={''}
+                        icon={<Icon name="categoryTwoToneIcon"/>}
                         className={styles.statcard}
                         title="Total de categorias" 
                         value={totalCategorias}
+                        trend={{value: "+4", positive: true}}
                     />
                 </Grid>
                 <Grid item xs={12}>

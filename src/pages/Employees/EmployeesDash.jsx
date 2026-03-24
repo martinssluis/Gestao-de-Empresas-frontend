@@ -5,6 +5,7 @@ import { Box, Button, Grid, Typography, Card, Input} from "@mui/material"
 import styles from './EmployeesDash.module.css'
 import StatCard from "../../components/StatCard/StatCard"
 import DataTable from "../../components/DataTable/DataTable"
+import Icon from '../../components/IconLibrary/IconLibrary';
 import AddIcon from '@mui/icons-material/Add';
 import PeopleIcon from '@mui/icons-material/People';
 import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
@@ -188,7 +189,7 @@ export default function EmployeesDash(){
         >
             <Typography variant="h3" className="h3" gutterBottom fontWeight={700} sx={{display:"flex", gap:2}}
             >
-                <PeopleIcon sx={{color: "#3b70ab", fontSize:46}}/> Colaboradores
+                <Icon name="peopleIcon" sx={{color: "#3b70ab", fontSize:46}}/> Colaboradores
             </Typography>
             <Grid item xs={6} textAlign="right">
                 <Button variant="contained" onClick={() => navigate('/app/employees')}
@@ -198,7 +199,7 @@ export default function EmployeesDash(){
                             textTransform: "uppercase"
                         }}    
                     >
-                        <AddIcon/> Incluir colaborador
+                        <Icon name="addIcon"/> Incluir colaborador
                 </Button>
             </Grid>
             <Grid container spacing={3}  mt={2} className="main">
@@ -209,9 +210,9 @@ export default function EmployeesDash(){
                     p: 1,
                     boxShadow: "0 8px 32px rgba(0,0,0,0.2)"
                     }}
-                        icon={<SummarizeIcon sx={{color: "#ffeb3b"}}/>}
+                        icon={<Icon name="summarizeIcon" sx={{color: "#ffeb3b"}}/>}
                         className={styles.statcard}
-                        title="Total de colaboradores" value={totalColaboradores}
+                        title="Total" value={totalColaboradores}
                         trend={{ value: "+2%", positive: true }}
                     />
                 </Grid>
@@ -222,34 +223,34 @@ export default function EmployeesDash(){
                     p: 1,
                     boxShadow: "0 8px 32px rgba(0,0,0,0.2)"
                     }}
-                        icon={<CheckCircleOutlineIcon sx={{color: "#5da11e"}} />}
+                        icon={<Icon name="checkCircleTwoToneIcon" sx={{color: "#5da11e"}} />}
                         className={styles.statcard}
-                        title="Colaboradores ativos" value={totalAtivos}
+                        title="Ativos" value={totalAtivos}
                         trend={{ value: "+2%", positive: true }}
                     />
                 </Grid>
                 <Grid item xs={12} md={2}>
                     <StatCard
-                    icon={<Groups2Icon sx={{color:"#42a5f5"}} />}
+                    icon={<Icon name="groups2Icon" sx={{color:"#42a5f5"}} />}
                     sx={{
                         borderRadius: 4,
                         p: 1,
                         boxShadow: "0 8px 32px rgba(0,0,0,0.2)"
                     }}
-                    title="Média por cargo"
+                    title="Média p/ cargo"
                     value={mediaPorCargo.toFixed(1)}
                     trend={{ value: "+2%", positive: true }}
                     />
                 </Grid>
                 <Grid item xs={12} md={2}>
                     <StatCard
-                    icon={<PeopleIcon sx={{color:"#ef5350"}}/>}
+                    icon={<Icon name="cancelTwoToneIcon" sx={{color:"#ef5350"}}/>}
                     sx={{
                         borderRadius: 4,
                         p: 1,
                         boxShadow: "0 8px 32px rgba(0,0,0,0.2)"
                     }}
-                    title="Colaboradores inativos"
+                    title="Inativos"
                     value={totalInativos}
                     trend={{ value: "-2%", positive: false }}
                     />
@@ -257,7 +258,7 @@ export default function EmployeesDash(){
                 <Grid item xs={12} md={2}>
                     <StatCard
                     
-                    icon={<MonetizationOnIcon sx={{color: "#a1981e"}}/>}
+                    icon={<Icon name="paidTwoToneIcon" sx={{color: "#a1981e"}}/>}
                     sx={{
                     borderRadius: 4,
                     p: 1,
@@ -271,7 +272,7 @@ export default function EmployeesDash(){
                 </Grid>
                 <Grid item xs={12} md={2}>
                     <StatCard
-                    icon={<SummarizeIcon sx={{color:"#26a69a"}}/>}
+                    icon={<Icon name="descriptionTwoToneIcon"sx={{color:"#26a69a"}}/>}
                     sx={{
                         borderRadius: 4,
                         p: 1,

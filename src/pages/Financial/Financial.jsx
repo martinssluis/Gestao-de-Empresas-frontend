@@ -5,6 +5,8 @@ import StatCard from '../../components/StatCard/StatCard';
 import DataTable from '../../components/DataTable/DataTable';
 import RankList from '../../components/RankList/RankList';
 import Chart from '../../components/Chart/ChartCard';
+import Icon from '../../components/IconLibrary/IconLibrary';
+import ChartIndicators from '../../components/ChartIndicators/ChartIndicators';
 
 export default function Financial() {
   const financialMock = [
@@ -138,6 +140,10 @@ export default function Financial() {
     { field: "status", headerName: "Status", flex: 1 },
     { field: "data", headerName: "Data", flex: 1 }
   ]
+  const chartDataWithColors = chartData.map((item, index) => ({
+  ...item,
+  color: defaultColors[index % defaultColors.length]
+}));
   return (
     <>
       <Box component="div" className={styles.containerFinancial}>
@@ -150,6 +156,7 @@ export default function Financial() {
               sx={{
                 p:1
               }}
+              icon={<Icon name="accountBalanceWalletTwoToneIcon"/>}
               title="Saldo da conta"
               value={`R$ ${saldo}`}
               trend={{ value: "+2%", positive: true }}
@@ -161,6 +168,7 @@ export default function Financial() {
               sx={{
                 p:1
               }}
+              icon={<Icon name="pendingActionsTwoToneIcon"/>}
               title="Pendentes a pagar"
               value={contasPendentes}
               trend={{ value: "+2%", positive: true }}
@@ -172,6 +180,7 @@ export default function Financial() {
               sx={{
                 p:1
               }}
+              icon={<Icon name="categoryTwoToneIcon"/>}
               title="Categorias"
               value={totalCategorias}
               trend={{ value: "+2%", positive: true }}
@@ -183,6 +192,7 @@ export default function Financial() {
               sx={{
                 p:1
               }}
+              icon={<Icon name="exposureTwoToneIcon"/>}
               title="Despezas"
               value={`R$ ${totalDespesas}`}
               trend={{ value: "-2%", positive: false }}
@@ -192,15 +202,22 @@ export default function Financial() {
           <Grid item xs={12}>
             <Grid container spacing={3} className={styles.statContainer}>
               <Grid item xs={12} md={3}>
-                <Card sx={{borderRadius: 3,p:3, display:'flex', flexDirection:'column', justifyContent: 'center', alignItems: "center",}}>
-                  <DonutChart
-                    title="Overview financeiro"
-                    data={chartData}
-                    dataKey="value"
-                    nameKey="name"
-                    width="100%"
-                    height={280}
-                  />
+                <Card sx={{borderRadius: 3,p:3,height:"100%"}}>
+                    <Box display="flex" gap={3} alignItems="center">
+                      <Box sx={{ width:800,height:80 }}>
+                        <Box sx={{flex:1, width:40,height:40,alignItems:"center"}}>
+                        <ChartIndicators data={chartData}/>
+                      </Box>
+                        <DonutChart
+                        title="Overview financeiro"
+                        data={chartData}
+                        dataKey="value"
+                        nameKey="name"
+                        width="100%"
+                        height={260}
+                        />
+                      </Box>
+                    </Box>
                 </Card>
               </Grid>
               <Grid item xs={12} md={6}>

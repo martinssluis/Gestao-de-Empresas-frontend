@@ -1,5 +1,4 @@
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from "recharts";
-import { Typography } from "@mui/material";
 
 const defaultColors = [
   "#4CAF50",
