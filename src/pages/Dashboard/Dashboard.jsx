@@ -1,4 +1,4 @@
-import { Box, Typography, Grid, TextField } from "@mui/material";
+import { Box, Typography, Grid, TextField, Card } from "@mui/material";
 import styles from "./Dashboard.module.css";
 import StatCard from "../../components/StatCard/StatCard";
 import Chart from "../../components/Chart/ChartCard";
@@ -121,30 +121,30 @@ export default function Dashboard() {
   return (
     <>
       <Box component={"div"} className={styles.containerDashboard}>
-        <Typography variant="h4" className="h4" gutterBottom sx={{ mb: 7 }}>
+        <Typography variant="h4" className="h4" gutterBottom >
           {t("pages.dashboard.title")}
         </Typography>
 
         <Grid container spacing={4} className={styles.mainGrid}>
           {stats.map((item, index) => (
-            <Grid item xs={12} sm={6} md={3} key={index}>
+            <Grid item xs={12} md={3} key={index}>
               <StatCard title={item.title} value={item.value} />
             </Grid>
           ))}
-          <Grid container spacing={3} sx={{ mt: 2 }}>
-            <Grid item xs={12} md={4}>
-              {selectedProduct ? (
-                <Chart
-                  title={`${t("pages.dashboard.outputHistory")} - ${selectedProduct.name}`}
-                  data={selectedProduct.history}
-                  height={200}
-                />
-              ) : (
-                <Typography color="text.secondary">
-                  {t("pages.dashboard.noProductFound")}
-                </Typography>
-              )}
-
+          <Grid item xs={12} md={6}>
+            <Card>
+                {selectedProduct ? (
+                  <Chart
+                    title={`${t("pages.dashboard.outputHistory")} - ${selectedProduct.name}`}
+                    data={selectedProduct.history}
+                    height={200}
+                  />
+                ) : (
+                  <Typography color="text.secondary">
+                    {t("pages.dashboard.noProductFound")}
+                  </Typography>
+                )}
+              </Card>
               <TextField
                 fullWidth
                 label={t("pages.dashboard.searchProduct")}
@@ -157,14 +157,13 @@ export default function Dashboard() {
                 items={filteredProducts}
               />
             </Grid>
-            <Grid item xs={12} md={8}>
+                          <Grid item xs={12} md={6}>
               <ChartColumn
                 title={t("pages.dashboard.salesLastMonths")}
                 data={salesData}
               />
             </Grid>
           </Grid>
-        </Grid>
       </Box>
     </>
   );
