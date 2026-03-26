@@ -6,6 +6,7 @@ import PopularList from "../../components/PopularList/PopularList";
 import ChartColumn from "../../components/ChartColumn/ChartColumn";
 import { useState } from "react";
 import { useI18n } from "../../i18n/useI18n";
+import Icon from "../../components/IconLibrary/IconLibrary";
 
 export default function Dashboard() {
   const { t } = useI18n();
@@ -132,35 +133,46 @@ export default function Dashboard() {
             </Grid>
           ))}
           <Grid item xs={12} md={6}>
-            <Card>
+            <Card
+              sx={{boxShadow:"0 4px 24px rgba(0,0,0,0.5)"}}
+            >
                 {selectedProduct ? (
                   <Chart
                     title={`${t("pages.dashboard.outputHistory")} - ${selectedProduct.name}`}
                     data={selectedProduct.history}
                     height={200}
+                    xKey="month"
+                    lines={[
+                      { dataKey: "value"}
+                    ]}
                   />
                 ) : (
                   <Typography color="text.secondary">
                     {t("pages.dashboard.noProductFound")}
                   </Typography>
                 )}
-              </Card>
-              <TextField
+                <TextField
                 fullWidth
                 label={t("pages.dashboard.searchProduct")}
                 variant="outlined"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
+                sx={{boxShadow:"0 8px 40px rgba(0,0,0,0.5)"}}
+              
               />
+              </Card>
               <PopularList
                 title={t("pages.dashboard.popularItems")}
                 items={filteredProducts}
               />
             </Grid>
-                          <Grid item xs={12} md={6}>
+              <Grid item xs={12} md={6}>
               <ChartColumn
                 title={t("pages.dashboard.salesLastMonths")}
                 data={salesData}
+                xKey="month"
+                bars={[{dataKey:"value"}]}
+                height={250}
               />
             </Grid>
           </Grid>

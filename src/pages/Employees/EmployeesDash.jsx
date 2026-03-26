@@ -6,12 +6,6 @@ import styles from './EmployeesDash.module.css'
 import StatCard from "../../components/StatCard/StatCard"
 import DataTable from "../../components/DataTable/DataTable"
 import Icon from '../../components/IconLibrary/IconLibrary';
-import AddIcon from '@mui/icons-material/Add';
-import PeopleIcon from '@mui/icons-material/People';
-import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
-import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
-import SummarizeIcon from '@mui/icons-material/Summarize';
-import Groups2Icon from '@mui/icons-material/Groups2';
 
 const colaboradoresMock = [
 {

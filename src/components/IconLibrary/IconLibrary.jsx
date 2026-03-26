@@ -20,6 +20,8 @@ import PendingActionsTwoToneIcon from '@mui/icons-material/PendingActionsTwoTone
 import ExposureTwoToneIcon from '@mui/icons-material/ExposureTwoTone';
 import PaidTwoToneIcon from '@mui/icons-material/PaidTwoTone';
 import CreditScoreTwoToneIcon from '@mui/icons-material/CreditScoreTwoTone';
+import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined';
+import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
 
 const icons ={
     addIcon: AddIcon,
@@ -43,7 +45,10 @@ const icons ={
     pendingActionsTwoToneIcon:PendingActionsTwoToneIcon,
     exposureTwoToneIcon: ExposureTwoToneIcon,
     paidTwoToneIcon: PaidTwoToneIcon,
-    creditScoreTwoToneIcon:CreditScoreTwoToneIcon
+    creditScoreTwoToneIcon:CreditScoreTwoToneIcon,
+    darkModeOutlinedIcon:DarkModeOutlinedIcon,
+    lightModeOutlinedIcon: LightModeOutlinedIcon
+
 }
 
 export default function Icon({name, ...props}){

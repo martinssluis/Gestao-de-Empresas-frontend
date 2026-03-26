@@ -8,8 +8,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Paper from '@mui/material/Paper';
 import Select from '@mui/material/Select';
 import Typography from '@mui/material/Typography';
-import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined';
-import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
+import Icon from '../../components/IconLibrary/IconLibrary';
 import { useTheme } from '@mui/material/styles';
 import { useAuthLanguage } from '../../context/AuthLanguageProvider';
 import { useAuthTheme } from '../../context/AuthThemeProvider';
@@ -59,7 +58,11 @@ function ThemePreview({ mode, isActive, t }) {
         footerText: '#b3c1d4',
       };
 
-  const Icon = isDark ? DarkModeOutlinedIcon : LightModeOutlinedIcon;
+  const IconTheme = (props=>{
+    <Icon
+      name={isDark ?  "darkModeOutlinedIcon" : "lightModeOutlinedIcon"}{...props}
+    />
+  });
   const title = isDark ? t('pages.settings.themeDark') : t('pages.settings.themeLight');
   const description = isDark
     ? t('pages.settings.themeDarkDescription')
@@ -89,7 +92,7 @@ function ThemePreview({ mode, isActive, t }) {
         }}
       >
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.8 }}>
-          <Icon sx={{ fontSize: 17, color: colors.title }} />
+          <IconTheme sx={{ fontSize: 17, color: colors.title }} />
           <Typography variant="subtitle2" sx={{ color: colors.title, fontWeight: 600 }}>
             {title}
           </Typography>

@@ -117,8 +117,8 @@ export default function Financial() {
   }
   ];
   const lineData = [
-  { name: "Jan", value: 5500, value2: 1200 },
-  { name: "Fev", value: 3200, value2: 1800 },
+  { name: "Jan", value: 5500, value2: 1700},
+  { name: "Fev", value: 3200, value2: 1200 },
   { name: "Mar", value: 4800, value2: 1500 },
   { name: "Abr", value: 6000, value2: 2000 },
   { name: "Mai", value: 7200, value2: 2500 },
@@ -142,8 +142,7 @@ export default function Financial() {
   const chartDataWithColors = chartData.map((item, index) => ({
   ...item,
   color: chartColors[index % chartColors.length]
-}));
-console.log(chartDataWithColors)
+  }));
   return (
     <>
       <Box component="div" className={styles.containerFinancial}>
@@ -222,11 +221,13 @@ console.log(chartDataWithColors)
               </Grid>
               <Grid item xs={12} md={6}>
                   <Card sx={{ borderRadius: 4, p: 3 }}>
-                    <Typography variant="h6">Evolução Financeira</Typography>
                     <Box mt={2}>
                         <Chart
+                        title="Evolução Financeira"
                         height={190}
                         data={lineData}
+                        xKey="name"
+                        lines={[{dataKey: "value"}]}
                         />
                     </Box>
                   </Card>

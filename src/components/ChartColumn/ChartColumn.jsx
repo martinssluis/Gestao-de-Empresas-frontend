@@ -1,7 +1,7 @@
 import { Card, CardContent, Typography } from "@mui/material";
 import { BarChart, Bar, XAxis,YAxis, Tooltip, ResponsiveContainer} from "recharts";
 
-export default function ChartColumn({title, data, height, width}){
+export default function ChartColumn({title, data, height, width, xKey,bars}){
     return(
         <Card>
             <CardContent>
@@ -11,15 +11,19 @@ export default function ChartColumn({title, data, height, width}){
 
                 <ResponsiveContainer width={width} height={height}>
                     <BarChart data={data}>
-                        <XAxis dataKey="month"/>
+                        <XAxis dataKey={xKey}/>
                         <YAxis/>
                         <Tooltip/>
-                        <Bar
+                        {bars.map((bar,index)=>(
+                            <Bar
+                            index={index}
                             type="monotone"
-                            dataKey="value"
+                            dataKey={bar.dataKey}
                             stroke="#1976d2"
                             strokeWidth={2}
-                        />
+                            />
+                        ))}
+                        
                     </BarChart>
                 </ResponsiveContainer>
             </CardContent>
