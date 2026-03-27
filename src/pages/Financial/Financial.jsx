@@ -155,7 +155,7 @@ export default function Financial() {
               sx={{
                 p:1
               }}
-              icon={<Icon name="accountBalanceWalletTwoToneIcon" sx={{ color: "#fdfa3d"}}/>}
+              icon={<Icon name="accountBalanceWalletTwoToneIcon" sx={{ color: "#bebb00"}}/>}
               title="Saldo da conta"
               value={`R$ ${saldo}`}
               trend={{ value: "+2%", positive: true }}

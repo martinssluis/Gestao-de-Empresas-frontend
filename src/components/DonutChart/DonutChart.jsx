@@ -22,7 +22,15 @@ export default function DonutChart({ data, dataKey, nameKey, height , width }) {
               ))}
               </Pie>
 
-              <Tooltip />
+              <Tooltip 
+                contentStyle={{
+                  backgroundColor:"#1e1e1e",
+                  border: "1px solid #333",
+                  borderRadius: 8
+                }}
+                labelStyle={{ color: "#aaa" }}
+                itemStyle={{ color: "#fff" }}
+              />
           </PieChart>
         </ResponsiveContainer>
   );

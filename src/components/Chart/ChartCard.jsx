@@ -12,13 +12,21 @@ export default function Chart({title, data, height = 300, xKey,lines}){
                     <LineChart data={data}>
                         <XAxis dataKey={xKey}/>
                         <YAxis/>
-                        <Tooltip/>
+                        <Tooltip
+                                contentStyle={{
+                                backgroundColor:"#1e1e1e",
+                                border: "1px solid #333",
+                                borderRadius: 8
+                            }}
+                            labelStyle={{ color: "#aaa" }}
+                            itemStyle={{ color: "#fff" }}
+                        />
                         {lines.map((line,index)=>(                        <Line
                                 index={index}
                                 type="monotone"
                                 dataKey={line.dataKey}
                                 stroke="#1976d2"
-                                strokeWidth={2}
+                                strokeWidth={3}
                             />
                         ))}
                         <Line

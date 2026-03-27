@@ -7,15 +7,4 @@
 
 .mainGrid {
   width: 100%;
-  max-width: 1200px;
-}
-
-
-
-@media (max-width: 768px) {
-
-.containerDashboard {
-  padding: 16px;
-}
-
 }
