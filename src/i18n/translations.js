@@ -38,7 +38,7 @@ export const translations = {
         salesLastMonths: 'Vendas nos últimos meses',
         outputHistory: 'Histórico de saída',
         stats: {
-          employeess: 'Colaboradores',
+          employees: 'Colaboradores',
           pendingPayments: 'Pagamentos pendentes',
           products: 'Produtos',
           totalSales: 'Total de vendas',

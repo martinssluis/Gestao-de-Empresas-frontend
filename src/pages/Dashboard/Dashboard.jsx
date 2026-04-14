@@ -6,7 +6,6 @@ import PopularList from "../../components/PopularList/PopularList";
 import ChartColumn from "../../components/ChartColumn/ChartColumn";
 import { useState } from "react";
 import { useI18n } from "../../i18n/useI18n";
-import Icon from "../../components/IconLibrary/IconLibrary";
 
 export default function Dashboard() {
   const { t } = useI18n();
@@ -29,7 +28,7 @@ export default function Dashboard() {
   // ARRAYS PARA ALIMENTAR O DAHSBOARD
   // STATS ALIMENTAM OS CARDS
   const stats = [
-    { title: t("pages.dashboard.stats.collaborators"), value: 10 },
+    { title: t("pages.dashboard.stats.employees"), value: 10 },
     { title: t("pages.dashboard.stats.pendingPayments"), value: 3 },
     { title: t("pages.dashboard.stats.products"), value: 300 },
     { title: t("pages.dashboard.stats.totalSales"), value: 71800 },
