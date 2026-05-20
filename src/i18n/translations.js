@@ -33,12 +33,12 @@ export const translations = {
       dashboard: {
         title: 'Dashboard',
         noProductFound: 'Nenhum produto encontrado',
-        searchProduct: 'Pesquisar produto',
+        searchProduct: 'Pesquisar produto pelo histórico de saída',
         popularItems: 'Itens populares',
         salesLastMonths: 'Vendas nos últimos meses',
         outputHistory: 'Histórico de saída',
         stats: {
-          employeess: 'Colaboradores',
+          employees: 'Colaboradores',
           pendingPayments: 'Pagamentos pendentes',
           products: 'Produtos',
           totalSales: 'Total de vendas',
@@ -129,7 +129,7 @@ export const translations = {
       dashboard: {
         title: 'Dashboard',
         noProductFound: 'No product found',
-        searchProduct: 'Search product',
+        searchProduct: 'Search for product by sale history',
         popularItems: 'Popular items',
         salesLastMonths: 'Sales in recent months',
         outputHistory: 'Output history',
@@ -181,7 +181,8 @@ export const translations = {
         themeLight: 'Light theme',
         themeDark: 'Dark theme',
         themeLightDescription: 'Clean visual style for brighter environments.',
-        themeDarkDescription: 'Lower-brightness visual style for prolonged use.',
+        themeDarkDescription:
+          'Lower-brightness visual style for prolonged use.',
         themeLightDefault: 'Light default',
         themeDarkDefault: 'Dark default',
       },

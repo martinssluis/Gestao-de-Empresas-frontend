@@ -6,12 +6,6 @@ import styles from './EmployeesDash.module.css'
 import StatCard from "../../components/StatCard/StatCard"
 import DataTable from "../../components/DataTable/DataTable"
 import Icon from '../../components/IconLibrary/IconLibrary';
-import AddIcon from '@mui/icons-material/Add';
-import PeopleIcon from '@mui/icons-material/People';
-import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
-import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
-import SummarizeIcon from '@mui/icons-material/Summarize';
-import Groups2Icon from '@mui/icons-material/Groups2';
 
 const colaboradoresMock = [
 {
@@ -116,24 +110,6 @@ const colaboradoresMock = [
 }
 
 ]
-
-const totalColaboradores = colaboradoresMock.length;
-
-const totalAtivos = colaboradoresMock.filter(c => c.ativo).length;
-
-const totalRoles = [...new Set(colaboradoresMock.map(c => c.role))].length;
-
-const mediaPorCargo = totalColaboradores / totalRoles;
-
-const totalInativos = colaboradoresMock.filter(c => !c.ativo).length;
-
-const totalFolha = colaboradoresMock.reduce(
-  (acc, c) => acc + c.salarioBase,
-  0
-);
-const mediaSalarial =
-  colaboradoresMock.reduce((acc, c) => acc + c.salarioBase, 0) / totalColaboradores;;
-
 const columns = [
   { field: "name", headerName: "Nome", flex: 1 },
   { field: "email", headerName: "Email", flex: 1 },
@@ -163,7 +139,8 @@ export default function EmployeesDash(){
   const loadEmployees = async () => {
     try {
         const data = await getEmployees();
-
+        console.log("Resposta api: " ,data)
+        console.log("Render: ", rows)
         const formatted = data.map((emp, index) => ({
         id: index + 1, // verificar
         name: emp.name,
@@ -181,6 +158,22 @@ export default function EmployeesDash(){
         console.error(error);
         }
   };
+  const totalColaboradores = rows.length;
+
+  const totalAtivos = rows.filter(c => c.ativo).length;
+
+  const totalRoles = [...new Set(rows.map(c => c.role))].length;
+
+  const mediaPorCargo = rows / totalRoles;
+
+  const totalInativos = rows.filter(c => !c.ativo).length;
+
+  const totalFolha = rows.reduce(
+    (acc, c) => acc + c.salarioBase,
+    0
+  );
+  const mediaSalarial =
+    rows.reduce((acc, c) => acc + c.salarioBase, 0) / totalColaboradores;;
 
 
     const navigate = useNavigate()

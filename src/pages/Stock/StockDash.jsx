@@ -2,7 +2,6 @@ import styles from "./StockDash.module.css"
 import { useNavigate } from "react-router-dom";
 import { Box, Button, Grid, Typography, Card, Input  } from "@mui/material"
 import DataTable from "../../components/DataTable/DataTable";
-import AddIcon from '@mui/icons-material/Add';
 import StatCard from "../../components/StatCard/StatCard";
 import Icon from "../../components/IconLibrary/IconLibrary";
 
@@ -59,7 +58,7 @@ export default function StockDash(){
                     textTransform: "uppercase"
                 }}    
                 >
-                    <AddIcon/>Incluir produto
+                    <Icon name="addIcon"/>Incluir produto
                 </Button>
             </Grid>
             <Grid container spacing={3} mt={2} className="main">
