@@ -1,37 +1,37 @@
-import { Box, Typography, Grid, TextField, Card } from "@mui/material";
-import styles from "./Dashboard.module.css";
-import StatCard from "../../components/StatCard/StatCard";
-import Chart from "../../components/Chart/ChartCard";
-import PopularList from "../../components/PopularList/PopularList";
-import ChartColumn from "../../components/ChartColumn/ChartColumn";
-import { useState } from "react";
-import { useI18n } from "../../i18n/useI18n";
+import { Box, Typography, Grid, TextField, Card } from '@mui/material';
+import styles from './Dashboard.module.css';
+import StatCard from '../../components/StatCard/StatCard';
+import Chart from '../../components/Chart/ChartCard';
+import PopularList from '../../components/PopularList/PopularList';
+import ChartColumn from '../../components/ChartColumn/ChartColumn';
+import { useState } from 'react';
+import { useI18n } from '../../i18n/useI18n';
 
 export default function Dashboard() {
   const { t } = useI18n();
 
   const monthLabels = {
-    jan: t("common.months.jan"),
-    feb: t("common.months.feb"),
-    mar: t("common.months.mar"),
-    apr: t("common.months.apr"),
-    may: t("common.months.may"),
-    jun: t("common.months.jun"),
-    jul: t("common.months.jul"),
-    aug: t("common.months.aug"),
-    sep: t("common.months.sep"),
-    oct: t("common.months.oct"),
-    nov: t("common.months.nov"),
-    dec: t("common.months.dec"),
+    jan: t('common.months.jan'),
+    feb: t('common.months.feb'),
+    mar: t('common.months.mar'),
+    apr: t('common.months.apr'),
+    may: t('common.months.may'),
+    jun: t('common.months.jun'),
+    jul: t('common.months.jul'),
+    aug: t('common.months.aug'),
+    sep: t('common.months.sep'),
+    oct: t('common.months.oct'),
+    nov: t('common.months.nov'),
+    dec: t('common.months.dec'),
   };
 
   // ARRAYS PARA ALIMENTAR O DAHSBOARD
   // STATS ALIMENTAM OS CARDS
   const stats = [
-    { title: t("pages.dashboard.stats.employees"), value: 10 },
-    { title: t("pages.dashboard.stats.pendingPayments"), value: 3 },
-    { title: t("pages.dashboard.stats.products"), value: 300 },
-    { title: t("pages.dashboard.stats.totalSales"), value: 71800 },
+    { title: t('pages.dashboard.stats.employees'), value: 10 },
+    { title: t('pages.dashboard.stats.pendingPayments'), value: 3 },
+    { title: t('pages.dashboard.stats.products'), value: 300 },
+    { title: t('pages.dashboard.stats.totalSales'), value: 71800 },
   ];
   // SALES ALIMENTAM O LINE CHART
   const salesData = [
@@ -52,8 +52,8 @@ export default function Dashboard() {
   const popularItems = [
     {
       id: 1,
-      name: t("pages.dashboard.products.a"),
-      subtitle: t("pages.dashboard.categories.one"),
+      name: t('pages.dashboard.products.a'),
+      subtitle: t('pages.dashboard.categories.one'),
       history: [
         { month: monthLabels.jan, value: 40 },
         { month: monthLabels.feb, value: 30 },
@@ -62,8 +62,8 @@ export default function Dashboard() {
     },
     {
       id: 2,
-      name: t("pages.dashboard.products.b"),
-      subtitle: t("pages.dashboard.categories.two"),
+      name: t('pages.dashboard.products.b'),
+      subtitle: t('pages.dashboard.categories.two'),
       history: [
         { month: monthLabels.jan, value: 50 },
         { month: monthLabels.feb, value: 80 },
@@ -72,8 +72,8 @@ export default function Dashboard() {
     },
     {
       id: 3,
-      name: t("pages.dashboard.products.c"),
-      subtitle: t("pages.dashboard.categories.three"),
+      name: t('pages.dashboard.products.c'),
+      subtitle: t('pages.dashboard.categories.three'),
       history: [
         { month: monthLabels.jan, value: 70 },
         { month: monthLabels.feb, value: 70 },
@@ -82,8 +82,8 @@ export default function Dashboard() {
     },
     {
       id: 4,
-      name: t("pages.dashboard.products.d"),
-      subtitle: t("pages.dashboard.categories.one"),
+      name: t('pages.dashboard.products.d'),
+      subtitle: t('pages.dashboard.categories.one'),
       history: [
         { month: monthLabels.jan, value: 70 },
         { month: monthLabels.feb, value: 30 },
@@ -92,8 +92,8 @@ export default function Dashboard() {
     },
     {
       id: 5,
-      name: t("pages.dashboard.products.e"),
-      subtitle: t("pages.dashboard.categories.two"),
+      name: t('pages.dashboard.products.e'),
+      subtitle: t('pages.dashboard.categories.two'),
       history: [
         { month: monthLabels.jan, value: 80 },
         { month: monthLabels.feb, value: 80 },
@@ -102,8 +102,8 @@ export default function Dashboard() {
     },
     {
       id: 6,
-      name: t("pages.dashboard.products.f"),
-      subtitle: t("pages.dashboard.categories.three"),
+      name: t('pages.dashboard.products.f'),
+      subtitle: t('pages.dashboard.categories.three'),
       history: [
         { month: monthLabels.jan, value: 20 },
         { month: monthLabels.feb, value: 90 },
@@ -111,7 +111,7 @@ export default function Dashboard() {
       ],
     },
   ];
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState('');
 
   const filteredProducts = popularItems.filter((product) =>
     product.name.toLowerCase().includes(searchTerm.toLowerCase()),
@@ -120,61 +120,65 @@ export default function Dashboard() {
 
   return (
     <>
-      <Box component={"div"} className={styles.containerDashboard}>
-        <Typography variant="h4" className="h4" gutterBottom >
-          {t("pages.dashboard.title")}
+      <Box component={'div'} className={styles.containerDashboard}>
+        {/* TITULO DASHBOARD*/}
+        <Typography variant="h4" className="h4" gutterBottom>
+          {t('pages.dashboard.title')}
         </Typography>
 
+        {/* GRID DOS CARDS */}
         <Grid container spacing={4} className={styles.mainGrid}>
+          {/* MAP COM O CONTEÚDO DOS CARDS */}
           {stats.map((item, index) => (
             <Grid item xs={12} md={3} key={index}>
               <StatCard title={item.title} value={item.value} />
             </Grid>
           ))}
           <Grid item xs={12} md={6}>
-            <Card
-              sx={{boxShadow:"0 4px 24px rgba(0,0,0,0.5)"}}
-            >
-                {selectedProduct ? (
-                  <Chart
-                    title={`${t("pages.dashboard.outputHistory")} - ${selectedProduct.name}`}
-                    data={selectedProduct.history}
-                    height={200}
-                    xKey="month"
-                    lines={[
-                      { dataKey: "value"}
-                    ]}
-                  />
-                ) : (
-                  <Typography color="text.secondary">
-                    {t("pages.dashboard.noProductFound")}
-                  </Typography>
-                )}
-                <TextField
+            {/* HISTORICO DE SAÍDA */}
+            <Card>
+              {selectedProduct ? (
+                <Chart
+                  title={`${t('pages.dashboard.outputHistory')} - ${selectedProduct.name}`}
+                  data={selectedProduct.history}
+                  height={200}
+                  xKey="month"
+                  lines={[{ dataKey: 'value' }]}
+                />
+              ) : (
+                <Typography color="text.secondary">
+                  {t('pages.dashboard.noProductFound')}
+                </Typography>
+              )}
+            </Card>
+
+            {/*PESQUISAR PELO HISTORICO DE SAÍDA */}
+            <Box sx={{ position: 'relative', top: '20px' }}>
+              <TextField
                 fullWidth
-                label={t("pages.dashboard.searchProduct")}
+                label={t('pages.dashboard.searchProduct')}
                 variant="outlined"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                sx={{boxShadow:"0 8px 40px rgba(0,0,0,0.5)"}}
-              
               />
-              </Card>
               <PopularList
-                title={t("pages.dashboard.popularItems")}
+                title={t('pages.dashboard.popularItems')}
                 items={filteredProducts}
               />
-            </Grid>
-              <Grid item xs={12} md={6}>
-              <ChartColumn
-                title={t("pages.dashboard.salesLastMonths")}
-                data={salesData}
-                xKey="month"
-                bars={[{dataKey:"value"}]}
-                height={250}
-              />
-            </Grid>
+            </Box>
           </Grid>
+
+          {/* VENDA NOS ULTIMOS MESES */}
+          <Grid item xs={12} md={6}>
+            <ChartColumn
+              title={t('pages.dashboard.salesLastMonths')}
+              data={salesData}
+              xKey="month"
+              bars={[{ dataKey: 'value' }]}
+              height={250}
+            />
+          </Grid>
+        </Grid>
       </Box>
     </>
   );
