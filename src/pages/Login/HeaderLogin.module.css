@@ -7,10 +7,17 @@
   flex-wrap: wrap;
   border-bottom: 1px solid #234368;
   justify-content: space-around;
+  background-color: #fff;
 }
 
 .imgDiv {
   width: 7%;
+}
+
+@media (max-width: 768px) {
+  .imgDiv {
+    width: 20%;
+  }
 }
 
 .navBar {
