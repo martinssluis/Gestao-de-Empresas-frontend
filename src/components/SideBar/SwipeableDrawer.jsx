@@ -50,7 +50,7 @@ export default function Sidebar({
     {
       text: t('menu.stock'),
       title: t('menu.stock'),
-      path: '/app/stock',
+      path: '/app/stockdash',
       icon: <Inventory2OutlinedIcon />,
     },
     {
@@ -107,7 +107,7 @@ export default function Sidebar({
               key={item.text}
               disablePadding
             >
-              <Tooltip enterDelay={800} title={item.title}>
+              <Tooltip enterDelay={1500} title={item.title}>
                 <ListItemButton
                   component={Link}
                   to={item.path}
@@ -146,8 +146,7 @@ export default function Sidebar({
             disablePadding
             sx={{ display: 'block', paddingLeft: '7px' }}
           >
-            {/*ADICIONAR TRADUÇÃO AQUI NO TITLE*/}
-            <Tooltip enterDelay={800} title="Sair do NexOrder">
+            <Tooltip enterDelay={1500} title={t('menu.logout')}>
               <ListItemButton
                 onClick={handleLogout}
                 sx={{
